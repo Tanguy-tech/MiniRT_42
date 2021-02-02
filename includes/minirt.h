@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 15:07:21 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 16:16:39 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,19 @@
 #include "shapes.h"
 
 /* This file contains all others headers and additionals functions */
+
+/* ERRORS FUNCTIONS */
 int		error_code(int error_code);
 int		errors_check(int ac, char **av);
+int		check_format(char *str);
+
+
+/* PARSER FUNCTIONS */
 int		read_and_parse(char *file_path);
+int		parser_engine(char *line);
+int		parse_light_data(char *str);
+int		parse_camera_data(char *str);
+int		parse_ambiant_light_data(char *str);
+int		parse_resolution(char *str);
 
 #endif

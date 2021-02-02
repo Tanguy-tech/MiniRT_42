@@ -6,18 +6,25 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:32:29 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 09:53:45 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 16:16:20 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
+int		check_format(char *str)
+{
+	/* Check the str format for the parsing process */
+}
+
 int		error_code(int error_code)
 {
 	if (error_code == 1)
-		ft_putstr("ERROR Wrong number of arguments! Missing scene file (type *.rt)\n");
+		ft_putstr("ERROR\nWrong number of arguments! Missing scene file (type *.rt)\n");
 	if (error_code == 2)
-		ft_putstr("ERROR Wrong exec name or file format detected. First argument must be ./miniRT, and second argument must be a *.rt file");
+		ft_putstr("ERROR\nWrong exec name or file format detected. First argument must be ./miniRT, and second argument must be a *.rt file");
+	if (error_code == 3)
+		ft_putstr("ERROR\nWrong element format in *.rt file"); /* Try to name the file to indicate where to look */
 	return (0);
 }
 
