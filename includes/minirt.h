@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 16:16:39 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 16:21:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /* ERRORS FUNCTIONS */
 int		error_code(int error_code);
-int		errors_check(int ac, char **av);
+int		params_check(int ac, char **av);
 int		check_format(char *str);
 
 
