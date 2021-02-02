@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scenes.h                                           :+:      :+:    :+:   */
+/*   shapes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 14:41:05 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/02 14:41:37 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/02 14:43:51 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENES_H
-#define SCENES_H
+#ifndef SHAPES_H
+#define SHAPES_H
 
-/* This file contains the objects structure and all functions relatives to the objects construction */
-
-typedef struct	scene
+typedef struct	sphere
 {
-	/* Ambiant light */
-	/* Camera position */
-	/* Light */
-	/* Sphere structure object */
-	/* Square structure object */
-	/* Plan structure object */
-	/* Cylinder structure object */
-	/* Triangle structure object */
-}				s_scene;
+	/* data */
+}				s_sphere;
+
+typedef struct	square
+{
+	/* data */
+}				s_square;
+
+typedef struct	plan
+{
+	/* data */
+}				s_plan;
+
+typedef struct	cylinder
+{
+	/* data */
+}				s_cylinder;
+
+typedef struct	triangle
+{
+	/* data */
+}				s_triangle;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 11:22:29 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 14:42:19 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "scenes.h"
 #include "utils.h"
 #include "vectors.h"
+#include "window.h"
+#include "shapes.h"
 
 /* This file contains all others headers and additionals functions */
 int		error_code(int error_code);
