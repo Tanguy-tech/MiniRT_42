@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 11:05:41 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 11:22:29 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define MINIRT_H
 
 #include "colors.h"
-#include "objects.h"
+#include "scenes.h"
 #include "utils.h"
 #include "vectors.h"
 
