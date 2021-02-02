@@ -6,11 +6,21 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 11:00:26 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 11:16:02 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 15:42:35 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+
+/* PARSE RESOLUTION */
+
+/* PARSE AMBIANT LIGHT */
+
+/* PARSE CAMERA POSTION */
+
+/* PARSE LIGHT INFORMATIONS */
+
+/* PARSER ENGINE */
 
 int		read_and_parse(char *file_path)
 {
