@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.c                                           :+:      :+:    :+:   */
+/*   read_and_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 11:10:03 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/02 11:00:26 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/02 11:09:37 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		main(int ac, char **av)
+int		read_and_parse(char *file_path)
 {
-	if (errors_check(ac, av) == 0) /* if no errors detected, then open and read file.rt */
+	int		fd;
+	char	*line;
+	
+	fd = open(file_path, O_RDONLY);
+	while (get_next_line(fd, &line) > 0) /* Function that open and read the file */
 	{
-		read_and_parse(av[1]); /* Function GNL that open read and parse the information from *.rt file*/
+		/* Function that parse and save the information in right structures*/
+		ft_putstr(line);
+		ft_putchar('\n');
+		free(line);
+		line = NULL;
 	}
+	/* Function that parse and save the information in right structures*/
+	ft_putstr(line);
+	free(line);
+	line = NULL;
 	return (0);
 }

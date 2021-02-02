@@ -1,14 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   to_find.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 12:32:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 10:00:01 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/02 10:49:11 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/02 10:49:25 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../../includes/utils.h"
 
+int		to_find(char *str, char c)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != c && str[i])
+		i++;
+	if (str[i] == c)
+		return (i);
+	return (-1);
+}
