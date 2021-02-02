@@ -6,15 +6,15 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 10:49:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 10:50:09 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 16:36:51 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static char *st[4096];
+	static char	*st[4096];
 	char		buff[1];
 	char		*tmp;
 	int			pos;
@@ -25,7 +25,7 @@ int		get_next_line(int fd, char **line)
 	{
 		st[fd] = str_add_char(st[fd], buff[0]);
 		if (buff[0] == '\n')
-			break;
+			break ;
 	}
 	if ((pos = to_find(st[fd], '\n')) >= 0)
 	{

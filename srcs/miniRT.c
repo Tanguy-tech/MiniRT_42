@@ -6,13 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 16:21:25 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 16:38:43 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (params_check(ac, av) == 0) /* if no errors detected, then open and read file.rt */
 	{

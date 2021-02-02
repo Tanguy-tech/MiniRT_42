@@ -6,13 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 14:40:30 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/01 14:04:32 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 16:37:42 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		ft_strncmp(char *s1, char *s2, size_t n)
+int	ft_strncmp(char *s1, char *s2, size_t n)
 {
 	size_t			i;
 	unsigned char	*s1_;
