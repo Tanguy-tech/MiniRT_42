@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 16:21:31 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 09:39:17 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #include "vectors.h"
 #include "window.h"
 #include "shapes.h"
+#include "ray.h"
+
+#define PI 3.14159265359;
 
 /* This file contains all others headers and additionals functions */
 
