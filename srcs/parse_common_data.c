@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 14:20:27 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 14:47:35 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ int		parse_resolution(char *str, char *file_path, char *type)
 					if (!(res_y_str = str_add_char(res_y_str, str[i])))
 						return (-1);
 			}
-			if (current_axis == 'X' && (str[i] == 32 || str[i] == 9))
+			if (current_axis == 'X' && (ft_iswhitespace(str[i])))
 				current_axis = 'Y';
 			i++;
 		}
-	window->res_x = ft_atoi(res_x_str);
-	window->res_y = ft_atoi(res_y_str);
-	window->title = ft_strrchr(file_path, '/');
-	ft_putstr("RESOLUTION DONE\n");
-	return (1);
+		window->res_x = ft_atoi(res_x_str);
+		window->res_y = ft_atoi(res_y_str);
+		window->title = ft_strrchr(file_path, '/');
+		ft_putstr("RESOLUTION DONE\n");
+		return (1);
 	}
 	return (0);
 	/*	- Check str format ->  Return 0) ERROR if invalid (cf subject)

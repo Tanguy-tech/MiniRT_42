@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 14:05:20 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 15:10:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int		ft_atoi(char *str);
 char	*ft_strrchr(char *s, int c);
 int		ft_isdigit(int c);
 int		ft_iswhitespace(char c);
+int		count_double(char *str);
+int		count_rgb_format(char *str);
 
 #endif
