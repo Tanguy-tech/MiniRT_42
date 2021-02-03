@@ -6,14 +6,14 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 11:00:26 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 10:50:29 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 13:48:35 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
 /* PARSER ENGINE */
-int		parser_engine(char *line)
+int		parser_engine(char *line, char *file_path)
 {
 	int	i;
 
@@ -21,23 +21,23 @@ int		parser_engine(char *line)
 	while (line[i])
 	{
 		if (line[i] == 'R')
-			return (parse_resolution(line + 1 + i));
+			return (parse_resolution(line + 1 + i, file_path, "R"));
 		if (line[i] == 'A')
-			return (parse_ambiant_light_data(line + 1 + i));
+			return (parse_ambiant_light_data(line + 1 + i, "A"));
 		if (line[i] == 'c')
-			return (parse_camera_data(line + 1 + i));
+			return (parse_camera_data(line + 1 + i, "c"));
 		if (line[i] == 'l')
-			return (parse_light_data(line + 1 + i));
+			return (parse_light_data(line + 1 + i, "l"));
 		if (line[i] == 's' && line[i + 1] == 'p')
-			return (parse_sphere_data(line + 2 + i));
+			return (parse_sphere_data(line + 2 + i, "sp"));
 		if (line[i] == 's' && line[i + 1] == 'q')
-			return (parse_square_data(line + 2 + i));
+			return (parse_square_data(line + 2 + i, "sq"));
 		if (line[i] == 't' && line[i + 1] == 'r')
-			return (parse_triangle_data(line + 2 + i));
+			return (parse_triangle_data(line + 2 + i, "tr"));
 		if (line[i] == 'c' && line[i + 1] == 'y')
-			return (parse_cylinder_data(line + 2 + i));
+			return (parse_cylinder_data(line + 2 + i, "cy"));
 		if (line[i] == 'p' && line[i + 1] == 'l')
-			return (parse_plan_data(line + 2 + i));
+			return (parse_plan_data(line + 2 + i, "pl"));
 		else
 			i++;
 	}
@@ -57,12 +57,12 @@ int		read_and_parse(char *file_path)
 	while (get_next_line(fd, &line) > 0) /* Function that open and read the file */
 	{
 		/* PARSER ENGINE GOES HERE */
-		parser_engine(line);
+		parser_engine(line, file_path);
 		free(line);
 		line = NULL;
 	}
 	/* PARSER ENGINE GOES HERE for the last line */
-	parser_engine(line);
+	parser_engine(line, file_path);
 	free(line);
 	line = NULL;
 	return (0);

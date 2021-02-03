@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_plan.c                                       :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 15:40:10 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 14:10:46 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/03 13:15:16 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../includes/window.h"
+#include "../includes/utils.h"
 
-/* PARSE PLAN INFORMATIONS */
-int	parse_plan_data(char *str, char *type)
+s_window	*initialize_window(void)
 {
+	s_window	*new_window;
 
+	if (!(new_window = ft_calloc(sizeof(s_window), 1)))
+		return (NULL);
+	new_window->res_x = 0;
+	new_window->res_y = 0;
+	new_window->title = "\0";
+	return (new_window);
 }
-
-/* Check plan format */

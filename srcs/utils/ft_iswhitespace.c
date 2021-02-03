@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_plan.c                                       :+:      :+:    :+:   */
+/*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 15:40:10 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 14:10:46 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/03 14:01:40 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/03 14:04:40 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../../includes/utils.h"
 
-/* PARSE PLAN INFORMATIONS */
-int	parse_plan_data(char *str, char *type)
+int	ft_iswhitespace(char c)
 {
-
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	else
+		return (0);
 }
-
-/* Check plan format */

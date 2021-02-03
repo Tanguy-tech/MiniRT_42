@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 10:14:16 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 14:11:57 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,22 @@
 /* ERRORS FUNCTIONS */
 int		error_code(int error_code);
 int		params_check(int ac, char **av);
-int		check_format(char *str);
+
+/* CHECK FUNCTIONS */
+int		check_format(char *str, char *type);
 
 
 /* PARSER FUNCTIONS */
 int		read_and_parse(char *file_path);
-int		parser_engine(char *line);
-int		parse_light_data(char *str);
-int		parse_camera_data(char *str);
-int		parse_ambiant_light_data(char *str);
-int		parse_resolution(char *str);
-int		parse_sphere_data(char *str);
-int		parse_square_data(char *str);
-int		parse_plan_data(char *str);
-int		parse_cylinder_data(char *str);
-int		parse_triangle_data(char *str);
+int		parser_engine(char *line, char *file_path);
+int		parse_light_data(char *str, char *type);
+int		parse_camera_data(char *str, char *type);
+int		parse_ambiant_light_data(char *str, char *type);
+int		parse_resolution(char *str, char *file_path, char *type);
+int		parse_sphere_data(char *str, char *type);
+int		parse_square_data(char *str, char *type);
+int		parse_plan_data(char *str, char *type);
+int		parse_cylinder_data(char *str, char *type);
+int		parse_triangle_data(char *str, char *type);
 
 #endif

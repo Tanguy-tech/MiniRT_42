@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_plan.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 15:40:10 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 14:10:46 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2020/11/25 10:10:13 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/03 13:11:17 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../../includes/utils.h"
 
-/* PARSE PLAN INFORMATIONS */
-int	parse_plan_data(char *str, char *type)
+int		ft_atoi(char *str)
 {
+	int				i;
+	int				res;
 
+	i = 0;
+	res = 0;
+	while (str[i] >= 48 && str[i] <= 57)
+		res = res * 10 + (str[i++] - 48);
+	return (res);
 }
-
-/* Check plan format */

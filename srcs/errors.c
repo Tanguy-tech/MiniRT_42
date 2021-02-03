@@ -6,16 +6,11 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:32:29 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 10:35:18 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 14:11:30 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-
-int		check_format(char *str)
-{
-	/* Check the str format for the parsing process */
-}
 
 int		error_code(int error_code)
 {
