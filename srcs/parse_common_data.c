@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 13:48:58 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 14:20:27 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int		parse_resolution(char *str, char *file_path, char *type)
 	window->res_y = ft_atoi(res_y_str);
 	window->title = ft_strrchr(file_path, '/');
 	ft_putstr("RESOLUTION DONE\n");
-	}
 	return (1);
+	}
+	return (0);
 	/*	- Check str format ->  Return 0) ERROR if invalid (cf subject)
 		- initialise Resolution structure in the current scene 
 		- fill structure with parsed data 
