@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 09:30:11 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 09:54:02 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ s_vectors	*initialize_vector(void)
 	new_vector->x = 0;
 	new_vector->y = 0;
 	new_vector->z = 0;
-	new_vector->sqrt_norme = get_sqrt_norme(new_vector->x, new_vector->y, new_vector->z);
-	new_vector->norme = sqrt(new_vector->sqrt_norme);
+	new_vector->sqrt_norme = 0;
+	new_vector->norme = 0;
 	return (new_vector);
 }
