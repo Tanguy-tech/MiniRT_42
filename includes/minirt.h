@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 09:39:17 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 10:14:16 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,10 @@ int		parse_light_data(char *str);
 int		parse_camera_data(char *str);
 int		parse_ambiant_light_data(char *str);
 int		parse_resolution(char *str);
+int		parse_sphere_data(char *str);
+int		parse_square_data(char *str);
+int		parse_plan_data(char *str);
+int		parse_cylinder_data(char *str);
+int		parse_triangle_data(char *str);
 
 #endif

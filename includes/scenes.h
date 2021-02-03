@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 15:27:53 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 10:34:33 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,6 @@
 #include "shapes.h"
 
 /* This file contains the objects structure and all functions relatives to the objects construction */
-
-typedef struct	scene
-{
-	s_ambiant_light	amb_light;	/* Ambiant light structure */
-	s_camera		cam;		/* Camera position structure */
-	s_light			light;		/* Light structure */
-	s_sphere		sp;			/* Sphere structure object */
-	s_square		sq;			/* Square structure object */
-	s_plan			pl;			/* Plan structure object */
-	s_cylinder		cy;			/* Cylinder structure object */
-	s_triangle		tr;			/* Triangle structure object */
-}				s_scene;
 
 typedef struct	ambiant_light
 {
@@ -55,5 +43,16 @@ typedef struct	light
 	s_colors	color;			/* Light color */
 }				s_light;
 
+typedef struct	scene
+{
+	s_ambiant_light	amb_light;	/* Ambiant light structure */
+	s_camera		cam;		/* Camera position structure */
+	s_light			light;		/* Light structure */
+	s_sphere		sp;			/* Sphere structure object */
+	s_square		sq;			/* Square structure object */
+	s_plan			pl;			/* Plan structure object */
+	s_cylinder		cy;			/* Cylinder structure object */
+	s_triangle		tr;			/* Triangle structure object */
+}				s_scene;
 
 #endif
