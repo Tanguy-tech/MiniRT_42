@@ -6,14 +6,14 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 11:07:54 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 12:45:46 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
 /* PARSE RESOLUTION */
-int		parse_resolution(char *str, char *file_path, char *type)
+int		parse_resolution(char *str, char *file_path, char *type, s_scene *mini_rt)
 {
 	char	*res_x_str;
 	char	*res_y_str;
@@ -64,7 +64,7 @@ int		parse_resolution(char *str, char *file_path, char *type)
 }
 
 /* PARSE AMBIANT LIGHT */
-int		parse_ambiant_light_data(char *str, char *type)
+int		parse_ambiant_light_data(char *str, char *type, s_scene *mini_rt)
 {
 	if (check_format(str, type) == 1)
 	{
@@ -106,8 +106,9 @@ int		parse_ambiant_light_data(char *str, char *type)
 }
 
 /* PARSE CAMERA POSTION */
-int		parse_camera_data(char *str, char *type)
+int		parse_camera_data(char *str, char *type, s_scene *mini_rt)
 {
+	check_c_format(str);
 	ft_putstr("CAMERA DONE\n");
 	return (1);
 	/*	- Check str format ->  Return (0) ERROR if invalid (cf subject)
@@ -117,7 +118,7 @@ int		parse_camera_data(char *str, char *type)
 }
 
 /* PARSE LIGHT INFORMATIONS */
-int		parse_light_data(char *str, char *type)
+int		parse_light_data(char *str, char *type, s_scene *mini_rt)
 {
 	ft_putstr("LIGHT DONE\n");
 	return (1);
