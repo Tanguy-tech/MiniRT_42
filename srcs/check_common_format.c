@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:09 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 15:38:45 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 12:01:44 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@ int	check_R_format(char *str)
 	}
 	if (count == 2)
 		return (1);
+	error_code(3);
 	return (0);
 }
 
 /* Check format for A type */
 int	check_A_format(char *str)
 {
-	if (count_double(str) == 1 && count_rgb_format(str) == 2)
+	if (count_double(str) == 1 && count_rgb_format(get_rgb_code(str)) == 2 && count_nb_format(get_rgb_code(str)) <= 9)
 		return (1);
+	error_code(3);
 	return (0);
 }
 
@@ -49,6 +51,6 @@ int		check_format(char *str, char *type)
 	if (ft_strncmp(type, "R", ft_strlen(type)) == 0)
 		return (check_R_format(str));
 	if (ft_strncmp(type, "A", ft_strlen(type)) == 0)
-		return (/* check_A_format(str) */);
+		return (check_A_format(str));
 	return (0);
 }

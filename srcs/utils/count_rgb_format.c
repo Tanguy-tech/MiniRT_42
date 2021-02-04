@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:10:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 16:27:27 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 11:20:11 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,23 @@ int	count_rgb_format(char *str)
 	return (comma);
 }
 
-int	get_rgb_code(char *str)
+int	count_nb_format(char *str)
+{
+	int i;
+	int nb;
+
+	i = 0;
+	nb = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+			nb++;
+		i++;
+	}
+	return (nb);
+}
+
+char	*get_rgb_code(char *str)
 {
 	int 	i;
 	int		j;
@@ -36,8 +52,8 @@ int	get_rgb_code(char *str)
 
 	i = 0;
 	j = 0;
-	if (!(rgb_code = ft_calloc(sizeof(char), 12)))
-		return (-1);
+	if (!(rgb_code = ft_calloc(sizeof(char), 100)))
+		return (NULL);
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]) || str[i] == ',')
@@ -52,5 +68,5 @@ int	get_rgb_code(char *str)
 		}
 		i++;
 	}
-	return (count_rgb_format(rgb_code));
+	return (rgb_code);
 }

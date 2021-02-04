@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:10 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 14:58:07 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 10:23:43 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ typedef struct colors
 	double	g;	/* precise number of green color [0-255]*/
 	double	b;	/* precise number of blue color [0-255]*/
 }				s_colors;
+
+s_colors	*initialize_colors(void);
 
 #endif

@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   trunc_rgb_code.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:10:13 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 09:28:40 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/04 10:32:18 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/04 11:04:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		ft_atoi(char *str)
+int	find_next_code(char *str)
 {
-	int	i;
-	int	res;
-	int	neg;
+	int i;
 
 	i = 0;
-	res = 0;
-	neg = 0;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			neg++;
-	while (str[i] >= 48 && str[i] <= 57)
-		res = res * 10 + (str[i++] - 48);
-	return (res);
+	while (str[i])
+	{
+		if (str[i] == ',')
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+char	*trunc_rgb_code(char *str, int index)
+{
+	char	*code;
+	
+	if (!(code = ft_calloc(sizeof(char), 3)))
+		return (NULL);
+	while (str[index] != ',' && str[index])
+	{
+		if (!(code = str_add_char(code, str[index])))
+			return (NULL);
+		index++;
+	}
+	return (code);
 }

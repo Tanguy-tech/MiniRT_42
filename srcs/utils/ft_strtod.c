@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strtod.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:10:13 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 09:28:40 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/04 08:46:50 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/04 10:21:19 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		ft_atoi(char *str)
+double	ft_strtod(char *str)
 {
-	int	i;
-	int	res;
-	int	neg;
+	double	a;
+	double	b;
+	int		i;
+	int 	j;
 
 	i = 0;
-	res = 0;
-	neg = 0;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			neg++;
-	while (str[i] >= 48 && str[i] <= 57)
-		res = res * 10 + (str[i++] - 48);
-	return (res);
+	j = 0;
+	a = (double)ft_atoi(str);
+	while (ft_isdigit(str[i]))
+		i++;
+	j = 1;
+	while (ft_isdigit(str[i]))
+	{
+		j++;
+		i++;
+	}
+	b = (1 / pow(10, j)) * (double)ft_atoi(str + j + 1);
+	return (a + b);
 }

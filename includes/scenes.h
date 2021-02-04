@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 10:34:33 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 10:25:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 typedef struct	ambiant_light
 {
 	double		ratio;	/* ration of ambiant light in [0.0/1.0] range */
-	s_colors	color;	/* Color of ambiant light */
+	s_colors	*color;	/* Color of ambiant light */
 }				s_ambiant_light;
+
+s_ambiant_light	*initialize_ambiant_light(void);
 
 typedef struct	camera
 {

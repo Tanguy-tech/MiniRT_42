@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   scenes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:10:13 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 09:28:40 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/04 10:26:05 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
+#include "../includes/scenes.h"
+#include "../includes/utils.h"
+#include "../includes/colors.h"
 
-int		ft_atoi(char *str)
+s_ambiant_light	*initialize_ambiant_light(void)
 {
-	int	i;
-	int	res;
-	int	neg;
+	s_ambiant_light	*new_ambiant_light;
 
-	i = 0;
-	res = 0;
-	neg = 0;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			neg++;
-	while (str[i] >= 48 && str[i] <= 57)
-		res = res * 10 + (str[i++] - 48);
-	return (res);
+	if (!(new_ambiant_light = ft_calloc(sizeof(s_ambiant_light), 1)))
+		return (NULL);
+		new_ambiant_light->ratio = 0.0;
+		new_ambiant_light->color = initialize_colors();
+		return (new_ambiant_light);
 }
