@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:09 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 14:40:48 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 14:53:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_A_format(char *str)
 /* Check format for c type */
 int	check_c_format(char *str)
 {
-	if (check_coordinates(str)/*&& check_coordinates(str + ft_strlen(catch_coordinates(str))) */&& (check_angle(str) >= 0 && check_angle(str) <= 180))
+	if (check_coordinates(str) && check_coordinates(str + ft_strlen(catch_coordinates(str))) && (check_angle(str) >= 0 && check_angle(str) <= 180))
 		return (1);
 	error_code(3);
 	return (0);
