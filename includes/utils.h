@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 11:12:30 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 14:09:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ int		ft_isdigit(int c);
 int		ft_iswhitespace(char c);
 int		count_double(char *str);
 int		count_nb_format(char *str);
-int		count_rgb_format(char *str);
+int		count_comma_format(char *str);
 char	*get_rgb_code(char *str);
 double	ft_strtod(char *str);
 char	*trunc_rgb_code(char *str, int index);
 int		find_next_code(char *str);
+int		check_angle(char *str);
+char	*catch_coordinates(char *str);
+int		check_coordinates(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 12:58:54 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 14:46:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ s_camera	*initialize_camera(void)
 {
 	s_camera	*new_cam;
 
-	if (!(new_cam = ft_calloc(sizeof(char), 1)))
+	if (!(new_cam = ft_calloc(sizeof(s_camera), 1)))
 		return (NULL);
 		new_cam->x = 0.0;
 		new_cam->y = 0.0;
@@ -42,7 +42,7 @@ s_light		*initialize_light(void)
 {
 	s_light	*new_light;
 
-	if (!(new_light = ft_calloc(sizeof(char), 1)))
+	if (!(new_light = ft_calloc(sizeof(s_light), 1)))
 		return (NULL);
 	new_light->x = 0.0;
 	new_light->y = 0.0;
@@ -62,6 +62,5 @@ s_scene		*initialize_scene(void)
 		new_scene->cam = initialize_camera();
 		new_scene->light = initialize_light();
 		new_scene->window = initialize_window();
-		new_scene->window->win_ptr = mlx_new_window(new_scene->mlx_ptr, new_scene->window->res_x, new_scene->window->res_y, new_scene->window->title);
 		return (new_scene);
 }

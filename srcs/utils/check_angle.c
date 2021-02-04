@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   check_angle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 10:22:47 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 14:47:47 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/04 13:33:27 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/04 13:45:00 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/colors.h"
-#include "../includes/utils.h"
+#include "../../includes/utils.h"
 
-s_colors	*initialize_colors(void)
+int		check_angle(char *str)
 {
-	s_colors	*new_color;
+	int		i;
+	char	*angle_str;
+	int		angle;
 
-	if (!(new_color = ft_calloc(sizeof(s_colors), 1)))
-		return (NULL);
-	new_color->r = 0.0;
-	new_color->g = 0.0;
-	new_color->b = 0.0;
-	return (new_color);
+
+	i = ft_strlen(str) - 1;
+	if (!(angle_str = ft_calloc(sizeof(char), 4)))
+		return (-1);
+	while (ft_isdigit(str[i]))
+		i--;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+		{
+			if (!(angle_str = str_add_char(angle_str, str[i])))
+				return (-1);
+		}
+		i++;
+	}
+	angle = ft_atoi(angle_str);
+	return (angle);
 }

@@ -6,13 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:10:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 11:20:11 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 14:04:08 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int	count_rgb_format(char *str)
+int	count_comma_format(char *str)
 {
 	int i;
 	int comma;

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 13:28:47 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 14:44:37 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ int		parse_resolution(char *str, char *file_path, char *type, s_scene *mini_rt)
 /* PARSE AMBIANT LIGHT */
 int		parse_ambiant_light_data(char *str, char *type, s_scene *mini_rt)
 {
+	int				i;
+	int				j;
+	char			*ratio_str;
+	double			ratio;
+		
+	i = 0;
+	j = 0;
 	if (check_format(str, type) == 1)
 	{
-		int				i;
-		int				j;
-		char			*ratio_str;
-		double			ratio;
-		
-		i = 0;
-		j = 0;
 		if (!(ratio_str = ft_calloc(1, sizeof(char))))
 			return (-1);
 		while (str[i])
@@ -102,9 +102,12 @@ int		parse_ambiant_light_data(char *str, char *type, s_scene *mini_rt)
 /* PARSE CAMERA POSTION */
 int		parse_camera_data(char *str, char *type, s_scene *mini_rt)
 {
-	check_c_format(str);
-	ft_putstr("CAMERA DONE\n");
-	return (1);
+	if (check_format(str, type) == 1)
+	{
+		ft_putstr("CAMERA DONE\n");
+		return (1);
+	}
+	return (0);
 	/*	- Check str format ->  Return (0) ERROR if invalid (cf subject)
 		- initialise camera structure in the current scene 
 		- fill structure with parsed data 
