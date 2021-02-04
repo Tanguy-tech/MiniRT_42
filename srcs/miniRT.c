@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 13:19:30 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 13:27:38 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	main(int ac, char **av)
 
 	if (params_check(ac, av) == 0) /* if no errors detected, then open and read file.rt */
 	{
+		if (!(mini_rt = initialize_scene()))
+			return (-1);
 		read_and_parse(av[1], mini_rt); /* - Function GNL that open read and parse the information from *.rt file */
-		//mlx_loop(mini_rt->mlx_ptr);	/* - Return ERROR if any error occur while executing the parsing and checking functions */
+		mlx_loop(mini_rt->mlx_ptr);	/* - Return ERROR if any error occur while executing the parsing and checking functions */
 	}
 	return (0);
 }

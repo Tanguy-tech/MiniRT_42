@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 12:45:46 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 13:28:47 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		parse_resolution(char *str, char *file_path, char *type, s_scene *mini_rt)
 	char	*res_y_str;
 	int		i;
 	char	current_axis;
-	s_window	*window;
 	
 	i = 0;
 	if (check_format(str, type) == 1)
@@ -29,8 +28,6 @@ int		parse_resolution(char *str, char *file_path, char *type, s_scene *mini_rt)
 		if (!(res_y_str = ft_calloc(1, sizeof(char))))
 			return (-1);
 		current_axis = 'N';
-		if (!(window = initialize_window()))
-			return (-1);
 		while (str[i])
 		{
 			if (str[i] >= 48 && str[i] <= 57 && str[i])
@@ -49,9 +46,9 @@ int		parse_resolution(char *str, char *file_path, char *type, s_scene *mini_rt)
 				current_axis = 'Y';
 			i++;
 		}
-		window->res_x = ft_atoi(res_x_str);
-		window->res_y = ft_atoi(res_y_str);
-		window->title = ft_strrchr(file_path, '/');
+		mini_rt->window->res_x = ft_atoi(res_x_str);
+		mini_rt->window->res_y = ft_atoi(res_y_str);
+		mini_rt->window->title = ft_strrchr(file_path, '/');
 		ft_putstr("RESOLUTION DONE\n");
 		return (1);
 	}
@@ -72,13 +69,10 @@ int		parse_ambiant_light_data(char *str, char *type, s_scene *mini_rt)
 		int				j;
 		char			*ratio_str;
 		double			ratio;
-		s_ambiant_light	*ambiant_light;
 		
 		i = 0;
 		j = 0;
 		if (!(ratio_str = ft_calloc(1, sizeof(char))))
-			return (-1);
-		if (!(ambiant_light = initialize_ambiant_light()))
 			return (-1);
 		while (str[i])
 		{
@@ -91,10 +85,10 @@ int		parse_ambiant_light_data(char *str, char *type, s_scene *mini_rt)
 			}
 			i++;
 		}
-		ambiant_light->ratio = ft_strtod(ratio_str);
-		ambiant_light->color->r = ft_atoi(trunc_rgb_code(get_rgb_code(str), 0));
-		ambiant_light->color->g = ft_atoi(trunc_rgb_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1));
-		ambiant_light->color->b = ft_atoi(trunc_rgb_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1 + find_next_code(get_rgb_code(str)) + 1));
+		mini_rt->amb_light->ratio = ft_strtod(ratio_str);
+		mini_rt->amb_light->color->r = ft_atoi(trunc_rgb_code(get_rgb_code(str), 0));
+		mini_rt->amb_light->color->g = ft_atoi(trunc_rgb_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1));
+		mini_rt->amb_light->color->b = ft_atoi(trunc_rgb_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1 + find_next_code(get_rgb_code(str)) + 1));
 		ft_putstr("AMBIANT LIGHT DONE\n");
 		return (1);
 	}
