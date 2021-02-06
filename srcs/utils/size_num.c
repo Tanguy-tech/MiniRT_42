@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_angle.c                                      :+:      :+:    :+:   */
+/*   size_num.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 13:33:27 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 13:45:00 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/06 11:41:47 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/06 11:43:23 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		check_angle(char *str)
+int		size_num(int x)
 {
-	int		i;
-	char	*angle_str;
-	int		angle;
+	size_t i;
 
-
-	i = ft_strlen(str) - 1;
-	if (!(angle_str = ft_calloc(sizeof(char), 4)))
-		return (-1);
-	while (ft_isdigit(str[i]))
-		i--;
-	while (str[i])
+	i = 0;
+	if (x == 0)
+		return (1);
+	if (!x)
+		return (0);
+	while (x != 0)
 	{
-		if (ft_isdigit(str[i]))
-		{
-			if (!(angle_str = str_add_char(angle_str, str[i])))
-				return (-1);
-		}
+		x = x / 10;
 		i++;
 	}
-	angle = ft_atoi(angle_str);
-	return (angle);
+	return (i);
 }

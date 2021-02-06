@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_double.c                                     :+:      :+:    :+:   */
+/*   get_angle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 14:51:59 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 11:14:52 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/04 13:33:27 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/06 11:18:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int	count_double(char *str)
+int		get_angle(char *str)
 {
-	int i;
-	int	dbl;
+	int		i;
+	char	*angle_str;
+	int		angle;
 
-	i = 1;
-	dbl = 0;
+
+	i = ft_strlen(str) - 1;
+	if (!(angle_str = ft_calloc(sizeof(char), 4)))
+		return (-1);
+	while (ft_isdigit(str[i]))
+		i--;
 	while (str[i])
 	{
-		if (ft_isdigit(str[i - 1]) && ft_isdigit(str[i + 1]) && str[i] == '.')
-			dbl++;
+		if (ft_isdigit(str[i]))
+		{
+			if (!(angle_str = str_add_char(angle_str, str[i])))
+				return (-1);
+		}
 		i++;
 	}
-	return (dbl);
+	angle = ft_atoi(angle_str);
+	return (angle);
 }

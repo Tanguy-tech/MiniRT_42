@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trunc_rgb_code.c                                   :+:      :+:    :+:   */
+/*   trunc_code.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:32:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 11:04:53 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 11:26:25 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	find_next_code(char *str)
 	return (0);
 }
 
-char	*trunc_rgb_code(char *str, int index)
+char	*trunc_code(char *str, int index)
 {
 	char	*code;
 	

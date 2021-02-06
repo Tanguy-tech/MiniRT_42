@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:52:33 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 15:30:40 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 11:10:44 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*catch_coordinates(char *str)
 	char	*coord;
 
 	i = 0;
-	if (!(coord = ft_calloc(sizeof(char), 1)))
+	if (!(coord = ft_calloc(sizeof(char), 2)))
 		return (NULL);
 	while (str[i])
 	{

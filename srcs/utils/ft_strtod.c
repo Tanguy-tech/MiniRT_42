@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:46:50 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 10:21:19 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 11:40:54 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	ft_strtod(char *str)
 	double	a;
 	double	b;
 	int		i;
-	int 	j;
+	int		j;
 
 	i = 0;
 	j = 0;

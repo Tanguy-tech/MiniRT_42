@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 10:38:25 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 10:54:03 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	ambiant_light
 	t_colors	*color;	/* Color of ambiant light */
 }				t_ambiant_light;
 
-s_ambiant_light	*initialize_ambiant_light(void);
+t_ambiant_light	*initialize_ambiant_light(void);
 
 typedef struct	camera
 {

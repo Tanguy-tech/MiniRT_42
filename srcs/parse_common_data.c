@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 10:40:37 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 12:39:19 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ int		parse_ambiant_light_data(char *str, char *type, t_scene *mini_rt)
 			i++;
 		}
 		mini_rt->amb_light->ratio = ft_strtod(ratio_str);
-		mini_rt->amb_light->color->r = ft_atoi(trunc_rgb_code(get_rgb_code(str), 0));
-		mini_rt->amb_light->color->g = ft_atoi(trunc_rgb_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1));
-		mini_rt->amb_light->color->b = ft_atoi(trunc_rgb_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1 + find_next_code(get_rgb_code(str)) + 1));
+		mini_rt->amb_light->color->r = ft_atoi(trunc_code(get_rgb_code(str), 0));
+		mini_rt->amb_light->color->g = ft_atoi(trunc_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1));
+		mini_rt->amb_light->color->b = ft_atoi(trunc_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1 + find_next_code(get_rgb_code(str)) + 1));
 		ft_putstr("AMBIANT LIGHT DONE\n");
 		return (1);
 	}
@@ -102,8 +102,17 @@ int		parse_ambiant_light_data(char *str, char *type, t_scene *mini_rt)
 /* PARSE CAMERA POSTION */
 int		parse_camera_data(char *str, char *type, t_scene *mini_rt)
 {
+	char *coord_str;
+	char *or_str;
+
+	coord_str = catch_coordinates(str);
+	or_str = catch_coordinates(str + ft_strlen(coord_str) + 1);
 	if (check_format(str, type) == 1)
 	{
+		mini_rt->cam->fov = get_angle(str);
+		mini_rt->cam->x = ft_atoi(trunc_code(coord_str, 0));
+		mini_rt->cam->y = ft_atoi(trunc_code(coord_str, find_next_code(coord_str) + 1));
+		mini_rt->cam->z = ft_atoi(trunc_code(get_rgb_code(coord_str), find_next_code(get_rgb_code(coord_str)) + 1 + find_next_code(get_rgb_code(coord_str)) + 1));
 		ft_putstr("CAMERA DONE\n");
 		return (1);
 	}
