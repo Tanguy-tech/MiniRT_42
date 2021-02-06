@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 11:28:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 10:41:52 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ double	get_sqrt_norme(double coord_x, double coord_y, double coord_z)
 	return (sqrt_norme);
 }
 
-s_vectors	*initialize_vector(void)
+t_vectors	*initialize_vector(void)
 {
-	s_vectors	*new_vector;
+	t_vectors	*new_vector;
 
-	if (!(new_vector = ft_calloc(sizeof(s_vectors), 1)))
+	if (!(new_vector = ft_calloc(sizeof(t_vectors), 1)))
 		return (NULL);
 	new_vector->x = 0;
 	new_vector->y = 0;

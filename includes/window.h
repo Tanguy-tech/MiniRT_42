@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:27:20 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 12:58:20 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 10:39:21 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef	struct 	window
 	int		res_y;			/* Resolution on y axis */
 	char	*title;			/* Window title */
 	void	*win_ptr;		/* pointer to location of current window instance */
-}				s_window;
+}				t_window;
 
-s_window	*initialize_window(void);
+t_window	*initialize_window(void);
 
 #endif

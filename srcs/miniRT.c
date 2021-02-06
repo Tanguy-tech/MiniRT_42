@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 14:51:15 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 10:40:13 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	s_scene	*mini_rt;
+	t_scene	*mini_rt;
 
 	/* initialize strcuture s_scene */
 

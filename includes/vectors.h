@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:21 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 09:30:20 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 10:39:14 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct vectors
 	double	z;			/* Vector cordinate on z axis */
 	double	sqrt_norme;	/* Vector squared norme */
 	double	norme;		/* Vector norme (total lengh) */
-}				s_vectors;
+}				t_vectors;
 
 double		get_sqrt_norme(double coord_x, double coord_y, double coord_z);
-s_vectors	*initialize_vector(void);
+t_vectors	*initialize_vector(void);
 
 #endif

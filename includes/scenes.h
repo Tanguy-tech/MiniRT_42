@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/04 12:58:30 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 10:38:25 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 typedef struct	ambiant_light
 {
 	double		ratio;	/* ration of ambiant light in [0.0/1.0] range */
-	s_colors	*color;	/* Color of ambiant light */
-}				s_ambiant_light;
+	t_colors	*color;	/* Color of ambiant light */
+}				t_ambiant_light;
 
 s_ambiant_light	*initialize_ambiant_light(void);
 
@@ -34,11 +34,11 @@ typedef struct	camera
 	double		x;				/* Camera position on x axis */
 	double		y;				/* Camera position on y axis */
 	double		z;				/* Camera position on z axis */
-	s_vectors	*orientation;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
+	t_vectors	*orientation;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
 	double		fov;			/* Field of view - angle in degrees in [0.0/180.0] range */
-}				s_camera;
+}				t_camera;
 
-s_camera		*initialize_camera(void);
+t_camera		*initialize_camera(void);
 
 typedef struct	light
 {
@@ -46,25 +46,25 @@ typedef struct	light
 	double		y;				/* Light position on y axis */
 	double		z;				/* Light position on z axis */
 	double		light_ratio;	/* Ratio of light in [0.0/1.0] range */
-	s_colors	*color;			/* Light color */
-}				s_light;
+	t_colors	*color;			/* Light color */
+}				t_light;
 
-s_light			*initalize_light(void);
+t_light			*initalize_light(void);
 
 typedef struct	scene
 {
 	void			*mlx_ptr;		/* pointer to location of current mlx instance */
-	s_window		*window;		/* Window structure */
-	s_ambiant_light	*amb_light;		/* Ambiant light structure */
-	s_camera		*cam;			/* Camera position structure */
-	s_light			*light;			/* Light structure */
-	s_sphere		*sp;			/* Sphere structure object */
-	s_square		*sq;			/* Square structure object */
-	s_plan			*pl;			/* Plan structure object */
-	s_cylinder		*cy;			/* Cylinder structure object */
-	s_triangle		*tr;			/* Triangle structure object */
-}				s_scene;
+	t_window		*window;		/* Window structure */
+	t_ambiant_light	*amb_light;		/* Ambiant light structure */
+	t_camera		*cam;			/* Camera position structure */
+	t_light			*light;			/* Light structure */
+	t_sphere		*sp;			/* Sphere structure object */
+	t_square		*sq;			/* Square structure object */
+	t_plan			*pl;			/* Plan structure object */
+	t_cylinder		*cy;			/* Cylinder structure object */
+	t_triangle		*tr;			/* Triangle structure object */
+}				t_scene;
 
-s_scene			*initialize_scene(void);
+t_scene			*initialize_scene(void);
 
 #endif
