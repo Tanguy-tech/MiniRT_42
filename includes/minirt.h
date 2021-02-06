@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 10:53:48 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 14:25:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		check_format(char *str, char *type);
 int		check_R_format(char *str);
 int		check_A_format(char *str);
 int		check_c_format(char *str);
+int		check_l_format(char *str);
 
 
 /* PARSER FUNCTIONS */

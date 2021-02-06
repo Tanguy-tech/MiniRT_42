@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 13:51:17 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/06 14:42:49 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ int		parse_camera_data(char *str, char *type, t_scene *mini_rt)
 		mini_rt->cam->x = ft_atoi(trunc_code(coord_str, 0));
 		mini_rt->cam->y = ft_atoi(trunc_code(coord_str, find_next_code(coord_str) + 1));
 		mini_rt->cam->z = ft_atoi(trunc_code(get_rgb_code(coord_str), find_next_code(get_rgb_code(coord_str)) + 1 + find_next_code(get_rgb_code(coord_str)) + 1));
+		mini_rt->cam->orientation->x = 
+		mini_rt->cam->orientation->y =
+		mini_rt->cam->orientation->z = 
 		ft_putstr("CAMERA DONE\n");
 		return (1);
 	}
@@ -126,8 +129,15 @@ int		parse_camera_data(char *str, char *type, t_scene *mini_rt)
 /* PARSE LIGHT INFORMATIONS */
 int		parse_light_data(char *str, char *type, t_scene *mini_rt)
 {
-	ft_putstr("LIGHT DONE\n");
-	return (1);
+	char	*coord_str;
+
+	coord_str = catch_coordinates(str);
+	if (check_l_format(str) == 1)
+	{
+		ft_putstr("LIGHT DONE\n");
+		return (1);
+	}
+	return (0);
 	/*	- Check str format ->  Return (0) ERROR if invalid (cf subject)
 		- initialise light structure in the current scene 
 		- fill structure with parsed data 
