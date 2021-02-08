@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 10:41:41 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 10:19:54 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_light		*initialize_light(void)
 	new_light->z = 0.0;
 	new_light->light_ratio = 0.0;
 	new_light->color = initialize_colors();
+	return (new_light);
 }
 
 t_scene		*initialize_scene(void)

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 12:32:26 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 10:25:36 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	*ft_substr(char *str, int begin, int len_max);
 int		to_find(char *str, char c);
 int		get_next_line(int fd, char **line);
 int		ft_atoi(char *str);
+float	ft_atof(char *str);
 char	*ft_strrchr(char *s, int c);
 int		ft_isdigit(int c);
 int		ft_iswhitespace(char c);
@@ -45,5 +46,6 @@ int		get_angle(char *str);
 char	*catch_coordinates(char *str);
 int		check_coordinates(char *str);
 int		size_num(int x);
+char	*get_double(char *str, int i);
 
 #endif

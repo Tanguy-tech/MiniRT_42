@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:09 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 14:24:34 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 08:57:02 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ int		check_format(char *str, char *type)
 		return (check_A_format(str));
 	if (ft_strncmp(type, "c", ft_strlen(type)) == 0)
 		return (check_c_format(str));
+	if (ft_strncmp(type, "l", ft_strlen(type)) == 0)
+		return (check_l_format(str));
 	return (0);
 }

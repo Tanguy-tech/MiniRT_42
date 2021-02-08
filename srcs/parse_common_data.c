@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 14:42:49 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 10:26:54 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,31 +64,17 @@ int		parse_resolution(char *str, char *file_path, char *type, t_scene *mini_rt)
 int		parse_ambiant_light_data(char *str, char *type, t_scene *mini_rt)
 {
 	int				i;
-	int				j;
 	char			*ratio_str;
 	double			ratio;
 		
 	i = 0;
-	j = 0;
+	ratio_str = get_double(str, 0);
 	if (check_format(str, type) == 1)
 	{
-		if (!(ratio_str = ft_calloc(1, sizeof(char))))
-			return (-1);
-		while (str[i])
-		{
-			if ((ft_isdigit(str[i]) || str[i] == '.') && str[i])
-			{
-				if (!(ratio_str = str_add_char(ratio_str, str[i])))
-					return (-1);
-				else if (ft_isdigit(str[i]) && str[i + 1] == ' ')
-					break ;
-			}
-			i++;
-		}
-		mini_rt->amb_light->ratio = ft_strtod(ratio_str);
-		mini_rt->amb_light->color->r = ft_atoi(trunc_code(get_rgb_code(str), 0));
-		mini_rt->amb_light->color->g = ft_atoi(trunc_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1));
-		mini_rt->amb_light->color->b = ft_atoi(trunc_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1 + find_next_code(get_rgb_code(str)) + 1));
+		mini_rt->amb_light->ratio = ft_atof(ratio_str);
+		mini_rt->amb_light->color->r = ft_atof(trunc_code(get_rgb_code(str), 0));
+		mini_rt->amb_light->color->g = ft_atof(trunc_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1));
+		mini_rt->amb_light->color->b = ft_atof(trunc_code(get_rgb_code(str), find_next_code(get_rgb_code(str)) + 1 + find_next_code(get_rgb_code(str)) + 1));
 		ft_putstr("AMBIANT LIGHT DONE\n");
 		return (1);
 	}
@@ -109,13 +95,13 @@ int		parse_camera_data(char *str, char *type, t_scene *mini_rt)
 	or_str = catch_coordinates(str + ft_strlen(coord_str) + 1);
 	if (check_format(str, type) == 1)
 	{
+		mini_rt->cam->x = ft_atof(trunc_code(coord_str, 0));
+		mini_rt->cam->y = ft_atof(trunc_code(coord_str, find_next_code(coord_str) + 1));
+		mini_rt->cam->z = ft_atof(trunc_code(get_rgb_code(coord_str), find_next_code(get_rgb_code(coord_str)) + 1 + find_next_code(get_rgb_code(coord_str)) + 1));
+		mini_rt->cam->orientation->x = ft_atof(trunc_code(or_str, 0));
+		mini_rt->cam->orientation->y = ft_atof(trunc_code(or_str, find_next_code(or_str) + 1));
+		mini_rt->cam->orientation->z = ft_atof(trunc_code(get_rgb_code(or_str), find_next_code(get_rgb_code(or_str)) + 1 + find_next_code(get_rgb_code(or_str)) + 1));
 		mini_rt->cam->fov = get_angle(str);
-		mini_rt->cam->x = ft_atoi(trunc_code(coord_str, 0));
-		mini_rt->cam->y = ft_atoi(trunc_code(coord_str, find_next_code(coord_str) + 1));
-		mini_rt->cam->z = ft_atoi(trunc_code(get_rgb_code(coord_str), find_next_code(get_rgb_code(coord_str)) + 1 + find_next_code(get_rgb_code(coord_str)) + 1));
-		mini_rt->cam->orientation->x = 
-		mini_rt->cam->orientation->y =
-		mini_rt->cam->orientation->z = 
 		ft_putstr("CAMERA DONE\n");
 		return (1);
 	}
@@ -130,10 +116,23 @@ int		parse_camera_data(char *str, char *type, t_scene *mini_rt)
 int		parse_light_data(char *str, char *type, t_scene *mini_rt)
 {
 	char	*coord_str;
+	char	*ratio_str;
+	char	*colors_str;
+	int		i;
 
 	coord_str = catch_coordinates(str);
+	colors_str = get_rgb_code(str);
+	i = ft_strlen(coord_str) + 2;
+	ratio_str = get_double(str, i);
 	if (check_l_format(str) == 1)
 	{
+		mini_rt->light->x = ft_atof(trunc_code(coord_str, 0));
+		mini_rt->light->y = ft_atof(trunc_code(coord_str, find_next_code(coord_str) + 1));
+		mini_rt->light->z = ft_atof(trunc_code(coord_str, find_next_code(coord_str) + 1 + find_next_code(coord_str) + 1));
+		mini_rt->light->light_ratio = ft_atof(ratio_str);
+		mini_rt->light->color->r = ft_atof(trunc_code(colors_str, 0));
+		mini_rt->light->color->g = ft_atof(trunc_code(colors_str, find_next_code(colors_str) + 1));
+		mini_rt->light->color->b = ft_atof(trunc_code(colors_str, find_next_code(colors_str) + 1 + find_next_code(colors_str))); 
 		ft_putstr("LIGHT DONE\n");
 		return (1);
 	}
