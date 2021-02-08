@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 14:25:59 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 11:44:44 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,20 @@
 /* This file contains all others headers and additionals functions */
 
 /* ERRORS FUNCTIONS */
-int		error_code(int error_code);
+int		error_code(int error_code, char *name);
 int		params_check(int ac, char **av);
 
 /* CHECK FUNCTIONS */
-int		check_format(char *str, char *type);
-int		check_R_format(char *str);
-int		check_A_format(char *str);
-int		check_c_format(char *str);
-int		check_l_format(char *str);
+int		check_format_engine(char *str, char *type);
+int		check_R_format(char *str, char *type);
+int		check_A_format(char *str, char *type);
+int		check_c_format(char *str, char *type);
+int		check_l_format(char *str, char *type);
+int		check_sphere_format(char *str, char *type);
+int		check_square_format(char *str, char *type);
+int		check_plan_format(char *str, char *type);
+int		check_cylinder_format(char *str, char *type);
+int		check_triangle_format(char *str, char *type);
 
 
 /* PARSER FUNCTIONS */

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 11:00:26 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 13:50:18 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 12:21:20 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ int		parser_engine(char *line, char *file_path, t_scene *mini_rt)
 	{
 		if (line[i] == 'R')
 			return (parse_resolution(line + 1 + i, file_path, "R", mini_rt));
-		if (line[i] == 'A')
+		else if (line[i] == 'A')
 			return (parse_ambiant_light_data(line + 1 + i, "A", mini_rt));
-		if (line[i] == 'c')
-			return (parse_camera_data(line + 1 + i, "c", mini_rt));
-		if (line[i] == 'l')
-			return (parse_light_data(line + 1 + i, "l", mini_rt));
-		if (line[i] == 's' && line[i + 1] == 'p')
+		else if (line[i] == 's' && line[i + 1] == 'p')
 			return (parse_sphere_data(line + 2 + i, "sp", mini_rt));
-		if (line[i] == 's' && line[i + 1] == 'q')
+		else if (line[i] == 's' && line[i + 1] == 'q')
 			return (parse_square_data(line + 2 + i, "sq", mini_rt));
-		if (line[i] == 't' && line[i + 1] == 'r')
+		else if (line[i] == 't' && line[i + 1] == 'r')
 			return (parse_triangle_data(line + 2 + i, "tr", mini_rt));
-		if (line[i] == 'c' && line[i + 1] == 'y')
+		else if (line[i] == 'c' && line[i + 1] == 'y')
 			return (parse_cylinder_data(line + 2 + i, "cy", mini_rt));
-		if (line[i] == 'p' && line[i + 1] == 'l')
+		else if (line[i] == 'p' && line[i + 1] == 'l')
 			return (parse_plan_data(line + 2 + i, "pl", mini_rt));
+		else if (line[i] == 'c')
+			return (parse_camera_data(line + 1 + i, "c", mini_rt));
+		else if (line[i] == 'l')
+			return (parse_light_data(line + 1 + i, "l", mini_rt));
 		else
 			i++;
 	}
