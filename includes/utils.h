@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 10:25:36 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 15:18:10 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ char	*catch_coordinates(char *str);
 int		check_coordinates(char *str);
 int		size_num(int x);
 char	*get_double(char *str, int i);
+char	**ft_split(char *s, char *c);
 
 #endif

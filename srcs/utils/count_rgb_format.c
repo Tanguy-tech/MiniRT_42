@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:10:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 09:33:51 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 15:18:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*get_rgb_code(char *str)
 
 	i = 0;
 	j = 0;
-	if (!(rgb_code = ft_calloc(sizeof(char), 100)))
+	if (!(rgb_code = ft_calloc(sizeof(char), 12)))
 		return (NULL);
 	while (str[i])
 	{

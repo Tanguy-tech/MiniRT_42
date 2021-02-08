@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:32:29 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 11:46:07 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 12:31:34 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		error_code(int error_code, char *name)
 	if (error_code == 3)
 		ft_putstr("ERROR\nWrong element format in *.rt file. check again at -> ");
 		ft_putstr(name);
-		ft_putstr(" format.\n");
+		ft_putstr(" format\n");
 	return (0);
 }
 

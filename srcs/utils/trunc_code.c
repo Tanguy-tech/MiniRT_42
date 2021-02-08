@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:32:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 11:26:25 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 13:20:47 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*trunc_code(char *str, int index)
 {
 	char	*code;
 	
-	if (!(code = ft_calloc(sizeof(char), 3)))
+	if (!(code = ft_calloc(sizeof(char), 4)))
 		return (NULL);
 	while (str[index] != ',' && str[index])
 	{

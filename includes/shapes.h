@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:41:37 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 14:14:11 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 16:06:09 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_cylinder	*initialize_cylinder(void);
 
 typedef struct	triangle
 {
-	t_vectors	*firts_coord;	/* Triangle first point coordinates in space */
+	t_vectors	*first_coord;	/* Triangle first point coordinates in space */
 	t_vectors	*sec_coord;		/* Triangle sec point coordinates in space */
 	t_vectors	*third_coord;	/* Triangle third point coordinates in space */
 	t_colors	*color;			/* Triangle color */

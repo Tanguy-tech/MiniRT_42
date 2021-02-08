@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 11:20:30 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 16:06:51 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,8 @@ t_scene		*initialize_scene(void)
 		new_scene->window = initialize_window();
 		new_scene->sp = initialize_sphere();
 		new_scene->pl = initialize_plan();
+		new_scene->sq = initialize_square();
+		new_scene->cy = initialize_cylinder();
+		new_scene->tr = initialize_triangle();
 		return (new_scene);
 }

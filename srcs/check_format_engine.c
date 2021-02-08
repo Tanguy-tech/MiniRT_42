@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 10:35:30 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 11:44:21 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 14:19:34 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,9 @@ int		check_format_engine(char *str, char *type)
 		return (check_sphere_format(str, type));
 	if (ft_strncmp(type, "pl", ft_strlen(type)) == 0)
 		return (check_plan_format(str, type));
+	if (ft_strncmp(type, "sq", ft_strlen(type)) == 0)
+		return (check_square_format(str, type));
+	if (ft_strncmp(type, "cy", ft_strlen(type)) == 0)
+		return (check_cylinder_format(str, type));
 	return (0);
 }
