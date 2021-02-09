@@ -6,17 +6,17 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:10:13 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 11:58:59 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:19:22 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-	int				i;
-	int				neg;
-	int				res;
+	int	i;
+	int	neg;
+	int	res;
 
 	i = 0;
 	neg = 0;

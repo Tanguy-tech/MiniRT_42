@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:52:33 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 11:10:44 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:26:36 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*catch_coordinates(char *str)
 		return (NULL);
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]) || str[i] == '-' || str[i] == '.' || str[i] == ',')
+		if (ft_isdigit(str[i]) || str[i] == '-'
+			|| str[i] == '.' || str[i] == ',')
 		{
 			if (!(coord = str_add_char(coord, str[i])))
 				return (NULL);
@@ -34,12 +35,13 @@ char	*catch_coordinates(char *str)
 	return (coord);
 }
 
-int		check_coordinates(char *str)
+int	check_coordinates(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if ((count_double(str) >= 0 && count_double(str) <= 3) && count_comma_format(str) == 2 )
-		return (1);
+	if (count_double(str) >= 0 && count_double(str) <= 3)
+		if (count_comma_format(str) == 2)
+			return (1);
 	return (0);
 }

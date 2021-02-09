@@ -6,15 +6,15 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 15:14:54 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:18:34 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:20:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		is_sep(char c1, char *charset)
+int	is_sep(char c1, char *charset)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (charset[++i])
@@ -25,7 +25,7 @@ int		is_sep(char c1, char *charset)
 	return (0);
 }
 
-int		count_words(char *str, char *c)
+int	count_words(char *str, char *c)
 {
 	int	i;
 	int	count;
@@ -48,7 +48,7 @@ int		count_words(char *str, char *c)
 	return (count);
 }
 
-int		word_len(char *str, char *end)
+int	word_len(char *str, char *end)
 {
 	int	i;
 

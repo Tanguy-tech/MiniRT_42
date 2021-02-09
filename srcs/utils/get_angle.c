@@ -6,18 +6,17 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:33:27 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 11:18:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:21:20 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		get_angle(char *str)
+int	get_angle(char *str)
 {
 	int		i;
 	char	*angle_str;
 	int		angle;
-
 
 	i = ft_strlen(str) - 1;
 	if (!(angle_str = ft_calloc(sizeof(char), 4)))

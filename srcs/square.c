@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:02:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 08:39:11 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:05:22 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,39 @@ t_square	*initialize_square(void)
 	return (new_square);
 }
 
-/* Check square format */
 int	check_square_format(char *str, char *type, char **data)
 {
-	if (check_coordinates(data[0]) && check_coordinates(data[1]) && (ft_atof(data[2]) > 0.0) && (count_comma_format(data[3]) == 2 && count_nb_format(data[3]) <= 9))
-		return (1);
+	if (check_coordinates(data[0]) && check_coordinates(data[1]))
+		if ((ft_atof(data[2]) > 0.0) && (count_comma_format(data[3]) == 2))
+			if (count_nb_format(data[3]) <= 9)
+				return (1);
 	error_code(3, type);
 	return (0);
 }
 
-/* PARSE SQUARE INFORMATIONS */
 int	parse_square_data(char *str, char *type, t_scene *mini_rt)
 {
 	char	**data;
+	char	**coord;
+	char	**orientation;
+	char	**color;
 
 	data = ft_split(str, " \t");
+	coord = ft_split(data[0], ",");
+	orientation = ft_split(data[1], ",");
+	color = ft_split(data[3], ",");
 	if (check_square_format(str, type, data) == 1)
 	{
-		mini_rt->sq->coord->x = ft_atof(trunc_code(data[0], 0));
-		mini_rt->sq->coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));
-		mini_rt->sq->coord->z = ft_atof(trunc_code(data[0], (ft_strlen(trunc_code(data[0], 0)) + ft_strlen(trunc_code(data[0], find_next_code(data[0]) + 1)) + 2)));
-		mini_rt->sq->orientation->x = ft_atof(trunc_code(data[1], 0));
-		mini_rt->sq->orientation->y = ft_atof(trunc_code(data[1], find_next_code(data[1]) + 1));
-		mini_rt->sq->orientation->z = ft_atof(trunc_code(data[1], (ft_strlen(trunc_code(data[1], 0)) + ft_strlen(trunc_code(data[1], find_next_code(data[1]) + 1)) + 2)));
+		mini_rt->sq->coord->x = ft_atof(coord[0]);
+		mini_rt->sq->coord->y = ft_atof(coord[1]);
+		mini_rt->sq->coord->z = ft_atof(coord[2]);
+		mini_rt->sq->orientation->x = ft_atof(orientation[0]);
+		mini_rt->sq->orientation->y = ft_atof(orientation[1]);
+		mini_rt->sq->orientation->z = ft_atof(orientation[2]);
 		mini_rt->sq->height = ft_atof(data[2]);
-		mini_rt->sq->color->r = ft_atof(trunc_code(data[3], 0));
-		mini_rt->sq->color->g = ft_atof(trunc_code(data[3], find_next_code(data[3]) + 1));
-		mini_rt->sq->color->b = ft_atof(trunc_code(data[3], (ft_strlen(trunc_code(data[3], 0)) + ft_strlen(trunc_code(data[3], find_next_code(data[3]) + 1)) + 2)));
+		mini_rt->sq->color->r = ft_atof(color[0]);
+		mini_rt->sq->color->g = ft_atof(color[1]);
+		mini_rt->sq->color->b = ft_atof(color[2]);
 		ft_putstr("SQUARE DONE\n");
 		return (1);
 	}

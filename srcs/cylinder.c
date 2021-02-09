@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 08:40:04 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 09:43:20 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_cylinder	*initialize_cylinder(void)
 	return (new_cylinder);
 }
 
-/* Check cylinder format */
 int	check_cylinder_format(char *str, char *type, char **data)
 {
 	float	height;
@@ -36,33 +35,39 @@ int	check_cylinder_format(char *str, char *type, char **data)
 
 	diam = ft_atof(data[2]);
 	height = ft_atof(data[3]);
-	if (check_coordinates(data[0]) && check_coordinates(data[1]) && (diam > 0.0 && height > 0.0) && (count_comma_format(data[4]) == 2 && count_nb_format(data[4]) <= 9))
-		return (1);
+	if (check_coordinates(data[0]) && check_coordinates(data[1]))
+		if (diam > 0.0 && height > 0.0)
+			if (count_comma_format(data[4]) == 2)
+				if (count_nb_format(data[4]) <= 9)
+					return (1);
 	error_code(3, type);
 	return (0);
 }
 
-
-/* PARSE CYLINDER INFORMATIONS */
 int	parse_cylinder_data(char *str, char *type, t_scene *mini_rt)
 {
 	char	**data;
+	char	**coord;
+	char	**orientation;
+	char	**color;
 
 	data = ft_split(str, " \t");
+	coord = ft_split(data[0], ",");
+	orientation = ft_split(data[1], ",");
+	color = ft_split(data[4], ",");
 	if (check_cylinder_format(str, type, data) == 1)
 	{
-		mini_rt->cy->origin_coord->x = ft_atof(trunc_code(data[0], 0));
-		mini_rt->cy->origin_coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));
-		mini_rt->cy->origin_coord->z = ft_atof(trunc_code(data[0], (ft_strlen(trunc_code(data[0], 0)) + ft_strlen(trunc_code(data[0], find_next_code(data[0]) + 1)) + 2)));
-		mini_rt->cy->orientation->x = ft_atof(trunc_code(data[1], 0));
-		mini_rt->cy->orientation->y = ft_atof(trunc_code(data[1], find_next_code(data[1]) + 1));
-		mini_rt->cy->orientation->z = ft_atof(trunc_code(data[1], (ft_strlen(trunc_code(data[1], 0)) + ft_strlen(trunc_code(data[1], find_next_code(data[1]) + 1)) + 2)));
+		mini_rt->cy->origin_coord->x = ft_atof(coord[0]);
+		mini_rt->cy->origin_coord->y = ft_atof(coord[1]);
+		mini_rt->cy->origin_coord->z = ft_atof(coord[2]);
+		mini_rt->cy->orientation->x = ft_atof(orientation[0]);
+		mini_rt->cy->orientation->y = ft_atof(orientation[1]);
+		mini_rt->cy->orientation->z = ft_atof(orientation[2]);
 		mini_rt->cy->diam = ft_atof(data[2]);
 		mini_rt->cy->height = ft_atof(data[3]);
-		mini_rt->cy->color->r = ft_atof(trunc_code(data[4], 0));
-		mini_rt->cy->color->g = ft_atof(trunc_code(data[4], find_next_code(data[4]) + 1));
-		mini_rt->cy->color->b = ft_atof(trunc_code(data[4], (ft_strlen(trunc_code(data[4], 0)) + ft_strlen(trunc_code(data[4], find_next_code(data[4]) + 1)) + 2)));
-		ft_putstr("CYLINDER DONE\n");
+		mini_rt->cy->color->r = ft_atof(color[0]);
+		mini_rt->cy->color->g = ft_atof(color[1]);
+		mini_rt->cy->color->b = ft_atof(color[2]);
 		return (1);
 	}
 	return (0);

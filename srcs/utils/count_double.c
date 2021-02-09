@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:51:59 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 11:14:52 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:09:00 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	count_double(char *str)
 {
-	int i;
+	int	i;
 	int	dbl;
 
 	i = 1;

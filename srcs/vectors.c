@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 14:18:01 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:27:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ double	get_sqrt_norme(double coord_x, double coord_y, double coord_z)
 {
 	double	sqrt_norme;
 
-	sqrt_norme = (coord_x * coord_x) + (coord_y * coord_y) + (coord_z * coord_z);
+	sqrt_norme = (coord_x * coord_x)
+		+ (coord_y * coord_y)
+		+ (coord_z * coord_z);
 	return (sqrt_norme);
 }
 

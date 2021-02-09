@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 09:56:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 13:54:36 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:19:55 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr(int nb)
 {
-	long int i;
+	long int	i;
 
 	i = nb;
 	if (i < 0)

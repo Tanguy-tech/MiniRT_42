@@ -6,19 +6,18 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 10:35:30 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 08:36:09 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 09:40:16 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		check_format_engine(char *str, char *type, char **data)
+int	check_format_engine(char *str, char *type, char **data)
 {
-	/* Check the str format for the parsing process */
 	if (ft_strncmp(type, "R", ft_strlen(type)) == 0)
-		return (check_R_format(str, type));
+		return (check_res_format(str, type));
 	if (ft_strncmp(type, "A", ft_strlen(type)) == 0)
-		return (check_A_format(str, type, data));
+		return (check_amb_format(str, type, data));
 	if (ft_strncmp(type, "c", ft_strlen(type)) == 0)
 		return (check_c_format(str, type, data));
 	if (ft_strncmp(type, "l", ft_strlen(type)) == 0)

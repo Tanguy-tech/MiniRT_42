@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:10:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:18:53 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:09:41 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	count_comma_format(char *str)
 {
-	int i;
-	int comma;
+	int	i;
+	int	comma;
 
 	i = 0;
 	comma = 0;
@@ -30,8 +30,8 @@ int	count_comma_format(char *str)
 
 int	count_nb_format(char *str)
 {
-	int i;
-	int nb;
+	int	i;
+	int	nb;
 
 	i = 0;
 	nb = 0;
@@ -46,7 +46,7 @@ int	count_nb_format(char *str)
 
 char	*get_rgb_code(char *str)
 {
-	int 	i;
+	int		i;
 	int		j;
 	char	*rgb_code;
 
@@ -58,7 +58,8 @@ char	*get_rgb_code(char *str)
 	{
 		if (ft_isdigit(str[i]) || str[i] == ',')
 		{
-			if ((ft_isdigit(str[i + 1]) || str[i + 1] == ',') && count_double(str + i) == 0)
+			if ((ft_isdigit(str[i + 1]) || str[i + 1] == ',')
+				&& count_double(str + i) == 0)
 			{
 				rgb_code[j] = str[i];
 				j++;

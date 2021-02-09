@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 08:39:42 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:00:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,38 @@ t_plan	*initialize_plan(void)
 	return (new_plan);
 }
 
-/* Check plan format */
-int		check_plan_format(char *str, char *type, char **data)
+int	check_plan_format(char *str, char *type, char **data)
 {
-	if (check_coordinates(data[0]) && check_coordinates(data[1]) && (count_comma_format(get_rgb_code(str)) == 2 && count_nb_format(get_rgb_code(str)) <= 9))
-		return (1);
+	if (check_coordinates(data[0]) && check_coordinates(data[1]))
+		if (count_comma_format(get_rgb_code(str)) == 2)
+			if (count_nb_format(get_rgb_code(str)) <= 9)
+				return (1);
 	error_code(3, type);
 	return (0);
 }
 
-/* PARSE PLAN INFORMATIONS */
 int	parse_plan_data(char *str, char *type, t_scene *mini_rt)
 {
 	char	**data;
+	char	**coord;
+	char	**orientation;
+	char	**color;
 
 	data = ft_split(str, " \t");
+	coord = ft_split(data[0], ",");
+	orientation = ft_split(data[1], ",");
+	color = ft_split(data[2], ",");
 	if (check_plan_format(str, type, data) == 1)
 	{
-		mini_rt->pl->coord->x = ft_atof(trunc_code(data[0], 0));
-		mini_rt->pl->coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));
-		mini_rt->pl->coord->z = ft_atof(trunc_code(data[0], (ft_strlen(trunc_code(data[0], 0)) + ft_strlen(trunc_code(data[0], find_next_code(data[0]) + 1)) + 2)));
-		mini_rt->pl->orientation->x = ft_atof(trunc_code(data[1], 0));
-		mini_rt->pl->orientation->y = ft_atof(trunc_code(data[1], find_next_code(data[1]) + 1));
-		mini_rt->pl->orientation->z = ft_atof(trunc_code(data[1], (ft_strlen(trunc_code(data[1], 0)) + ft_strlen(trunc_code(data[1], find_next_code(data[1]) + 1)) + 2)));
-		mini_rt->pl->color->r = ft_atof(trunc_code(data[2], 0));
-		mini_rt->pl->color->g = ft_atof(trunc_code(data[2], find_next_code(data[2]) + 1));
-		mini_rt->pl->color->b = ft_atof(trunc_code(data[2], (ft_strlen(trunc_code(data[2], 0)) + ft_strlen(trunc_code(data[2], find_next_code(data[2]) + 1)) + 2)));
+		mini_rt->pl->coord->x = ft_atof(coord[0]);
+		mini_rt->pl->coord->y = ft_atof(coord[1]);
+		mini_rt->pl->coord->z = ft_atof(coord[2]);
+		mini_rt->pl->orientation->x = ft_atof(orientation[0]);
+		mini_rt->pl->orientation->y = ft_atof(orientation[1]);
+		mini_rt->pl->orientation->z = ft_atof(orientation[2]);
+		mini_rt->pl->color->r = ft_atof(color[0]);
+		mini_rt->pl->color->g = ft_atof(color[1]);
+		mini_rt->pl->color->b = ft_atof(color[2]);
 		ft_putstr("PLAN DONE\n");
 		return (1);
 	}

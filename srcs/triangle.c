@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 08:39:29 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:25:41 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,44 @@ t_triangle	*initialize_triangle(void)
 	return (new_triangle);
 }
 
-/* Check triangle format */
 int	check_triangle_format(char *str, char *type, char **data)
 {
-	if (check_coordinates(data[0]) && check_coordinates(data[1]) && check_coordinates(data[2]) && (count_comma_format(data[3]) == 2 && count_nb_format(data[3]) <= 9))
-		return (1);
+	if (check_coordinates(data[0]) && check_coordinates(data[1]))
+		if (check_coordinates(data[2]))
+			if (count_comma_format(data[3]) == 2
+				&& count_nb_format(data[3]) <= 9)
+				return (1);
 	error_code(3, type);
 	return (0);
 }
 
-/* PARSE TRIANGLE INFORMATIONS */
 int	parse_triangle_data(char *str, char *type, t_scene *mini_rt)
 {
 	char	**data;
+	char	**first_coord;
+	char	**sec_coord;
+	char	**third_coord;
+	char	**color;
 
 	data = ft_split(str, " \t");
+	first_coord = ft_split(data[0], ",");
+	sec_coord = ft_split(data[1], ",");
+	third_coord = ft_split(data[2], ",");
+	color = ft_split(data[3], ",");
 	if (check_triangle_format(str, type, data) == 1)
 	{
-		mini_rt->tr->first_coord->x = ft_atof(trunc_code(data[0], 0)); 
-		mini_rt->tr->first_coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));
-		mini_rt->tr->first_coord->z = ft_atof(trunc_code(data[0], (ft_strlen(trunc_code(data[0], 0)) + ft_strlen(trunc_code(data[0], find_next_code(data[0]) + 1)) + 2)));
-		mini_rt->tr->sec_coord->x = ft_atof(trunc_code(data[1], 0));
-		mini_rt->tr->sec_coord->y = ft_atof(trunc_code(data[1], find_next_code(data[1]) + 1));
-		mini_rt->tr->sec_coord->z = ft_atof(trunc_code(data[1], (ft_strlen(trunc_code(data[1], 0)) + ft_strlen(trunc_code(data[1], find_next_code(data[1]) + 1)) + 2)));
-		mini_rt->tr->third_coord->x = ft_atof(trunc_code(data[2], 0));
-		mini_rt->tr->third_coord->y = ft_atof(trunc_code(data[2], find_next_code(data[2]) + 1));
-		mini_rt->tr->third_coord->z = ft_atof(trunc_code(data[2], (ft_strlen(trunc_code(data[2], 0)) + ft_strlen(trunc_code(data[2], find_next_code(data[2]) + 1)) + 2)));
-		mini_rt->tr->color->r = ft_atof(trunc_code(data[3], 0));
-		mini_rt->tr->color->g = ft_atof(trunc_code(data[3], find_next_code(data[3]) + 1));
-		mini_rt->tr->color->b = ft_atof(trunc_code(data[3], (ft_strlen(trunc_code(data[3], 0)) + ft_strlen(trunc_code(data[3], find_next_code(data[3]) + 1)) + 2)));
-		ft_putstr("TRIANGLE DONE\n");
+		mini_rt->tr->first_coord->x = ft_atof(first_coord[0]);
+		mini_rt->tr->first_coord->y = ft_atof(first_coord[1]);
+		mini_rt->tr->first_coord->z = ft_atof(first_coord[2]);
+		mini_rt->tr->sec_coord->x = ft_atof(sec_coord[0]);
+		mini_rt->tr->sec_coord->y = ft_atof(sec_coord[1]);
+		mini_rt->tr->sec_coord->z = ft_atof(sec_coord[2]);
+		mini_rt->tr->third_coord->x = ft_atof(third_coord[0]);
+		mini_rt->tr->third_coord->y = ft_atof(third_coord[1]);
+		mini_rt->tr->third_coord->z = ft_atof(third_coord[2]);
+		mini_rt->tr->color->r = ft_atof(color[0]);
+		mini_rt->tr->color->g = ft_atof(color[1]);
+		mini_rt->tr->color->b = ft_atof(color[2]);
 		return (1);
 	}
 	return (0);

@@ -6,15 +6,15 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 11:41:47 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 11:43:23 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:22:51 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		size_num(int x)
+int	size_num(int x)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (x == 0)

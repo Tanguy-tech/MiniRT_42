@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 16:06:51 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:02:46 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_ambiant_light	*initialize_ambiant_light(void)
 
 	if (!(new_ambiant_light = ft_calloc(sizeof(t_ambiant_light), 1)))
 		return (NULL);
-		new_ambiant_light->ratio = 0.0;
-		new_ambiant_light->color = initialize_colors();
-		return (new_ambiant_light);
+	new_ambiant_light->ratio = 0.0;
+	new_ambiant_light->color = initialize_colors();
+	return (new_ambiant_light);
 }
 
 t_camera	*initialize_camera(void)
@@ -30,15 +30,15 @@ t_camera	*initialize_camera(void)
 
 	if (!(new_cam = ft_calloc(sizeof(t_camera), 1)))
 		return (NULL);
-		new_cam->x = 0.0;
-		new_cam->y = 0.0;
-		new_cam->z = 0.0;
-		new_cam->orientation = initialize_vector();
-		new_cam->fov = 0.0;
-		return (new_cam);
+	new_cam->x = 0.0;
+	new_cam->y = 0.0;
+	new_cam->z = 0.0;
+	new_cam->orientation = initialize_vector();
+	new_cam->fov = 0.0;
+	return (new_cam);
 }
 
-t_light		*initialize_light(void)
+t_light	*initialize_light(void)
 {
 	t_light	*new_light;
 
@@ -52,21 +52,21 @@ t_light		*initialize_light(void)
 	return (new_light);
 }
 
-t_scene		*initialize_scene(void)
+t_scene	*initialize_scene(void)
 {
 	t_scene	*new_scene;
 
 	if (!(new_scene = ft_calloc(sizeof(t_scene), 1)))
 		return (NULL);
-		new_scene->mlx_ptr = mlx_init();
-		new_scene->amb_light = initialize_ambiant_light();
-		new_scene->cam = initialize_camera();
-		new_scene->light = initialize_light();
-		new_scene->window = initialize_window();
-		new_scene->sp = initialize_sphere();
-		new_scene->pl = initialize_plan();
-		new_scene->sq = initialize_square();
-		new_scene->cy = initialize_cylinder();
-		new_scene->tr = initialize_triangle();
-		return (new_scene);
+	new_scene->mlx_ptr = mlx_init();
+	new_scene->amb_light = initialize_ambiant_light();
+	new_scene->cam = initialize_camera();
+	new_scene->light = initialize_light();
+	new_scene->window = initialize_window();
+	new_scene->sp = initialize_sphere();
+	new_scene->pl = initialize_plan();
+	new_scene->sq = initialize_square();
+	new_scene->cy = initialize_cylinder();
+	new_scene->tr = initialize_triangle();
+	return (new_scene);
 }

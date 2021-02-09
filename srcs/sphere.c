@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 08:38:53 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:04:13 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,33 @@ t_sphere	*initialize_sphere(void)
 	return (new_sphere);
 }
 
-
-/* Check sphere format */
 int	check_sphere_format(char *str, char *type, char **data)
 {
-	if (check_coordinates(data[0]) && count_double(data[1]) == 1 && (count_comma_format(data[2]) == 2 && count_nb_format(data[2]) <= 9))
-		return (1);
+	if (check_coordinates(data[0]) && count_double(data[1]) == 1)
+		if (count_comma_format(data[2]) == 2 && count_nb_format(data[2]) <= 9)
+			return (1);
 	error_code(3, type);
 	return (0);
 }
 
-/* PARSE SPHERE INFORMATIONS */
 int	parse_sphere_data(char *str, char *type, t_scene *mini_rt)
 {
 	char	**data;
+	char	**coord;
+	char	**color;
 
 	data = ft_split(str, " \t");
+	coord = ft_split(data[0], ",");
+	color = ft_split(data[2], ",");
 	if (check_sphere_format(str, type, data) == 1)
 	{
-		mini_rt->sp->origin_coord->x = ft_atof(trunc_code(data[0], 0));
-		mini_rt->sp->origin_coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));
-		mini_rt->sp->origin_coord->z = ft_atof(trunc_code(data[0], (ft_strlen(trunc_code(data[0], 0)) + ft_strlen(trunc_code(data[0], find_next_code(data[0]) + 1)) + 2)));
+		mini_rt->sp->origin_coord->x = ft_atof(coord[0]);
+		mini_rt->sp->origin_coord->y = ft_atof(coord[1]);
+		mini_rt->sp->origin_coord->z = ft_atof(coord[2]);
 		mini_rt->sp->diam = ft_atof(data[1]);
-		mini_rt->sp->color->r = ft_atof(trunc_code(data[2], 0));
-		mini_rt->sp->color->g = ft_atof(trunc_code(data[2], find_next_code(data[2]) + 1));
-		mini_rt->sp->color->b = ft_atof(trunc_code(data[2], (ft_strlen(trunc_code(data[2], 0)) + ft_strlen(trunc_code(data[2], find_next_code(data[2]) + 1)) + 2))); 
+		mini_rt->sp->color->r = ft_atof(color[0]);
+		mini_rt->sp->color->g = ft_atof(color[1]);
+		mini_rt->sp->color->b = ft_atof(color[2]);
 		ft_putstr("SPHERE DONE\n");
 		return (1);
 	}

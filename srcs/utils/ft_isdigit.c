@@ -6,13 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 10:53:38 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 14:00:23 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 10:19:37 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
