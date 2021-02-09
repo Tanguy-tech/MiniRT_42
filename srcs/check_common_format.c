@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:09 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 12:36:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 13:03:39 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	check_res_format(char *str, char *type, char **data)
 		|| !valid_format(data[2]))
 	{
 		error_code(3, type);
+		free(data);
 		exit(0);
 	}
 	while (ft_isdigit(str[i]) || ft_iswhitespace(str[i]))
@@ -45,6 +46,7 @@ int	check_amb_format(char *str, char *type, char **data)
 		|| !valid_format(data[2]))
 	{
 		error_code(3, type);
+		free(data);
 		exit(0);
 	}
 	if (count_double(data[1]) == 1)
@@ -65,6 +67,7 @@ int	check_c_format(char *str, char *type, char **data)
 		|| !valid_format(data[3]))
 	{
 		error_code(3, type);
+		free(data);
 		exit(0);
 	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
@@ -82,6 +85,7 @@ int	check_l_format(char *str, char *type, char **data)
 		|| !valid_format(data[3]))
 	{
 		error_code(3, type);
+		free(data);
 		exit(0);
 	}
 	if (check_coordinates(data[1]) && count_double(data[2]) == 1)

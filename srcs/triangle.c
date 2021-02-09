@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 12:35:53 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 13:04:21 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	check_triangle_format(char *str, char *type, char **data)
 		|| !valid_format(data[4]))
 	{
 		error_code(3, type);
+		free(data);
 		exit(0);
 	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
