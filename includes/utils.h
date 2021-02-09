@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 12:20:15 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:46:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ char	*get_double(char *str, int i);
 char	**ft_split(char *s, char *c);
 int		count_array(char **array);
 int		valid_format(char *str);
+int		is_punctuation(char c);
 
 #endif

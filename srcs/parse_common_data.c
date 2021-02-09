@@ -6,26 +6,26 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 11:06:49 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:42:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	parse_resolution(char *str, char *file_path, char *type, t_scene *mini_rt, char **data)
+int	parse_res(char *str, char *path, t_scene *mini_rt, char **data)
 {
-	if (check_format_engine(str, type, data) == 1)
+	if (check_format_engine(str, data[0], data) == 1)
 	{
 		mini_rt->window->res_x = ft_atoi(data[1]);
 		mini_rt->window->res_y = ft_atoi(data[2]);
-		mini_rt->window->title = ft_strrchr(file_path, '/');
+		mini_rt->window->title = ft_strrchr(path, '/');
 		ft_putstr("RESOLUTION DONE\n");
 		return (1);
 	}
 	return (0);
 }
 
-int	parse_ambiant_light_data(char *str, char *type, t_scene *mini_rt, char **data)
+int	parse_amb_light_data(char *str, char *type, t_scene *mini_rt, char **data)
 {
 	char	**color;
 

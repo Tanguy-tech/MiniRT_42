@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 11:26:32 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:43:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int		parse_objects(char *line, t_scene *mini_rt, char **data);
 int		parse_common(char *line, char *path, t_scene *mini_rt, char **data);
 int		parse_light_data(char *str, char *type, t_scene *mini_rt, char **data);
 int		parse_camera_data(char *str, char *type, t_scene *mini_rt, char **data);
-int		parse_ambiant_light_data(char *str, char *type, t_scene *mini_rt, char **data);
-int		parse_resolution(char *str, char *path, char *type, t_scene *mini_rt, char **data);
+int		parse_amb_light_data(char *str, char *type, t_scene *mini_rt, char **data);
+int		parse_res(char *str, char *path, t_scene *mini_rt, char **data);
 int		parse_sphere_data(char *str, char *type, t_scene *mini_rt, char **data);
 int		parse_square_data(char *str, char *type, t_scene *mini_rt, char **data);
 int		parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data);

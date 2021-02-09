@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 11:00:26 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 12:29:53 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:44:03 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	parse_common(char *line, char *path, t_scene *mini_rt, char **data)
 	while (line[i])
 	{
 		if (line[i] == 'R')
-			return (parse_resolution(line + 1 + i, path, "R", mini_rt, data));
+			return (parse_res(line + 1 + i, path, mini_rt, data));
 		else if (line[i] == 'A')
-			return (parse_ambiant_light_data(line + 1 + i, "A", mini_rt, data));
+			return (parse_amb_light_data(line + 1 + i, "A", mini_rt, data));
 		else if (line[i] == 'c' && line[i + 1] != 'y')
 			return (parse_camera_data(line + 1 + i, "c", mini_rt, data));
 		else if (line[i] == 'l')
