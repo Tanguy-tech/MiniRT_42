@@ -6,10 +6,11 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 10:27:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 16:17:33 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/vectors.h"
 #include "../includes/minirt.h"
 
 double	get_sqrt_norme(double coord_x, double coord_y, double coord_z)
@@ -22,6 +23,16 @@ double	get_sqrt_norme(double coord_x, double coord_y, double coord_z)
 	return (sqrt_norme);
 }
 
+void	normalize(t_vectors *vector)
+{
+	double	norm;
+
+	norm = sqrt(vector->sqrt_norme);
+	vector->x /= norm;
+	vector->y /= norm;
+	vector->z /= norm;
+}
+
 t_vectors	*initialize_vector(void)
 {
 	t_vectors	*new_vector;
@@ -31,7 +42,9 @@ t_vectors	*initialize_vector(void)
 	new_vector->x = 0.0;
 	new_vector->y = 0.0;
 	new_vector->z = 0.0;
-	new_vector->sqrt_norme = 0.0;
+	new_vector->sqrt_norme = get_sqrt_norme(new_vector->x,
+			new_vector->y,
+			new_vector->z);
 	new_vector->norme = 0.0;
 	return (new_vector);
 }
