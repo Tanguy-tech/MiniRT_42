@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 10:25:41 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 11:07:32 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,26 @@ t_triangle	*initialize_triangle(void)
 
 int	check_triangle_format(char *str, char *type, char **data)
 {
-	if (check_coordinates(data[0]) && check_coordinates(data[1]))
-		if (check_coordinates(data[2]))
-			if (count_comma_format(data[3]) == 2
-				&& count_nb_format(data[3]) <= 9)
+	if (check_coordinates(data[1]) && check_coordinates(data[2]))
+		if (check_coordinates(data[3]))
+			if (count_comma_format(data[4]) == 2
+				&& count_nb_format(data[4]) <= 9)
 				return (1);
 	error_code(3, type);
 	return (0);
 }
 
-int	parse_triangle_data(char *str, char *type, t_scene *mini_rt)
+int	parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data)
 {
-	char	**data;
 	char	**first_coord;
 	char	**sec_coord;
 	char	**third_coord;
 	char	**color;
 
-	data = ft_split(str, " \t");
-	first_coord = ft_split(data[0], ",");
-	sec_coord = ft_split(data[1], ",");
-	third_coord = ft_split(data[2], ",");
-	color = ft_split(data[3], ",");
+	first_coord = ft_split(data[1], ",");
+	sec_coord = ft_split(data[2], ",");
+	third_coord = ft_split(data[3], ",");
+	color = ft_split(data[4], ",");
 	if (check_triangle_format(str, type, data) == 1)
 	{
 		mini_rt->tr->first_coord->x = ft_atof(first_coord[0]);

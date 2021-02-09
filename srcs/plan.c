@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 10:00:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 11:09:15 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_plan	*initialize_plan(void)
 
 int	check_plan_format(char *str, char *type, char **data)
 {
-	if (check_coordinates(data[0]) && check_coordinates(data[1]))
+	if (check_coordinates(data[1]) && check_coordinates(data[2]))
 		if (count_comma_format(get_rgb_code(str)) == 2)
 			if (count_nb_format(get_rgb_code(str)) <= 9)
 				return (1);
@@ -36,17 +36,15 @@ int	check_plan_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	parse_plan_data(char *str, char *type, t_scene *mini_rt)
+int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
 {
-	char	**data;
 	char	**coord;
 	char	**orientation;
 	char	**color;
 
-	data = ft_split(str, " \t");
-	coord = ft_split(data[0], ",");
-	orientation = ft_split(data[1], ",");
-	color = ft_split(data[2], ",");
+	coord = ft_split(data[1], ",");
+	orientation = ft_split(data[2], ",");
+	color = ft_split(data[3], ",");
 	if (check_plan_format(str, type, data) == 1)
 	{
 		mini_rt->pl->coord->x = ft_atof(coord[0]);

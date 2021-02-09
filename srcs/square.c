@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:02:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 10:05:22 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 11:13:02 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,23 @@ t_square	*initialize_square(void)
 
 int	check_square_format(char *str, char *type, char **data)
 {
-	if (check_coordinates(data[0]) && check_coordinates(data[1]))
-		if ((ft_atof(data[2]) > 0.0) && (count_comma_format(data[3]) == 2))
-			if (count_nb_format(data[3]) <= 9)
+	if (check_coordinates(data[1]) && check_coordinates(data[2]))
+		if ((ft_atof(data[3]) > 0.0) && (count_comma_format(data[4]) == 2))
+			if (count_nb_format(data[4]) <= 9)
 				return (1);
 	error_code(3, type);
 	return (0);
 }
 
-int	parse_square_data(char *str, char *type, t_scene *mini_rt)
+int	parse_square_data(char *str, char *type, t_scene *mini_rt, char **data)
 {
-	char	**data;
 	char	**coord;
 	char	**orientation;
 	char	**color;
 
-	data = ft_split(str, " \t");
-	coord = ft_split(data[0], ",");
-	orientation = ft_split(data[1], ",");
-	color = ft_split(data[3], ",");
+	coord = ft_split(data[1], ",");
+	orientation = ft_split(data[2], ",");
+	color = ft_split(data[4], ",");
 	if (check_square_format(str, type, data) == 1)
 	{
 		mini_rt->sq->coord->x = ft_atof(coord[0]);
@@ -56,7 +54,7 @@ int	parse_square_data(char *str, char *type, t_scene *mini_rt)
 		mini_rt->sq->orientation->x = ft_atof(orientation[0]);
 		mini_rt->sq->orientation->y = ft_atof(orientation[1]);
 		mini_rt->sq->orientation->z = ft_atof(orientation[2]);
-		mini_rt->sq->height = ft_atof(data[2]);
+		mini_rt->sq->height = ft_atof(data[3]);
 		mini_rt->sq->color->r = ft_atof(color[0]);
 		mini_rt->sq->color->g = ft_atof(color[1]);
 		mini_rt->sq->color->b = ft_atof(color[2]);
