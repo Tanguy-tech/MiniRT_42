@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 10:35:30 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 09:40:16 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 11:25:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_format_engine(char *str, char *type, char **data)
 {
 	if (ft_strncmp(type, "R", ft_strlen(type)) == 0)
-		return (check_res_format(str, type));
+		return (check_res_format(str, type, data));
 	if (ft_strncmp(type, "A", ft_strlen(type)) == 0)
 		return (check_amb_format(str, type, data));
 	if (ft_strncmp(type, "c", ft_strlen(type)) == 0)

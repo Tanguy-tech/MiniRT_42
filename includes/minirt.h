@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 11:00:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 11:26:32 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		params_check(int ac, char **av);
 
 /* CHECK FUNCTIONS */
 int		check_format_engine(char *str, char *type, char **data);
-int		check_res_format(char *str, char *type);
+int		check_res_format(char *str, char *type, char **data);
 int		check_amb_format(char *str, char *type, char **data);
 int		check_c_format(char *str, char *type, char **data);
 int		check_l_format(char *str, char *type, char **data);

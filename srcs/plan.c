@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 11:09:15 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:35:42 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,17 @@ t_plan	*initialize_plan(void)
 
 int	check_plan_format(char *str, char *type, char **data)
 {
+	if (count_array(data) != 4
+		|| !valid_format(data[1])
+		|| !valid_format(data[2])
+		|| !valid_format(data[3]))
+	{
+		error_code(3, type);
+		exit(0);
+	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
-		if (count_comma_format(get_rgb_code(str)) == 2)
-			if (count_nb_format(get_rgb_code(str)) <= 9)
+		if (count_comma_format(data[3]) == 2)
+			if (count_nb_format(data[3]) <= 9)
 				return (1);
 	error_code(3, type);
 	return (0);

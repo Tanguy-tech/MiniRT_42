@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 11:08:25 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:35:33 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ int	check_cylinder_format(char *str, char *type, char **data)
 
 	diam = ft_atof(data[3]);
 	height = ft_atof(data[4]);
+	if (count_array(data) != 6
+		|| !valid_format(data[1])
+		|| !valid_format(data[2])
+		|| !valid_format(data[3])
+		|| !valid_format(data[4])
+		|| !valid_format(data[5]))
+	{
+		error_code(3, type);
+		exit(0);
+	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
 		if (diam > 0.0 && height > 0.0)
 			if (count_comma_format(data[5]) == 2)

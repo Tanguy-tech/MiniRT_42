@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 11:07:32 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:35:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ t_triangle	*initialize_triangle(void)
 
 int	check_triangle_format(char *str, char *type, char **data)
 {
+	if (count_array(data) != 5
+		|| !valid_format(data[1])
+		|| !valid_format(data[2])
+		|| !valid_format(data[3])
+		|| !valid_format(data[4]))
+	{
+		error_code(3, type);
+		exit(0);
+	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
 		if (check_coordinates(data[3]))
 			if (count_comma_format(data[4]) == 2
