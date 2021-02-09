@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:43:15 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 08:39:42 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ t_plan	*initialize_plan(void)
 }
 
 /* Check plan format */
-int		check_plan_format(char *str, char *type)
+int		check_plan_format(char *str, char *type, char **data)
 {
-	char	**data;
-
-	data = ft_split(str, " \t");
 	if (check_coordinates(data[0]) && check_coordinates(data[1]) && (count_comma_format(get_rgb_code(str)) == 2 && count_nb_format(get_rgb_code(str)) <= 9))
 		return (1);
 	error_code(3, type);
@@ -44,7 +41,7 @@ int	parse_plan_data(char *str, char *type, t_scene *mini_rt)
 	char	**data;
 
 	data = ft_split(str, " \t");
-	if (check_plan_format(str, type) == 1)
+	if (check_plan_format(str, type, data) == 1)
 	{
 		mini_rt->pl->coord->x = ft_atof(trunc_code(data[0], 0));
 		mini_rt->pl->coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));

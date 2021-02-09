@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:53:14 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 08:38:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ t_sphere	*initialize_sphere(void)
 
 
 /* Check sphere format */
-int	check_sphere_format(char *str, char *type)
+int	check_sphere_format(char *str, char *type, char **data)
 {
-	char	**data;
-
-	data= ft_split(str, " \t");
 	if (check_coordinates(data[0]) && count_double(data[1]) == 1 && (count_comma_format(data[2]) == 2 && count_nb_format(data[2]) <= 9))
 		return (1);
 	error_code(3, type);
@@ -45,7 +42,7 @@ int	parse_sphere_data(char *str, char *type, t_scene *mini_rt)
 	char	**data;
 
 	data = ft_split(str, " \t");
-	if (check_sphere_format(str, type) == 1)
+	if (check_sphere_format(str, type, data) == 1)
 	{
 		mini_rt->sp->origin_coord->x = ft_atof(trunc_code(data[0], 0));
 		mini_rt->sp->origin_coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));

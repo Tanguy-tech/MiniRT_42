@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:26:55 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 08:36:36 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@
 /* PARSE RESOLUTION */
 int		parse_resolution(char *str, char *file_path, char *type, t_scene *mini_rt)
 {
-	char	*res_x_str;
-	char	*res_y_str;
 	char	**data;
-	int		i;
-	char	current_axis;
-	
-	i = 0;
+
 	data = ft_split(str, " \t");
-	if (check_format_engine(str, type) == 1)
+	if (check_format_engine(str, type, data) == 1)
 	{
 		mini_rt->window->res_x = ft_atoi(data[0]);
 		mini_rt->window->res_y = ft_atoi(data[1]);
@@ -47,7 +42,7 @@ int		parse_ambiant_light_data(char *str, char *type, t_scene *mini_rt)
 		
 	i = 0;
 	data = ft_split(str, " \t");
-	if (check_format_engine(str, type) == 1)
+	if (check_format_engine(str, type, data) == 1)
 	{
 		mini_rt->amb_light->ratio = ft_atof(data[0]);
 		mini_rt->amb_light->color->r = ft_atof(trunc_code(data[1], 0));
@@ -69,7 +64,7 @@ int		parse_camera_data(char *str, char *type, t_scene *mini_rt)
 	char	**data;
 
 	data = ft_split(str, " \t");
-	if (check_format_engine(str, type) == 1)
+	if (check_format_engine(str, type, data) == 1)
 	{
 		mini_rt->cam->x = ft_atof(trunc_code(data[0], 0));
 		mini_rt->cam->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));
@@ -94,7 +89,7 @@ int		parse_light_data(char *str, char *type, t_scene *mini_rt)
 	char	**data;
 
 	data = ft_split(str, " \t");
-	if (check_format_engine(str, type) == 1)
+	if (check_format_engine(str, type, data) == 1)
 	{
 		mini_rt->light->x = ft_atof(trunc_code(data[0], 0));
 		mini_rt->light->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:09 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:57:31 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 08:36:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ int	check_R_format(char *str, char *type)
 }
 
 /* Check format for A type */
-int	check_A_format(char *str, char *type)
+int	check_A_format(char *str, char *type, char **data)
 {
-	char	**data;
-
-	data = ft_split(str, " \t");
 	if (count_double(data[0]) == 1 && count_comma_format(data[1]) == 2 && count_nb_format(data[1]) <= 9)
 		return (1);
 	error_code(3, type);
@@ -45,12 +42,10 @@ int	check_A_format(char *str, char *type)
 }
 
 /* Check format for c type */
-int	check_c_format(char *str, char *type)
+int	check_c_format(char *str, char *type, char **data)
 {
-	char	**data;
 	double	angle;
 
-	data = ft_split(str, " \t");
 	angle = ft_atof(data[2]);
 	if ((check_coordinates(data[0]) && check_coordinates(data[1]) && (angle >= 0 && angle <= 180)))
 		return (1);
@@ -59,11 +54,8 @@ int	check_c_format(char *str, char *type)
 }
 
 /* Check format for l type */
-int	check_l_format(char *str, char *type)
+int	check_l_format(char *str, char *type, char **data)
 {
-	char	**data;
-
-	data = ft_split(str, " \t");
 	if (check_coordinates(data[0]) && count_double(data[1]) == 1 && (count_comma_format(data[2]) == 2 && count_nb_format(data[2]) <= 9))
 		return (1);
 	error_code(3, type);

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:50:38 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 08:40:04 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ t_cylinder	*initialize_cylinder(void)
 }
 
 /* Check cylinder format */
-int	check_cylinder_format(char *str, char *type)
+int	check_cylinder_format(char *str, char *type, char **data)
 {
-	char	**data;
 	float	height;
 	float	diam;
 
-	data = ft_split(str, " \t");
 	diam = ft_atof(data[2]);
 	height = ft_atof(data[3]);
 	if (check_coordinates(data[0]) && check_coordinates(data[1]) && (diam > 0.0 && height > 0.0) && (count_comma_format(data[4]) == 2 && count_nb_format(data[4]) <= 9))
@@ -51,7 +49,7 @@ int	parse_cylinder_data(char *str, char *type, t_scene *mini_rt)
 	char	**data;
 
 	data = ft_split(str, " \t");
-	if (check_cylinder_format(str, type) == 1)
+	if (check_cylinder_format(str, type, data) == 1)
 	{
 		mini_rt->cy->origin_coord->x = ft_atof(trunc_code(data[0], 0));
 		mini_rt->cy->origin_coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));

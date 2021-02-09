@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:02:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 15:51:10 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 08:39:11 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ t_square	*initialize_square(void)
 }
 
 /* Check square format */
-int	check_square_format(char *str, char *type)
+int	check_square_format(char *str, char *type, char **data)
 {
-	char	**data;
-
-	data = ft_split(str, " \t");
 	if (check_coordinates(data[0]) && check_coordinates(data[1]) && (ft_atof(data[2]) > 0.0) && (count_comma_format(data[3]) == 2 && count_nb_format(data[3]) <= 9))
 		return (1);
 	error_code(3, type);
@@ -45,7 +42,7 @@ int	parse_square_data(char *str, char *type, t_scene *mini_rt)
 	char	**data;
 
 	data = ft_split(str, " \t");
-	if (check_square_format(str, type) == 1)
+	if (check_square_format(str, type, data) == 1)
 	{
 		mini_rt->sq->coord->x = ft_atof(trunc_code(data[0], 0));
 		mini_rt->sq->coord->y = ft_atof(trunc_code(data[0], find_next_code(data[0]) + 1));

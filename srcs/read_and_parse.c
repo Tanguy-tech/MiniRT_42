@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 11:00:26 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 12:21:20 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 08:28:29 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,12 @@ int		read_and_parse(char *file_path, t_scene *mini_rt)
 	char	*line;
 	
 	fd = open(file_path, O_RDONLY);
-	while (get_next_line(fd, &line) > 0) /* Function that open and read the file */
+	while (get_next_line(fd, &line) > 0)
 	{
-		/* PARSER ENGINE GOES HERE */
 		parser_engine(line, file_path, mini_rt);
 		free(line);
 		line = NULL;
 	}
-	/* PARSER ENGINE GOES HERE for the last line */
 	parser_engine(line, file_path, mini_rt);
 	free(line);
 	line = NULL;
