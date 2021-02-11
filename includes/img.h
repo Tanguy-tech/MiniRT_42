@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 09:24:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 10:42:14 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/11 11:44:09 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/11 11:46:41 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-#define RAY_H
+#ifndef IMG_H
+#define IMG_H
 
-#include "vectors.h"
+#include "scenes.h"
 
-typedef	struct ray
+typedef	struct	img
 {
-	t_vectors	*origin;		/* Origin point of the ray (vector point) */
-	t_vectors	*direction;	/* Direction of the ray (vector) */
-}				t_ray;
+	t_scene	*scene;
+	int		x;
+	int		bit_per_pixel;
+	int		size_line;
+	char	*data;
+}				t_img;
 
+t_img	*initialize_img(void);
 
 #endif

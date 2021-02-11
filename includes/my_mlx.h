@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   my_mlx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 09:24:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 10:42:14 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/11 11:15:03 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/11 11:21:52 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-#define RAY_H
+#ifndef	MY_MLX_H
+#define MY_MLX_H
 
-#include "vectors.h"
+#include "scenes.h"
 
-typedef	struct ray
+typedef	struct	my_mlx
 {
-	t_vectors	*origin;		/* Origin point of the ray (vector point) */
-	t_vectors	*direction;	/* Direction of the ray (vector) */
-}				t_ray;
+	void		*img_ptr;
+	void		*win_ptr;
+	void		*img;
+	int			bit_per_pixel;
+	int			size_line;
+	int			endian;
+	char		*data;
+	t_scene		*scene;
+}				t_mlx;
 
+t_mlx	*initialize_my_mlx(void);
 
 #endif

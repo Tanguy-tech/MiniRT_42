@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 13:28:32 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 11:15:56 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_scene	*mini_rt;
+	t_mlx	*my_mlx;
 
 	if (params_check(ac, av) == 0)
 	{

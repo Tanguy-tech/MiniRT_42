@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 09:24:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 10:42:14 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/11 11:46:47 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/11 11:48:09 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-#define RAY_H
+#include "../includes/img.h"
+#include "../includes/utils.h"
 
-#include "vectors.h"
-
-typedef	struct ray
+t_img	*initialize_img(void)
 {
-	t_vectors	*origin;		/* Origin point of the ray (vector point) */
-	t_vectors	*direction;	/* Direction of the ray (vector) */
-}				t_ray;
+	t_img	*new_img;
 
-
-#endif
+	if (!(new_img = ft_calloc(sizeof(t_img), 1)))
+		return (NULL);
+	new_img->x = 0;
+	new_img->bit_per_pixel = 0;
+	new_img->size_line = 0;
+	return (new_img);
+}
