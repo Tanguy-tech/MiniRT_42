@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:41:37 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/08 16:06:09 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 10:23:23 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	sphere
 {
 	t_vectors	*origin_coord;	/* Sphere ogirin coordinates in space */
 	double		diam;			/* Sphere diameter */
+	double		ray;			/* Ray of the sphere */
 	t_colors	*color;			/* Sphere color */
 }				t_sphere;
 
