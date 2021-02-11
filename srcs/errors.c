@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:32:29 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 12:48:55 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 13:51:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ int	error_code(int error_code, char *name)
 	{
 		ft_putstr("ERROR\nWrong number of arguments!");
 		ft_putstr(" Missing scene file (type *.rt)\n");
+		return (0);
 	}
 	if (error_code == 2)
 	{
 		ft_putstr("ERROR\nWrong exec name or file format detected.");
 		ft_putstr("First argument must be ./miniRT, ");
 		ft_putstr("and second argument must be a *.rt file\n");
+		return (0);
 	}
 	if (error_code == 3)
 	{
@@ -31,8 +33,14 @@ int	error_code(int error_code, char *name)
 		ft_putstr(" check again at -> ");
 		ft_putstr(name);
 		ft_putstr(" format\n");
+		return (0);
 	}
-	return (0);
+	if (error_code == 4)
+	{
+		ft_putstr("ERROR\nA problem occured when trying to create mlx img.");
+		return (0);
+	}
+	return (1);
 }
 
 int	params_check(int ac, char **av)

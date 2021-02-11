@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 11:19:42 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 14:33:17 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "colors.h"
 #include "scenes.h"
-#include "my_mlx.h"
 #include "utils.h"
 #include "vectors.h"
 #include "window.h"
@@ -60,7 +59,9 @@ int		parse_cylinder_data(char *str, char *type, t_scene *mini_rt, char **data);
 int		parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data);
 
 /* MATHS FUNCTIONS */
-int		intersection(t_ray *ray, t_sphere *sphere);
-double	test_sign(double delta, double a, double b);
+int	intersection(t_ray *ray, t_sphere *sphere);
+int	test_sign(double delta, double a, double b);
+
+/* MLX RELATIVES */
 
 #endif
