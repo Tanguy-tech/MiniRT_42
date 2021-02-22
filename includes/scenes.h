@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/06 10:54:03 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/22 11:03:34 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ t_ambiant_light	*initialize_ambiant_light(void);
 
 typedef struct	camera
 {
-	double		x;				/* Camera position on x axis */
-	double		y;				/* Camera position on y axis */
-	double		z;				/* Camera position on z axis */
+	t_vectors	*coord;
 	t_vectors	*orientation;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
 	double		fov;			/* Field of view - angle in degrees in [0.0/180.0] range */
 }				t_camera;
@@ -42,9 +40,7 @@ t_camera		*initialize_camera(void);
 
 typedef struct	light
 {
-	double		x;				/* Light position on x axis */
-	double		y;				/* Light position on y axis */
-	double		z;				/* Light position on z axis */
+	t_vectors	*coord;
 	double		light_ratio;	/* Ratio of light in [0.0/1.0] range */
 	t_colors	*color;			/* Light color */
 }				t_light;

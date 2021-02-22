@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 14:33:17 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/22 14:30:01 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int	intersection(t_ray *ray, t_sphere *sphere);
 int	test_sign(double delta, double a, double b);
 
 /* MLX RELATIVES */
+int	set_img(t_scene	*mini_rt);
 
 #endif

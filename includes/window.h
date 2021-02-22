@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:27:20 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 14:31:19 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 15:57:44 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ typedef	struct 	window
 }				t_window;
 
 t_window	*initialize_window(void);
-int			set_img(t_scene	*mini_rt);
 
 #endif

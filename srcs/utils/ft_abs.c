@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 09:24:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/22 13:27:50 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/22 14:55:56 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/22 15:00:17 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-#define RAY_H
+#include "../../includes/utils.h"
 
-#include "vectors.h"
-
-typedef	struct ray
+double		ft_abs(double n)
 {
-	t_vectors	*origin;	/* Origin point of the ray (vector point) */
-	t_vectors	*direction;	/* Direction of the ray (vector) */
-}				t_ray;
-
-
-#endif
+	if (n < 0)
+		n *= -1;
+	return (n);
+}

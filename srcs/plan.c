@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 13:04:10 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 16:16:19 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->pl->color->r = ft_atof(color[0]);
 		mini_rt->pl->color->g = ft_atof(color[1]);
 		mini_rt->pl->color->b = ft_atof(color[2]);
-		ft_putstr("PLAN DONE\n");
 		return (1);
 	}
 	return (0);

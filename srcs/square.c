@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:02:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 13:04:17 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/11 16:16:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	parse_square_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->sq->color->r = ft_atof(color[0]);
 		mini_rt->sq->color->g = ft_atof(color[1]);
 		mini_rt->sq->color->b = ft_atof(color[2]);
-		ft_putstr("SQUARE DONE\n");
 		return (1);
 	}
 	return (0);
