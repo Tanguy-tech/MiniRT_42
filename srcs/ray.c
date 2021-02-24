@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 09:24:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/24 07:41:51 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/02/24 07:41:01 by tbillon           #+#    #+#             */
+/*   Updated: 2021/02/24 07:42:35 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-#define RAY_H
+#include "../includes/ray.h"
+#include "../includes/minirt.h"
 
-#include "vectors.h"
-
-typedef	struct ray
+t_ray	*initialize_ray(void)
 {
-	t_vectors	*origin;	/* Origin point of the ray (vector point) */
-	t_vectors	*direction;	/* Direction of the ray (vector) */
-}				t_ray;
+	t_ray	*new_ray;
 
-t_ray	*initialize_ray(void);
-
-#endif
+	if (!(new_ray = ft_calloc(sizeof(t_ray), 1)))
+		return (NULL);
+	new_ray->origin = initialize_vector();
+	new_ray->direction = initialize_vector();
+	return (new_ray);
+}

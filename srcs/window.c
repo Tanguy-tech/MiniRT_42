@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/22 15:14:10 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/24 08:09:25 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ t_window	*initialize_window(void)
 	return (new_window);
 }
 
-t_ray	*initialize_ray(void)
-{
-	t_ray	*new_ray;
-
-	if (!(new_ray = ft_calloc(sizeof(t_camera), 1)))
-		return (NULL);
-	new_ray->origin = initialize_vector();
-	new_ray->direction = initialize_vector();
-	return (new_ray);
-}
-
 int	set_img(t_scene	*mini_rt)
 {
 	mini_rt->window->img_ptr = mlx_new_image(mini_rt->mlx_ptr, mini_rt->window->res_x, mini_rt->window->res_y);
@@ -51,28 +40,27 @@ int	set_img(t_scene	*mini_rt)
 	int i;
 	int j;
 	t_ray	*ray;
-	if (!(ray = initialize_ray()))
-		return (-1);
+	ray = initialize_ray();
 	i = 0;
 	j = 0;
 	ray->origin->x = mini_rt->cam->coord->x;
 	ray->origin->y = mini_rt->cam->coord->y;
 	ray->origin->z = mini_rt->cam->coord->z;
+	ray->direction->z = mini_rt->window->res_y / (2 * tan((mini_rt->cam->fov * 3.14/180) / 2));
 	while (i < mini_rt->window->res_y)
 	{
 		while (j < mini_rt->window->res_x)
 		{
 			ray->direction->x = j - mini_rt->window->res_x / 2;
 			ray->direction->y = i - mini_rt->window->res_y / 2;
-			ray->direction->z = -mini_rt->window->res_y / (2 * tan(mini_rt->cam->fov / 2));
-			ray->direction->sqrt_norme = get_norme2(ray->direction->x, ray->direction->y, ray->direction->z);
-			//dprintf(1, "ray->direction->x= %f\nray->direction->x= %f\nray->direction->x= %f\n\n", ray->direction->x, ray->direction->y, ray->direction->z);
+			ray->direction->norme2 = get_norme2(ray->direction->x, ray->direction->y, ray->direction->z);
 			normalize(ray->direction);
-			dprintf(1, "N ray->direction->x= %f\nN ray->direction->x= %f\nN ray->direction->x= %f\n\n", ray->direction->x, ray->direction->y, ray->direction->z);
+			dprintf(1, "ray->origin->x= %f\nray->origin->y= %f\nray->origin->z= %f\nN ray->direction->x= %f\nN ray->direction->y= %f\nN ray->direction->z= %f\n", ray->origin->x, ray->origin->y, ray->origin->z, ray->direction->x, ray->direction->y, ray->direction->z);
 			if (intersection(ray, mini_rt->sp))
 			{
-				//mini_rt->window->data[i] = (unsigned char)255;
-				mlx_pixel_put(mini_rt->mlx_ptr, mini_rt->window->win_ptr, i, j, 0x00FFFFFF);
+				dprintf(1, "COUCOU");
+				mini_rt->window->data[i] = (unsigned char)255;
+				//mlx_pixel_put(mini_rt->mlx_ptr, mini_rt->window->win_ptr, i, j, 0x00FFFFFF);
 			}
 			j ++;
 		}

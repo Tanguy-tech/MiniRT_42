@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:21 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/22 14:07:09 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/23 10:34:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct vectors
 	double	x;			/* Vector cordinate on x axis */
 	double	y;			/* Vector cordinate on y axis */
 	double	z;			/* Vector cordinate on z axis */
-	double	sqrt_norme;	/* Vector squared norme */
+	double	norme2;		/* Vector squared norme */
 	double	norme;		/* Vector norme (total lengh) */
 }				t_vectors;
 

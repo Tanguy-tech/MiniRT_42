@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:09 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 13:03:39 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/23 10:31:39 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	check_c_format(char *str, char *type, char **data)
 		exit(0);
 	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
-		if (angle >= 0 && angle <= 180)
+		if (angle >= 0 && angle <= 180) /* Check if x coordinate of camera is negative! otherwise it means the cam is too close to the window */
 			return (1);
 	error_code(3, type);
 	return (0);

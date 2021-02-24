@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/22 14:30:01 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/23 14:15:01 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include "ray.h"
 #include "../minilibx/mlx.h"
 
-#define PI 3.14159265359;
+#define PI_ 3.14159265359;
 
 /* This file contains all others headers and additionals functions */
 
