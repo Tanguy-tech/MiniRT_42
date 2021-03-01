@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/23 11:16:43 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/02/25 09:35:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,18 @@ double	get_norme2(double coord_x, double coord_y, double coord_z)
 	return (norme2);
 }
 
-void	normalize(t_vectors *vector)
+t_vectors	*unit_vector(t_vectors *vector)
 {
+	t_vectors	*unit_vector;
 	double	norm;
 	
-	norm = sqrt(vector->norme2);
-	vector->x /= norm;
-	vector->y /= norm;
-	vector->z /= norm;
+	if (!(unit_vector = ft_calloc(sizeof(t_vectors), 1)))
+		return (NULL);
+	norm = sqrt(get_norme2(vector->x, vector->y, vector->z));
+	unit_vector->x = vector->x / norm;
+	unit_vector->y = vector->y / norm;
+	unit_vector->z = vector->z / norm;
+	return (unit_vector);
 }
 
 t_vectors	*initialize_vector(void)
@@ -42,9 +46,5 @@ t_vectors	*initialize_vector(void)
 	new_vector->x = 0.0;
 	new_vector->y = 0.0;
 	new_vector->z = 0.0;
-	new_vector->norme2 = get_norme2(new_vector->x,
-			new_vector->y,
-			new_vector->z);
-	new_vector->norme = 0.0;
 	return (new_vector);
 }

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/22 11:03:34 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/01 08:59:47 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_ambiant_light	*initialize_ambiant_light(void);
 typedef struct	camera
 {
 	t_vectors	*coord;
-	t_vectors	*orientation;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
+	t_vectors	*direction;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
 	double		fov;			/* Field of view - angle in degrees in [0.0/180.0] range */
 }				t_camera;
 

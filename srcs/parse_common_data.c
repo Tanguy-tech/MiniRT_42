@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/22 11:04:57 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/01 10:53:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ int	parse_amb_light_data(char *str, char *type, t_scene *mini_rt, char **data)
 int	parse_camera_data(char *str, char *type, t_scene *mini_rt, char **data)
 {
 	char	**coord;
-	char	**orientation;
+	char	**dir;
 
 	coord = ft_split(data[1], ",");
-	orientation = ft_split(data[2], ",");
+	dir = ft_split(data[2], ",");
 	if (check_format_engine(str, type, data) == 1)
 	{
 		mini_rt->cam->coord->x = ft_atof(coord[0]);
 		mini_rt->cam->coord->y = ft_atof(coord[1]);
 		mini_rt->cam->coord->z = ft_atof(coord[2]);
-		mini_rt->cam->orientation->x = ft_atof(orientation[0]);
-		mini_rt->cam->orientation->y = ft_atof(orientation[1]);
-		mini_rt->cam->orientation->z = ft_atof(orientation[2]);
+		mini_rt->cam->direction->x = ft_atof(dir[0]);
+		mini_rt->cam->direction->y = ft_atof(dir[1]);
+		mini_rt->cam->direction->z = ft_atof(dir[2]);
 		mini_rt->cam->fov = ft_atof(data[3]);
 		return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/22 11:06:07 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/01 08:59:58 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_camera	*initialize_camera(void)
 	if (!(new_cam = ft_calloc(sizeof(t_camera), 1)))
 		return (NULL);
 	new_cam->coord = initialize_vector();
-	new_cam->orientation = initialize_vector();
+	new_cam->direction = initialize_vector();
 	new_cam->fov = 0.0;
 	return (new_cam);
 }
