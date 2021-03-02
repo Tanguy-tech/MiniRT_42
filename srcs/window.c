@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/01 13:04:56 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/02 15:22:49 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	set_img(t_scene	*mini_rt)
 	double j;
 	int k;
 	int l;
+	double ratio;
 	double index_hor;
 	double index_ver;
 	t_ray	*ray;
@@ -52,22 +53,27 @@ int	set_img(t_scene	*mini_rt)
 	ray->origin->x = mini_rt->cam->coord->x;
 	ray->origin->y = mini_rt->cam->coord->y;
 	ray->origin->z = mini_rt->cam->coord->z;
+	ratio = (1.0 * mini_rt->window->res_y) / (1.0 * mini_rt->window->res_x);
 	while (j < mini_rt->window->res_y)
 	{
 		i = 0;
 		while (i < mini_rt->window->res_x)
 		{
 			index_hor = i / mini_rt->window->res_x;
-			index_ver = j / mini_rt->window->res_y;
-			ray->direction->x = ray->origin->x + index_hor;/* point origine x + index horizontal */
-			ray->direction->y = ray->origin->y + index_ver;/* point origine y + index vertical */
-			ray->direction->z = mini_rt->window->res_y / tan((mini_rt->cam->fov * 3.14/180));// sqrt(pow(ray->origin->z, 2) + (pow((mini_rt->window->res_y / 2) - j, 2)));/* racine carré de l'origine au carré + ((hauteur /2) - j) au carré */
+			index_ver = j / mini_rt->window->res_x;
+			ray->direction->x = -0.5 + index_hor;/* point origine x + index horizontal */
+			ray->direction->y = -ratio/2 + index_ver;/* point origine y + index vertical */
+			ray->direction->z = mini_rt->window->res_y / tan((mini_rt->cam->fov * 3.14/180));
 			/* normaliser vecteur ?? */
 			ray->direction = unit_vector(ray->direction);
 			if (intersection(ray, mini_rt->sp)) /* if intersection pixel is red */
-				mini_rt->window->data[k] = (unsigned char)255;
-			else
-				mini_rt->window->data[l] = (unsigned char)255;/* if NO intersection pixel is blue */
+			{
+				mini_rt->window->data[k - 2] = (unsigned char)mini_rt->sp->color->b;
+				mini_rt->window->data[k - 1] = (unsigned char)mini_rt->sp->color->g;
+				mini_rt->window->data[k] = (unsigned char)mini_rt->sp->color->r;
+			}
+			// else
+			// 	mini_rt->window->data[l] = (unsigned char)255;/* if NO intersection pixel is blue */
 			i++;
 			k+= 4;
 			l+= 4;
