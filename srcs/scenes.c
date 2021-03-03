@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/01 08:59:58 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 15:23:02 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_light	*initialize_light(void)
 	new_light->coord = initialize_vector();
 	new_light->light_ratio = 0.0;
 	new_light->color = initialize_colors();
+	new_light->P = initialize_vector();
+	new_light->N = initialize_vector();
 	return (new_light);
 }
 

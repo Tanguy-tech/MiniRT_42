@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/02 15:22:49 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 15:42:33 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	set_img(t_scene	*mini_rt)
 	double ratio;
 	double index_hor;
 	double index_ver;
+	double pxl_intensity;
 	t_ray	*ray;
 	
 	ray = initialize_ray();
@@ -66,14 +67,15 @@ int	set_img(t_scene	*mini_rt)
 			ray->direction->z = mini_rt->window->res_y / tan((mini_rt->cam->fov * 3.14/180));
 			/* normaliser vecteur ?? */
 			ray->direction = unit_vector(ray->direction);
-			if (intersection(ray, mini_rt->sp)) /* if intersection pixel is red */
+			pxl_intensity = 0.0;
+			if (sphere_intersection(ray, mini_rt->sp, mini_rt->light->P, mini_rt->light->N)) /* if intersection pixel is red */
 			{
-				mini_rt->window->data[k - 2] = (unsigned char)mini_rt->sp->color->b;
-				mini_rt->window->data[k - 1] = (unsigned char)mini_rt->sp->color->g;
-				mini_rt->window->data[k] = (unsigned char)mini_rt->sp->color->r;
+				pxl_intensity = (1000000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N)) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
+				/* if intersection with light -> ligh a pixel with light color * ratio */
+				mini_rt->window->data[k - 2] = (unsigned char)pxl_intensity;
+				mini_rt->window->data[k - 1] = (unsigned char)pxl_intensity;
+				mini_rt->window->data[k] = (unsigned char)pxl_intensity;
 			}
-			// else
-			// 	mini_rt->window->data[l] = (unsigned char)255;/* if NO intersection pixel is blue */
 			i++;
 			k+= 4;
 			l+= 4;

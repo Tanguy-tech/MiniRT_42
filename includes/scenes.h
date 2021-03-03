@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/01 08:59:47 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 15:22:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct	light
 	t_vectors	*coord;
 	double		light_ratio;	/* Ratio of light in [0.0/1.0] range */
 	t_colors	*color;			/* Light color */
+	t_vectors	*P;
+	t_vectors	*N;
 }				t_light;
 
 t_light			*initalize_light(void);
