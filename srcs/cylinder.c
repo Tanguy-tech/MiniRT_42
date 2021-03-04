@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 13:04:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:44:03 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_cylinder	*initialize_cylinder(void)
 	new_cylinder->diam = 0.0;
 	new_cylinder->height = 0.0;
 	new_cylinder->color = initialize_colors();
+	new_cylinder->count = 0;
 	return (new_cylinder);
 }
 
@@ -50,7 +51,8 @@ int	check_cylinder_format(char *str, char *type, char **data)
 		if (diam > 0.0 && height > 0.0)
 			if (count_comma_format(data[5]) == 2)
 				if (count_nb_format(data[5]) <= 9)
-					return (1);
+					if (check_range_vector(data[2]) && check_range_colors(data[5]))
+						return (1);
 	error_code(3, type);
 	return (0);
 }
@@ -77,6 +79,7 @@ int	parse_cylinder_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->cy->color->r = ft_atof(color[0]);
 		mini_rt->cy->color->g = ft_atof(color[1]);
 		mini_rt->cy->color->b = ft_atof(color[2]);
+		mini_rt->cy->count += 1;
 		return (1);
 	}
 	return (0);

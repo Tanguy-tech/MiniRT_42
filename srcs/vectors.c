@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/25 09:35:59 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 12:35:27 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,12 @@ t_vectors	*initialize_vector(void)
 	new_vector->y = 0.0;
 	new_vector->z = 0.0;
 	return (new_vector);
+}
+
+t_vectors	*reinitialize_vector(t_vectors *vector)
+{
+	vector->x = 0.0;
+	vector->y = 0.0;
+	vector->z = 0.0;
+	return (vector);
 }

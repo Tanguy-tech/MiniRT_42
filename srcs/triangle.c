@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 13:04:21 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:44:43 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_triangle	*initialize_triangle(void)
 	new_triangle->sec_coord = initialize_vector();
 	new_triangle->third_coord = initialize_vector();
 	new_triangle->color = initialize_colors();
+	new_triangle->count = 0;
 	return (new_triangle);
 }
 
@@ -43,7 +44,8 @@ int	check_triangle_format(char *str, char *type, char **data)
 		if (check_coordinates(data[3]))
 			if (count_comma_format(data[4]) == 2
 				&& count_nb_format(data[4]) <= 9)
-				return (1);
+				if (check_range_colors(data[4]))
+					return (1);
 	error_code(3, type);
 	return (0);
 }
@@ -73,6 +75,7 @@ int	parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->tr->color->r = ft_atof(color[0]);
 		mini_rt->tr->color->g = ft_atof(color[1]);
 		mini_rt->tr->color->b = ft_atof(color[2]);
+		mini_rt->tr->count += 1;
 		return (1);
 	}
 	return (0);

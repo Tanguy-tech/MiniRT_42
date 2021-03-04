@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:02:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 16:16:31 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:43:40 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_square	*initialize_square(void)
 	new_square->orientation = initialize_vector();
 	new_square->height = 0.0;
 	new_square->color = initialize_colors();
+	new_square->count = 0;
 	return (new_square);
 }
 
@@ -42,7 +43,8 @@ int	check_square_format(char *str, char *type, char **data)
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
 		if ((ft_atof(data[3]) > 0.0) && (count_comma_format(data[4]) == 2))
 			if (count_nb_format(data[4]) <= 9)
-				return (1);
+				if (check_range_vector(data[2]) && check_range_colors(data[4]))
+					return (1);
 	error_code(3, type);
 	return (0);
 }
@@ -68,6 +70,7 @@ int	parse_square_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->sq->color->r = ft_atof(color[0]);
 		mini_rt->sq->color->g = ft_atof(color[1]);
 		mini_rt->sq->color->b = ft_atof(color[2]);
+		mini_rt->sq->count += 1;
 		return (1);
 	}
 	return (0);

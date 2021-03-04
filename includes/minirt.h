@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/03 14:49:37 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:17:57 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int		check_square_format(char *str, char *type, char **data);
 int		check_plan_format(char *str, char *type, char **data);
 int		check_cylinder_format(char *str, char *type, char **data);
 int		check_triangle_format(char *str, char *type, char **data);
+double	check_intensity(double pxl_intensity);
+int		check_range_colors(char *code);
+int		check_range_vector(char *code);
 
 
 /* PARSER FUNCTIONS */
@@ -64,5 +67,8 @@ int	test_sign(double delta, double a, double b);
 
 /* MLX RELATIVES */
 int	set_img(t_scene	*mini_rt);
+
+/* SPHERE RELATIVES */
+void	put_sphere(t_scene *mini_rt, t_vectors *pxl_intensity, t_ray *ray, int index);
 
 #endif

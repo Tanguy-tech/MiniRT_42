@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:21 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/25 09:36:13 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 12:35:23 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct vectors
 
 double		get_norme2(double coord_x, double coord_y, double coord_z);
 t_vectors	*initialize_vector(void);
+t_vectors	*reinitialize_vector(t_vectors *vector);
 t_vectors	*operator_x(double a, t_vectors *b);
 t_vectors	*operator_plus(t_vectors *a, t_vectors *b);
 t_vectors	*operator_minus(t_vectors *a, t_vectors *b);

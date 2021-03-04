@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 10:32:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/04 11:12:22 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:03:38 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,26 @@ int	sphere_intersection(t_ray *ray, t_sphere *sphere, t_vectors *P, t_vectors *N
 	N->y = unit_vector((operator_minus(P, sphere->origin_coord)))->y;
 	N->z = unit_vector((operator_minus(P, sphere->origin_coord)))->z;
 	return (1);
+}
+
+void	put_sphere(t_scene *mini_rt, t_vectors *pxl_intensity, t_ray *ray, int index)
+{
+	if (sphere_intersection(ray, mini_rt->sp, mini_rt->light->P, mini_rt->light->N))
+	{
+		pxl_intensity->x = mini_rt->sp->color->b * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
+		pxl_intensity->y = mini_rt->sp->color->g * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
+		pxl_intensity->z = mini_rt->sp->color->r * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
+		pxl_intensity->x = check_intensity(pxl_intensity->x);
+		pxl_intensity->y = check_intensity(pxl_intensity->y);
+		pxl_intensity->z = check_intensity(pxl_intensity->z);
+		mini_rt->window->data[index - 2] = (unsigned char)pxl_intensity->x * mini_rt->light->light_ratio;
+		mini_rt->window->data[index - 1] = (unsigned char)pxl_intensity->y * mini_rt->light->light_ratio;
+		mini_rt->window->data[index] = (unsigned char)pxl_intensity->z * mini_rt->light->light_ratio;
+	}
+	else /* Grey background to see elements better during implementation */
+	{
+		mini_rt->window->data[index - 2] = (unsigned char)219;
+		mini_rt->window->data[index - 1] = (unsigned char)219;
+		mini_rt->window->data[index] = (unsigned char)219;
+	}
 }

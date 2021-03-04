@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/11 16:16:19 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:45:04 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_plan	*initialize_plan(void)
 	new_plan->coord = initialize_vector();
 	new_plan->orientation = initialize_vector();
 	new_plan->color = initialize_colors();
+	new_plan->count = 0;
 	return (new_plan);
 }
 
@@ -40,7 +41,8 @@ int	check_plan_format(char *str, char *type, char **data)
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
 		if (count_comma_format(data[3]) == 2)
 			if (count_nb_format(data[3]) <= 9)
-				return (1);
+				if (check_range_vector(data[2]) && check_range_colors(data[3]))
+					return (1);
 	error_code(3, type);
 	return (0);
 }
@@ -65,6 +67,7 @@ int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->pl->color->r = ft_atof(color[0]);
 		mini_rt->pl->color->g = ft_atof(color[1]);
 		mini_rt->pl->color->b = ft_atof(color[2]);
+		mini_rt->pl->count += 1;
 		return (1);
 	}
 	return (0);

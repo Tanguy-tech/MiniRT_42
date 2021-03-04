@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/23 14:52:35 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 13:41:25 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_sphere	*initialize_sphere(void)
 	new_sphere->diam = 0.0;
 	new_sphere->ray = 0.0;
 	new_sphere->origin_coord = initialize_vector();
+	new_sphere->count = 0;
 	return (new_sphere);
 }
 
@@ -40,7 +41,8 @@ int	check_sphere_format(char *str, char *type, char **data)
 	}
 	if (check_coordinates(data[1]) && count_double(data[2]) == 1)
 		if (count_comma_format(data[3]) == 2 && count_nb_format(data[3]) <= 9)
-			return (1);
+			if (check_range_colors(data[3]))
+				return (1);
 	error_code(3, type);
 	return (0);
 }
@@ -62,6 +64,7 @@ int	parse_sphere_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->sp->color->r = ft_atof(color[0]);
 		mini_rt->sp->color->g = ft_atof(color[1]);
 		mini_rt->sp->color->b = ft_atof(color[2]);
+		mini_rt->sp->count += 1;
 		return (1);
 	}
 	return (0);
