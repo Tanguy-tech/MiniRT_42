@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 10:32:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/03 15:25:16 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 11:12:22 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	sphere_intersection(t_ray *ray, t_sphere *sphere, t_vectors *P, t_vectors *N
 	else
 		t = res2;
 	P->x = operator_plus(ray->origin, operator_x(t, ray->direction))->x;
-	P->y = operator_plus(ray->origin, operator_x(t, ray->direction))->y;
+	P->y = -operator_plus(ray->origin, operator_x(t, ray->direction))->y;
 	P->z = operator_plus(ray->origin, operator_x(t, ray->direction))->z;
 	N->x = unit_vector((operator_minus(P, sphere->origin_coord)))->x;
 	N->y = unit_vector((operator_minus(P, sphere->origin_coord)))->y;

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/03 15:42:33 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 11:12:05 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ t_window	*initialize_window(void)
 	new_window->res_y = 0;
 	new_window->title = "\0";
 	return (new_window);
+}
+
+double	check_intensity(double pxl_intensity)
+{
+	if (pxl_intensity < 0.0)
+		pxl_intensity = 0.0;
+	if (pxl_intensity > 255.0)
+		pxl_intensity = 255.0;
+	return (pxl_intensity);
 }
 
 int	set_img(t_scene	*mini_rt)
@@ -44,10 +53,11 @@ int	set_img(t_scene	*mini_rt)
 	double ratio;
 	double index_hor;
 	double index_ver;
-	double pxl_intensity;
 	t_ray	*ray;
+	t_vectors *pxl_intensity;
 	
 	ray = initialize_ray();
+	pxl_intensity = initialize_vector();
 	j = 0;
 	k = 2;
 	l = 0;
@@ -62,19 +72,31 @@ int	set_img(t_scene	*mini_rt)
 		{
 			index_hor = i / mini_rt->window->res_x;
 			index_ver = j / mini_rt->window->res_x;
-			ray->direction->x = -0.5 + index_hor;/* point origine x + index horizontal */
-			ray->direction->y = -ratio/2 + index_ver;/* point origine y + index vertical */
+			ray->direction->x = -0.5 + index_hor;
+			ray->direction->y = -ratio/2 + index_ver;
 			ray->direction->z = mini_rt->window->res_y / tan((mini_rt->cam->fov * 3.14/180));
-			/* normaliser vecteur ?? */
+			/* normalized vector ! */
 			ray->direction = unit_vector(ray->direction);
-			pxl_intensity = 0.0;
-			if (sphere_intersection(ray, mini_rt->sp, mini_rt->light->P, mini_rt->light->N)) /* if intersection pixel is red */
+			pxl_intensity->x = 0.0;
+			pxl_intensity->y = 0.0;
+			pxl_intensity->z = 0.0;
+			if (sphere_intersection(ray, mini_rt->sp, mini_rt->light->P, mini_rt->light->N))
 			{
-				pxl_intensity = (1000000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N)) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
-				/* if intersection with light -> ligh a pixel with light color * ratio */
-				mini_rt->window->data[k - 2] = (unsigned char)pxl_intensity;
-				mini_rt->window->data[k - 1] = (unsigned char)pxl_intensity;
-				mini_rt->window->data[k] = (unsigned char)pxl_intensity;
+				pxl_intensity->x = mini_rt->sp->color->b * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
+				pxl_intensity->y = mini_rt->sp->color->g * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
+				pxl_intensity->z = mini_rt->sp->color->r * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
+				pxl_intensity->x = check_intensity(pxl_intensity->x);
+				pxl_intensity->y = check_intensity(pxl_intensity->y);
+				pxl_intensity->z = check_intensity(pxl_intensity->z);
+				mini_rt->window->data[k - 2] = (unsigned char)pxl_intensity->x * mini_rt->light->light_ratio;
+				mini_rt->window->data[k - 1] = (unsigned char)pxl_intensity->y * mini_rt->light->light_ratio;
+				mini_rt->window->data[k] = (unsigned char)pxl_intensity->z * mini_rt->light->light_ratio;
+			}
+			else
+			{
+				mini_rt->window->data[l + 2] = (unsigned char)219;
+				mini_rt->window->data[l + 1] = (unsigned char)219;
+				mini_rt->window->data[l] = (unsigned char)219;
 			}
 			i++;
 			k+= 4;
