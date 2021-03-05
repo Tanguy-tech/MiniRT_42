@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/04 13:45:04 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 15:16:09 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_plan	*initialize_plan(void)
 	new_plan->orientation = initialize_vector();
 	new_plan->color = initialize_colors();
 	new_plan->count = 0;
+	new_plan->t = 0.0;
 	return (new_plan);
 }
 

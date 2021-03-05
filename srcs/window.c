@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/04 13:02:57 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 15:02:57 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_window	*initialize_window(void)
 	new_window->res_x = 0;
 	new_window->res_y = 0;
 	new_window->title = "\0";
+	new_window->pxl_intensity = initialize_vector();
 	return (new_window);
 }
 
@@ -48,15 +49,14 @@ int	set_img(t_scene	*mini_rt)
 		return (error_code(4, NULL));
 	double i;
 	double j;
+	double t;
 	int k;
 	double ratio;
 	double index_hor;
 	double index_ver;
 	t_ray	*ray;
-	t_vectors *pxl_intensity;
 	
 	ray = initialize_ray();
-	pxl_intensity = initialize_vector();
 	j = 0;
 	k = 2;
 	ray->origin->x = mini_rt->cam->coord->x;
@@ -75,9 +75,11 @@ int	set_img(t_scene	*mini_rt)
 			ray->direction->z = mini_rt->window->res_y / tan((mini_rt->cam->fov * 3.14/180));
 			/* normalized vector ! */
 			ray->direction = unit_vector(ray->direction);
-			reinitialize_vector(pxl_intensity);
+			reinitialize_vector(mini_rt->window->pxl_intensity);
+			if (mini_rt->pl->count > 0)
+				put_plan(mini_rt, ray, k, j);
 			if (mini_rt->sp->count > 0)
-				put_sphere(mini_rt, pxl_intensity, ray, k);
+				put_sphere(mini_rt, ray, k);
 			i++;
 			k+= 4;
 		}

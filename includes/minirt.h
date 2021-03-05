@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/04 13:17:57 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 14:22:44 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,16 @@ int		parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data);
 
 /* MATHS FUNCTIONS */
 int	sphere_intersection(t_ray *ray, t_sphere *sphere, t_vectors *P, t_vectors *N);
+int	plan_intersection(t_ray *ray, t_plan *plan, t_vectors *P, t_vectors *N);
 int	test_sign(double delta, double a, double b);
 
 /* MLX RELATIVES */
 int	set_img(t_scene	*mini_rt);
 
 /* SPHERE RELATIVES */
-void	put_sphere(t_scene *mini_rt, t_vectors *pxl_intensity, t_ray *ray, int index);
+void	put_sphere(t_scene *mini_rt, t_ray *ray, int index);
+
+/* PLAN RELATIVES */
+void	put_plan(t_scene *mini_rt, t_ray *ray, int index, int j);
 
 #endif
