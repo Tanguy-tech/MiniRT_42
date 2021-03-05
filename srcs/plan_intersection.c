@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 15:40:31 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/05 16:05:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 16:12:10 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	put_plan(t_scene *mini_rt, t_ray *ray, int index, int j)
 			mini_rt->window->pxl_intensity->x = check_intensity(mini_rt->window->pxl_intensity->x);
 			mini_rt->window->pxl_intensity->y = check_intensity(mini_rt->window->pxl_intensity->y);
 			mini_rt->window->pxl_intensity->z = check_intensity(mini_rt->window->pxl_intensity->z);
-		//}
+		// }
 		mini_rt->window->data[index - 2] = (unsigned char)mini_rt->window->pxl_intensity->x * ((j * 1.0)/ mini_rt->window->res_y);
 		mini_rt->window->data[index - 1] = (unsigned char)mini_rt->window->pxl_intensity->y * ((j * 1.0)/ mini_rt->window->res_y);
 		mini_rt->window->data[index] = (unsigned char)mini_rt->window->pxl_intensity->z * ((j * 1.0)/ mini_rt->window->res_y);
