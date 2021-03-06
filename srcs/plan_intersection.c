@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 15:40:31 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/05 16:12:10 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/06 10:58:51 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ int		plan_intersection(t_ray *ray, t_plan *plan, t_vectors *P, t_vectors *N)
 {
 	t_ray		*gen_plan;
 	double		t;
-	t_vectors	*diff;
 	double		d;
 	double		e;
 
-	diff = initialize_vector();
 	gen_plan = initialize_ray();
 	gen_plan->origin->x = ray->direction->x;
 	gen_plan->origin->y = plan->coord->y;
@@ -31,9 +29,9 @@ int		plan_intersection(t_ray *ray, t_plan *plan, t_vectors *P, t_vectors *N)
 	t = dot(gen_plan->direction, ray->direction);
 	if (t > 0)
 	{
-		P->x = operator_plus(ray->origin, operator_x(t*10, ray->direction))->x;
-		P->y = operator_plus(ray->origin, operator_x(t*10, ray->direction))->y;
-		P->z = operator_plus(ray->origin, operator_x(t*10, ray->direction))->z;
+		P->x = operator_plus(ray->origin, operator_x(t, ray->direction))->x;
+		P->y = operator_plus(ray->origin, operator_x(t, ray->direction))->y;
+		P->z = operator_plus(ray->origin, operator_x(t, ray->direction))->z;
 		N->x = unit_vector((operator_minus(P, gen_plan->origin)))->x;
 		N->y = unit_vector((operator_minus(P, gen_plan->origin)))->y;
 		N->z = unit_vector((operator_minus(P, gen_plan->origin)))->z;
@@ -52,15 +50,15 @@ void	put_plan(t_scene *mini_rt, t_ray *ray, int index, int j)
 		// double	t_light;
 
 		// ray_light = initialize_ray();
-		// ray_light->origin->x = mini_rt->sp->P->x +0.01 * mini_rt->sp->N->x;
-		// ray_light->origin->y = mini_rt->sp->P->y +0.01 * mini_rt->sp->N->y;
-		// ray_light->origin->z = mini_rt->sp->P->z +0.01 * mini_rt->sp->N->z;
-		// ray_light->direction = unit_vector(operator_minus(mini_rt->sp->origin_coord, mini_rt->sp->P));
-		// d_light2 = get_norme2(operator_minus(mini_rt->sp->origin_coord, mini_rt->sp->P)->x, operator_minus(mini_rt->sp->origin_coord, mini_rt->sp->P)->y, operator_minus(mini_rt->sp->origin_coord, mini_rt->sp->P)->z);
+		// ray_light->origin->x = ray->direction->x;
+		// ray_light->origin->y = ray->direction->y;
+		// ray_light->origin->z = ray->direction->z;
+		// ray_light->direction = unit_vector(operator_minus(ray->origin, mini_rt->light->coord));
+		// d_light2 = get_norme2(operator_minus(ray->origin, mini_rt->light->coord)->x, operator_minus(ray->origin, mini_rt->light->coord)->y, operator_minus(ray->origin, mini_rt->light->coord)->z);
 		// t_light = mini_rt->pl->t;
-		// if (plan_intersection(ray_light, mini_rt->pl, mini_rt->sp->P, mini_rt->sp->N) && (t_light*t_light < d_light2))
+		// if (sphere_intersection(ray_light, mini_rt->sp, mini_rt->sp->P, mini_rt->sp->N) && (t_light*t_light < d_light2))
 		// {
-		// 	mini_rt->window->pxl_intensity->x = 0.0;
+		// 	mini_rt->window->pxl_intensity->x = 255.0;
 		// 	mini_rt->window->pxl_intensity->y = 0.0;
 		// 	mini_rt->window->pxl_intensity->z = 0.0;
 		// }

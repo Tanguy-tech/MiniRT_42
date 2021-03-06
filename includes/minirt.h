@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/05 14:22:44 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/06 10:22:45 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		check_triangle_format(char *str, char *type, char **data);
 double	check_intensity(double pxl_intensity);
 int		check_range_colors(char *code);
 int		check_range_vector(char *code);
+double	check_intensity(double pxl_intensity);
 
 
 /* PARSER FUNCTIONS */

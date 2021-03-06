@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/05 15:02:57 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/06 11:09:55 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,6 @@ t_window	*initialize_window(void)
 	return (new_window);
 }
 
-double	check_intensity(double pxl_intensity)
-{
-	if (pxl_intensity < 0.0)
-		pxl_intensity = 0.0;
-	if (pxl_intensity > 255.0)
-		pxl_intensity = 255.0;
-	return (pxl_intensity);
-}
-
 int	set_img(t_scene	*mini_rt)
 {
 	mini_rt->window->img_ptr = mlx_new_image(mini_rt->mlx_ptr, mini_rt->window->res_x, mini_rt->window->res_y);
@@ -49,30 +40,18 @@ int	set_img(t_scene	*mini_rt)
 		return (error_code(4, NULL));
 	double i;
 	double j;
-	double t;
 	int k;
-	double ratio;
-	double index_hor;
-	double index_ver;
 	t_ray	*ray;
 	
-	ray = initialize_ray();
+	ray = generate_new_ray(mini_rt);
 	j = 0;
 	k = 2;
-	ray->origin->x = mini_rt->cam->coord->x;
-	ray->origin->y = mini_rt->cam->coord->y;
-	ray->origin->z = mini_rt->cam->coord->z;
-	ratio = (1.0 * mini_rt->window->res_y) / (1.0 * mini_rt->window->res_x);
 	while (j < mini_rt->window->res_y)
 	{
 		i = 0;
 		while (i < mini_rt->window->res_x)
 		{
-			index_hor = i / mini_rt->window->res_x;
-			index_ver = j / mini_rt->window->res_x;
-			ray->direction->x = -0.5 + index_hor;
-			ray->direction->y = -ratio/2 + index_ver;
-			ray->direction->z = mini_rt->window->res_y / tan((mini_rt->cam->fov * 3.14/180));
+			update_ray(ray, mini_rt, i / mini_rt->window->res_x, j / mini_rt->window->res_x);
 			/* normalized vector ! */
 			ray->direction = unit_vector(ray->direction);
 			reinitialize_vector(mini_rt->window->pxl_intensity);

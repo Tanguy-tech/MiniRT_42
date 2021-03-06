@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 10:32:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/05 14:25:29 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/06 10:40:15 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,39 +55,12 @@ void	put_sphere(t_scene *mini_rt, t_ray *ray, int index)
 {
 	if (sphere_intersection(ray, mini_rt->sp, mini_rt->light->P, mini_rt->light->N))
 	{
-		// t_ray	*ray_light;
-		// t_vectors	*P_light;
-		// t_vectors	*N_light;
-		// double		t_light;
-		// double		d_light2;
-
-		// ray_light = initialize_ray();
-		// P_light = initialize_vector();
-		// N_light	= initialize_vector();
-		// ray_light->origin->x = mini_rt->light->P->x +0.01 * mini_rt->light->N->x;
-		// ray_light->origin->y = mini_rt->light->P->y +0.01 * mini_rt->light->N->y;
-		// ray_light->origin->z = mini_rt->light->P->z +0.01 * mini_rt->light->N->z;
-		// ray_light->direction = unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P));
-		// d_light2 = get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);
-		// t_light = mini_rt->sp->t;
-		// if (sphere_intersection(ray_light, mini_rt->sp, P_light, N_light))
-		// {
-		// 	if (t_light*t_light < d_light2)
-		// 	{
-		// 		mini_rt->window->pxl_intensity->x = 255.0;
-		// 		mini_rt->window->pxl_intensity->y = 255.0;
-		// 		mini_rt->window->pxl_intensity->z = 255.0;
-		// 	}
-		// }
-		// else
-		// {
-			mini_rt->window->pxl_intensity->x = mini_rt->sp->color->b * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);// / d_light2;
-			mini_rt->window->pxl_intensity->y = mini_rt->sp->color->g * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);// / d_light2;
-			mini_rt->window->pxl_intensity->z = mini_rt->sp->color->r * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);// / d_light2;
-			mini_rt->window->pxl_intensity->x = check_intensity(mini_rt->window->pxl_intensity->x);
-			mini_rt->window->pxl_intensity->y = check_intensity(mini_rt->window->pxl_intensity->y);
-			mini_rt->window->pxl_intensity->z = check_intensity(mini_rt->window->pxl_intensity->z);
-		//}
+		mini_rt->window->pxl_intensity->x = mini_rt->sp->color->b * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);// / d_light2;
+		mini_rt->window->pxl_intensity->y = mini_rt->sp->color->g * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);// / d_light2;
+		mini_rt->window->pxl_intensity->z = mini_rt->sp->color->r * 100000 * dot(unit_vector(operator_minus(mini_rt->light->coord, mini_rt->light->P)), mini_rt->light->N) / get_norme2(operator_minus(mini_rt->light->coord, mini_rt->light->P)->x, operator_minus(mini_rt->light->coord, mini_rt->light->P)->y, operator_minus(mini_rt->light->coord, mini_rt->light->P)->z);// / d_light2;
+		mini_rt->window->pxl_intensity->x = check_intensity(mini_rt->window->pxl_intensity->x);
+		mini_rt->window->pxl_intensity->y = check_intensity(mini_rt->window->pxl_intensity->y);
+		mini_rt->window->pxl_intensity->z = check_intensity(mini_rt->window->pxl_intensity->z);
 		mini_rt->window->data[index - 2] = (unsigned char)mini_rt->window->pxl_intensity->x * mini_rt->light->light_ratio;
 		mini_rt->window->data[index - 1] = (unsigned char)mini_rt->window->pxl_intensity->y * mini_rt->light->light_ratio;
 		mini_rt->window->data[index] = (unsigned char)mini_rt->window->pxl_intensity->z * mini_rt->light->light_ratio;
