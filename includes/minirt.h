@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/06 10:22:45 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 10:19:30 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ double	check_intensity(double pxl_intensity);
 /* PARSER FUNCTIONS */
 int		read_and_parse(char *file_path, t_scene	*mini_rt);
 int		parser_engine(char *line, char *path, t_scene *mini_rt);
-int		parse_objects(char *line, t_scene *mini_rt, char **data);
+int		parse_elements(char *line, t_scene *mini_rt, char **data);
 int		parse_common(char *line, char *path, t_scene *mini_rt, char **data);
 int		parse_light_data(char *str, char *type, t_scene *mini_rt, char **data);
 int		parse_camera_data(char *str, char *type, t_scene *mini_rt, char **data);
@@ -63,8 +63,8 @@ int		parse_cylinder_data(char *str, char *type, t_scene *mini_rt, char **data);
 int		parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data);
 
 /* MATHS FUNCTIONS */
-int	sphere_intersection(t_ray *ray, t_sphere *sphere, t_vectors *P, t_vectors *N);
-int	plan_intersection(t_ray *ray, t_plan *plan, t_vectors *P, t_vectors *N);
+int	sphere_intersection(t_ray *ray, t_element *sphere, t_vectors *P, t_vectors *N);
+int	plan_intersection(t_ray *ray, t_element *plan, t_vectors *P, t_vectors *N);
 int	test_sign(double delta, double a, double b);
 
 /* MLX RELATIVES */

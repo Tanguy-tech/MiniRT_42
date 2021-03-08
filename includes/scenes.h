@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/03 15:22:06 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 08:33:27 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 #include "../minilibx/mlx.h"
 
 /* This file contains the objects structure and all functions relatives to the objects construction */
+
+typedef struct		s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 typedef struct	ambiant_light
 {
@@ -56,11 +62,13 @@ typedef struct	scene
 	t_ambiant_light	*amb_light;		/* Ambiant light structure */
 	t_camera		*cam;			/* Camera position structure */
 	t_light			*light;			/* Light structure */
-	t_sphere		*sp;			/* Sphere structure object */
-	t_square		*sq;			/* Square structure object */
-	t_plan			*pl;			/* Plan structure object */
-	t_cylinder		*cy;			/* Cylinder structure object */
-	t_triangle		*tr;			/* Triangle structure object */
+	// t_sphere		*sp;			/* Sphere structure object */
+	// t_square		*sq;			/* Square structure object */
+	// t_plan			*pl;			/* Plan structure object */
+	// t_cylinder		*cy;			/* Cylinder structure object */
+	// t_triangle		*tr;			/* Triangle structure object */
+	t_element		*element;
+	t_list			*elem_list;
 }				t_scene;
 
 t_scene			*initialize_scene(void);

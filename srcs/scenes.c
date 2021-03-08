@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/03 15:23:02 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 09:59:28 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,27 @@ t_light	*initialize_light(void)
 	return (new_light);
 }
 
+t_element	*initialize_element(void)
+{
+	t_element	*new_element;
+
+	if (!(new_element = ft_calloc(sizeof(t_element), 1)))
+		return (NULL);
+	new_element->color = initialize_colors();
+	new_element->orig = initialize_vector();
+	new_element->dir = initialize_vector();
+	new_element->P = initialize_vector();
+	new_element->N = initialize_vector();
+	new_element->first_coord = initialize_vector();
+	new_element->sec_coord = initialize_vector();
+	new_element->third_coord = initialize_vector();
+	new_element->height = 0.0;
+	new_element->diam = 0.0;
+	new_element->ray = 0.0;
+	new_element->id = 0;
+	return (new_element);
+}
+
 t_scene	*initialize_scene(void)
 {
 	t_scene	*new_scene;
@@ -61,10 +82,11 @@ t_scene	*initialize_scene(void)
 	new_scene->cam = initialize_camera();
 	new_scene->light = initialize_light();
 	new_scene->window = initialize_window();
-	new_scene->sp = initialize_sphere();
-	new_scene->pl = initialize_plan();
-	new_scene->sq = initialize_square();
-	new_scene->cy = initialize_cylinder();
-	new_scene->tr = initialize_triangle();
+	// new_scene->sp = initialize_sphere();
+	// new_scene->pl = initialize_plan();
+	// new_scene->sq = initialize_square();
+	// new_scene->cy = initialize_cylinder();
+	// new_scene->tr = initialize_triangle();
+	// new_scene->element = initialize_element();
 	return (new_scene);
 }

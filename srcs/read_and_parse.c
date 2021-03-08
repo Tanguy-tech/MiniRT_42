@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 11:00:26 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 12:44:03 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 09:30:25 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	parser_engine(char *line, char *path, t_scene *mini_rt)
 		|| (line[i] == 'c' && line[i + 1] == 'y')
 		|| (line[i] == 't' && line[i + 1] == 'r'))
 	{
-		return (parse_objects(line, mini_rt, data));
+		return (parse_elements(line, mini_rt, data));
 	}
 	return (-1);
 }
@@ -56,7 +56,7 @@ int	parse_common(char *line, char *path, t_scene *mini_rt, char **data)
 	return (-1);
 }
 
-int	parse_objects(char *line, t_scene *mini_rt, char **data)
+int	parse_elements(char *line, t_scene *mini_rt, char **data)
 {
 	int	i;
 

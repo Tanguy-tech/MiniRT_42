@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/06 11:09:55 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 10:22:24 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,28 @@ t_window	*initialize_window(void)
 	new_window->title = "\0";
 	new_window->pxl_intensity = initialize_vector();
 	return (new_window);
+}
+
+void	display_elements(t_scene *mini_rt, t_ray *ray, int index, int j)
+{
+	t_list	*tmp;
+
+	tmp = mini_rt->elem_list;
+	while(tmp)
+	{
+		mini_rt->element = tmp->content;
+		if (mini_rt->element->id == 1)
+			put_sphere(mini_rt, ray, index);
+		// if (mini_rt->element->id == 2)
+		// 	put_plan(mini_rt, ray, index, j);
+		// if (mini_rt->element->id == 3)
+			
+		// if (mini_rt->element->id == 4)
+
+		// if (mini_rt->element->id == 5)
+
+		tmp = tmp->next;
+	}
 }
 
 int	set_img(t_scene	*mini_rt)
@@ -55,10 +77,7 @@ int	set_img(t_scene	*mini_rt)
 			/* normalized vector ! */
 			ray->direction = unit_vector(ray->direction);
 			reinitialize_vector(mini_rt->window->pxl_intensity);
-			if (mini_rt->pl->count > 0)
-				put_plan(mini_rt, ray, k, j);
-			if (mini_rt->sp->count > 0)
-				put_sphere(mini_rt, ray, k);
+			display_elements(mini_rt, ray, k, j);
 			i++;
 			k+= 4;
 		}

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:21 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 10:00:35 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 #include "../includes/shapes.h"
 #include "../includes/utils.h"
 
-t_sphere	*initialize_sphere(void)
-{
-	t_sphere	*new_sphere;
+// t_sphere	*initialize_sphere(void)
+// {
+// 	t_sphere	*new_sphere;
 
-	if (!(new_sphere = ft_calloc(sizeof(t_sphere), 1)))
-		return (NULL);
-	new_sphere->color = initialize_colors();
-	new_sphere->diam = 0.0;
-	new_sphere->ray = 0.0;
-	new_sphere->origin_coord = initialize_vector();
-	new_sphere->count = 0;
-	new_sphere->t = 0.0;
-	new_sphere->P = initialize_vector();
-	new_sphere->N = initialize_vector();
-	return (new_sphere);
-}
+// 	if (!(new_sphere = ft_calloc(sizeof(t_sphere), 1)))
+// 		return (NULL);
+// 	new_sphere->color = initialize_colors();
+// 	new_sphere->diam = 0.0;
+// 	new_sphere->ray = 0.0;
+// 	new_sphere->origin_coord = initialize_vector();
+// 	new_sphere->count = 0;
+// 	new_sphere->t = 0.0;
+// 	new_sphere->P = initialize_vector();
+// 	new_sphere->N = initialize_vector();
+// 	return (new_sphere);
+// }
 
 int	check_sphere_format(char *str, char *type, char **data)
 {
@@ -54,20 +54,23 @@ int	parse_sphere_data(char *str, char *type, t_scene *mini_rt, char **data)
 {
 	char	**coord;
 	char	**color;
+	t_element	*sphere;
 
 	coord = ft_split(data[1], ",");
 	color = ft_split(data[3], ",");
+	sphere = initialize_element();
 	if (check_sphere_format(str, type, data) == 1)
 	{
-		mini_rt->sp->origin_coord->x = ft_atof(coord[0]);
-		mini_rt->sp->origin_coord->y = ft_atof(coord[1]);
-		mini_rt->sp->origin_coord->z = ft_atof(coord[2]);
-		mini_rt->sp->diam = ft_atof(data[2]);
-		mini_rt->sp->ray = mini_rt->sp->diam / 2;
-		mini_rt->sp->color->r = ft_atof(color[0]);
-		mini_rt->sp->color->g = ft_atof(color[1]);
-		mini_rt->sp->color->b = ft_atof(color[2]);
-		mini_rt->sp->count += 1;
+		sphere->orig->x = ft_atof(coord[0]);
+		sphere->orig->y = ft_atof(coord[1]);
+		sphere->orig->z = ft_atof(coord[2]);
+		sphere->diam = ft_atof(data[2]);
+		sphere->ray = sphere->diam / 2;
+		sphere->color->r = ft_atof(color[0]);
+		sphere->color->g = ft_atof(color[1]);
+		sphere->color->b = ft_atof(color[2]);
+		sphere->id = 1;
+		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(sphere));
 		return (1);
 	}
 	return (0);
