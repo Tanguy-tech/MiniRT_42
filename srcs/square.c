@@ -6,27 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:02:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 10:03:15 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 13:15:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-#include "../includes/shapes.h"
+#include "../includes/element.h"
 #include "../includes/utils.h"
-
-t_square	*initialize_square(void)
-{
-	t_square	*new_square;
-
-	if (!(new_square = ft_calloc(sizeof(t_square), 1)))
-		return (NULL);
-	new_square->coord = initialize_vector();
-	new_square->orientation = initialize_vector();
-	new_square->height = 0.0;
-	new_square->color = initialize_colors();
-	new_square->count = 0;
-	return (new_square);
-}
 
 int	check_square_format(char *str, char *type, char **data)
 {
@@ -60,6 +46,7 @@ int	parse_square_data(char *str, char *type, t_scene *mini_rt, char **data)
 	direction = ft_split(data[2], ",");
 	color = ft_split(data[4], ",");
 	square = initialize_element();
+	mini_rt->count_elem += 1;
 	if (check_square_format(str, type, data) == 1)
 	{
 		square->orig->x = ft_atof(coord[0]);
@@ -72,6 +59,7 @@ int	parse_square_data(char *str, char *type, t_scene *mini_rt, char **data)
 		square->color->r = ft_atof(color[0]);
 		square->color->g = ft_atof(color[1]);
 		square->color->b = ft_atof(color[2]);
+		square->id = 3;
 		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(square));
 		return (1);
 	}

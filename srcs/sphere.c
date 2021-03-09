@@ -6,30 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 10:00:35 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 13:15:01 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-#include "../includes/shapes.h"
+#include "../includes/element.h"
 #include "../includes/utils.h"
-
-// t_sphere	*initialize_sphere(void)
-// {
-// 	t_sphere	*new_sphere;
-
-// 	if (!(new_sphere = ft_calloc(sizeof(t_sphere), 1)))
-// 		return (NULL);
-// 	new_sphere->color = initialize_colors();
-// 	new_sphere->diam = 0.0;
-// 	new_sphere->ray = 0.0;
-// 	new_sphere->origin_coord = initialize_vector();
-// 	new_sphere->count = 0;
-// 	new_sphere->t = 0.0;
-// 	new_sphere->P = initialize_vector();
-// 	new_sphere->N = initialize_vector();
-// 	return (new_sphere);
-// }
 
 int	check_sphere_format(char *str, char *type, char **data)
 {
@@ -59,6 +42,7 @@ int	parse_sphere_data(char *str, char *type, t_scene *mini_rt, char **data)
 	coord = ft_split(data[1], ",");
 	color = ft_split(data[3], ",");
 	sphere = initialize_element();
+	mini_rt->count_elem += 1;
 	if (check_sphere_format(str, type, data) == 1)
 	{
 		sphere->orig->x = ft_atof(coord[0]);

@@ -6,14 +6,14 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 15:58:04 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/25 13:23:38 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 14:07:09 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vectors.h"
 #include "../includes/minirt.h"
 
-t_vectors	*operator_plus(t_vectors *a, t_vectors *b)
+t_vectors	*vec_plus(t_vectors *a, t_vectors *b)
 {
 	t_vectors	*res;
 
@@ -25,7 +25,7 @@ t_vectors	*operator_plus(t_vectors *a, t_vectors *b)
 	return (res);
 }
 
-t_vectors	*operator_minus(t_vectors *a, t_vectors *b)
+t_vectors	*vec_minus(t_vectors *a, t_vectors *b)
 {
 	t_vectors	*res;
 
@@ -37,7 +37,7 @@ t_vectors	*operator_minus(t_vectors *a, t_vectors *b)
 	return (res);
 }
 
-t_vectors	*operator_xvec(t_vectors *a, t_vectors *b)
+t_vectors	*vec_xvec(t_vectors *a, t_vectors *b)
 {
 	t_vectors	*res;
 
@@ -49,7 +49,7 @@ t_vectors	*operator_xvec(t_vectors *a, t_vectors *b)
 	return (res);
 }
 
-t_vectors	*operator_divvec(t_vectors *a, t_vectors *b)
+t_vectors	*vec_divvec(t_vectors *a, t_vectors *b)
 {
 	t_vectors	*res;
 

@@ -6,27 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 10:02:38 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 13:14:54 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-#include "../includes/shapes.h"
+#include "../includes/element.h"
 #include "../includes/utils.h"
-
-t_plan	*initialize_plan(void)
-{
-	t_plan	*new_plan;
-
-	if (!(new_plan = ft_calloc(sizeof(t_plan), 1)))
-		return (NULL);
-	new_plan->coord = initialize_vector();
-	new_plan->orientation = initialize_vector();
-	new_plan->color = initialize_colors();
-	new_plan->count = 0;
-	new_plan->t = 0.0;
-	return (new_plan);
-}
 
 int	check_plan_format(char *str, char *type, char **data)
 {
@@ -59,6 +45,7 @@ int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
 	direction = ft_split(data[2], ",");
 	color = ft_split(data[3], ",");
 	plan = initialize_element();
+	mini_rt->count_elem += 1;
 	if (check_plan_format(str, type, data) == 1)
 	{
 		plan->orig->x = ft_atof(coord[0]);
@@ -70,7 +57,8 @@ int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
 		plan->color->r = ft_atof(color[0]);
 		plan->color->g = ft_atof(color[1]);
 		plan->color->b = ft_atof(color[2]);
-		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(plan));
+		plan->id = 2;
+		ft_lstadd_front(&mini_rt->elem_list, ft_lstnew(plan)); /* add front to write the plan pixel first */
 		return (1);
 	}
 	return (0);

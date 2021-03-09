@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 10:19:30 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 14:18:05 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include "scenes.h"
 #include "utils.h"
 #include "vectors.h"
-#include "window.h"
-#include "shapes.h"
-#include "ray.h"
+#include "element.h"
+#include "texture.h"
+#include "resolve.h"
 #include "../minilibx/mlx.h"
 
 #define PI 3.14159265359;
@@ -65,7 +65,9 @@ int		parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data);
 /* MATHS FUNCTIONS */
 int	sphere_intersection(t_ray *ray, t_element *sphere, t_vectors *P, t_vectors *N);
 int	plan_intersection(t_ray *ray, t_element *plan, t_vectors *P, t_vectors *N);
+int	plane(t_scene *rt, t_element *plane, t_vectors *ori, t_vectors *dir);
 int	test_sign(double delta, double a, double b);
+void	get_text(t_ray *ray, t_scene *mini_rt, t_element *sphere, int *col, int *row);
 
 /* MLX RELATIVES */
 int	set_img(t_scene	*mini_rt);

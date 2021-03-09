@@ -6,28 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 10:02:15 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 13:14:43 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-#include "../includes/shapes.h"
+#include "../includes/element.h"
 #include "../includes/utils.h"
-
-t_cylinder	*initialize_cylinder(void)
-{
-	t_cylinder	*new_cylinder;
-
-	if (!(new_cylinder = ft_calloc(sizeof(t_cylinder), 1)))
-		return (NULL);
-	new_cylinder->origin_coord = initialize_vector();
-	new_cylinder->orientation = initialize_vector();
-	new_cylinder->diam = 0.0;
-	new_cylinder->height = 0.0;
-	new_cylinder->color = initialize_colors();
-	new_cylinder->count = 0;
-	return (new_cylinder);
-}
 
 int	check_cylinder_format(char *str, char *type, char **data)
 {
@@ -68,6 +53,7 @@ int	parse_cylinder_data(char *str, char *type, t_scene *mini_rt, char **data)
 	direction = ft_split(data[2], ",");
 	color = ft_split(data[5], ",");
 	cylinder = initialize_element();
+	mini_rt->count_elem += 1;
 	if (check_cylinder_format(str, type, data) == 1)
 	{
 		cylinder->orig->x = ft_atof(coord[0]);
@@ -81,6 +67,7 @@ int	parse_cylinder_data(char *str, char *type, t_scene *mini_rt, char **data)
 		cylinder->color->r = ft_atof(color[0]);
 		cylinder->color->g = ft_atof(color[1]);
 		cylinder->color->b = ft_atof(color[2]);
+		cylinder->id = 4;
 		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(cylinder));
 		return (1);
 	}

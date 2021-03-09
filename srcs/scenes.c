@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 09:59:28 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 13:51:22 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ t_camera	*initialize_camera(void)
 
 	if (!(new_cam = ft_calloc(sizeof(t_camera), 1)))
 		return (NULL);
-	new_cam->coord = initialize_vector();
-	new_cam->direction = initialize_vector();
+	new_cam->orig = initialize_vector();
+	new_cam->dir = initialize_vector();
+	new_cam->up = initialize_vector();
+	new_cam->right = initialize_vector();
 	new_cam->fov = 0.0;
 	return (new_cam);
 }
@@ -42,12 +44,23 @@ t_light	*initialize_light(void)
 
 	if (!(new_light = ft_calloc(sizeof(t_light), 1)))
 		return (NULL);
-	new_light->coord = initialize_vector();
+	new_light->orig = initialize_vector();
 	new_light->light_ratio = 0.0;
 	new_light->color = initialize_colors();
 	new_light->P = initialize_vector();
 	new_light->N = initialize_vector();
 	return (new_light);
+}
+
+t_texture	*initialize_texture(void)
+{
+	t_texture	*new_text;
+
+	if (!(new_text = ft_calloc(sizeof(t_texture), 1)))
+		return (NULL);
+	new_text->height = 0.0;
+	new_text->width = 0.0;
+	return (new_text);
 }
 
 t_element	*initialize_element(void)
@@ -64,11 +77,32 @@ t_element	*initialize_element(void)
 	new_element->first_coord = initialize_vector();
 	new_element->sec_coord = initialize_vector();
 	new_element->third_coord = initialize_vector();
+	new_element->tex = initialize_texture();
 	new_element->height = 0.0;
 	new_element->diam = 0.0;
 	new_element->ray = 0.0;
 	new_element->id = 0;
 	return (new_element);
+}
+
+t_res	*initialize_res(void)
+{
+	t_res	*new_res;
+
+	if (!(new_res = ft_calloc(sizeof(t_res), 1)))
+		return (NULL);
+	new_res->x = 0;
+	new_res->y = 0;
+	return (new_res);
+}
+
+t_image	*initialize_image(void)
+{
+	t_image	*new_img;
+
+	if (!(new_img = ft_calloc(sizeof(t_image), 1)))
+		return (NULL);
+	return (new_img);
 }
 
 t_scene	*initialize_scene(void)
@@ -78,15 +112,12 @@ t_scene	*initialize_scene(void)
 	if (!(new_scene = ft_calloc(sizeof(t_scene), 1)))
 		return (NULL);
 	new_scene->mlx_ptr = mlx_init();
+	new_scene->res = initialize_res();
 	new_scene->amb_light = initialize_ambiant_light();
 	new_scene->cam = initialize_camera();
 	new_scene->light = initialize_light();
-	new_scene->window = initialize_window();
-	// new_scene->sp = initialize_sphere();
-	// new_scene->pl = initialize_plan();
-	// new_scene->sq = initialize_square();
-	// new_scene->cy = initialize_cylinder();
-	// new_scene->tr = initialize_triangle();
-	// new_scene->element = initialize_element();
+	new_scene->img = initialize_image();
+	new_scene->ray = initialize_ray();
+	new_scene->count_elem = 0;
 	return (new_scene);
 }

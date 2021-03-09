@@ -6,27 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 10:03:40 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 13:15:11 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
-#include "../includes/shapes.h"
+#include "../includes/element.h"
 #include "../includes/utils.h"
-
-t_triangle	*initialize_triangle(void)
-{
-	t_triangle	*new_triangle;
-
-	if (!(new_triangle = ft_calloc(sizeof(t_triangle), 1)))
-		return (NULL);
-	new_triangle->first_coord = initialize_vector();
-	new_triangle->sec_coord = initialize_vector();
-	new_triangle->third_coord = initialize_vector();
-	new_triangle->color = initialize_colors();
-	new_triangle->count = 0;
-	return (new_triangle);
-}
 
 int	check_triangle_format(char *str, char *type, char **data)
 {
@@ -63,6 +49,7 @@ int	parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data)
 	third_coord = ft_split(data[3], ",");
 	color = ft_split(data[4], ",");
 	triangle = initialize_element();
+	mini_rt->count_elem += 1;
 	if (check_triangle_format(str, type, data) == 1)
 	{
 		mini_rt->element->first_coord->x = ft_atof(first_coord[0]);
@@ -77,6 +64,7 @@ int	parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->element->color->r = ft_atof(color[0]);
 		mini_rt->element->color->g = ft_atof(color[1]);
 		mini_rt->element->color->b = ft_atof(color[2]);
+		triangle->id = 5;
 		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(mini_rt->element));
 		return (1);
 	}
