@@ -6,20 +6,20 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/04 12:35:27 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/10 10:34:29 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vectors.h"
 #include "../includes/minirt.h"
 
-double	get_norme2(double coord_x, double coord_y, double coord_z)
+double	get_norme2(t_vectors *vec)
 {
 	double	norme2;
 
-	norme2 = (coord_x * coord_x)
-		+ (coord_y * coord_y)
-		+ (coord_z * coord_z);
+	norme2 = (vec->x * vec->x)
+		+ (vec->y * vec->y)
+		+ (vec->z * vec->z);
 	return (norme2);
 }
 
@@ -30,7 +30,7 @@ t_vectors	*unit_vector(t_vectors *vector)
 	
 	if (!(unit_vector = ft_calloc(sizeof(t_vectors), 1)))
 		return (NULL);
-	norm = sqrt(get_norme2(vector->x, vector->y, vector->z));
+	norm = sqrt(get_norme2(vector));
 	unit_vector->x = vector->x / norm;
 	unit_vector->y = vector->y / norm;
 	unit_vector->z = vector->z / norm;

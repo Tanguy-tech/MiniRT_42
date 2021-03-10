@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 14:22:05 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/10 13:41:58 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ typedef struct	camera
 {
 	t_vectors	*orig;
 	t_vectors	*dir;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
-	t_vectors	*up;
-	t_vectors	*right;
 	double		fov;			/* Field of view - angle in degrees in [0.0/180.0] range */
 }				t_camera;
 
@@ -50,7 +48,7 @@ t_camera		*initialize_camera(void);
 typedef struct	light
 {
 	t_vectors	*orig;
-	double		light_ratio;	/* Ratio of light in [0.0/1.0] range */
+	double		ratio;	/* Ratio of light in [0.0/1.0] range */
 	t_colors	*color;			/* Light color */
 	t_vectors	*P;
 	t_vectors	*N;
@@ -85,6 +83,5 @@ typedef struct	scene
 }				t_scene;
 
 t_scene			*initialize_scene(void);
-void	update_ray(t_scene *mini_rt, double index_hor, double index_ver);
 
 #endif

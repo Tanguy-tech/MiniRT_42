@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 13:51:22 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/10 14:37:51 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ t_camera	*initialize_camera(void)
 		return (NULL);
 	new_cam->orig = initialize_vector();
 	new_cam->dir = initialize_vector();
-	new_cam->up = initialize_vector();
-	new_cam->right = initialize_vector();
 	new_cam->fov = 0.0;
 	return (new_cam);
 }
@@ -45,7 +43,7 @@ t_light	*initialize_light(void)
 	if (!(new_light = ft_calloc(sizeof(t_light), 1)))
 		return (NULL);
 	new_light->orig = initialize_vector();
-	new_light->light_ratio = 0.0;
+	new_light->ratio = 0.0;
 	new_light->color = initialize_colors();
 	new_light->P = initialize_vector();
 	new_light->N = initialize_vector();
@@ -93,6 +91,7 @@ t_res	*initialize_res(void)
 		return (NULL);
 	new_res->x = 0;
 	new_res->y = 0;
+	new_res->ratio = 0.0;
 	return (new_res);
 }
 

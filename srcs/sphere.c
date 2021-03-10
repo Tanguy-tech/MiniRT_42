@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 13:15:01 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/10 14:19:51 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	parse_sphere_data(char *str, char *type, t_scene *mini_rt, char **data)
 	if (check_sphere_format(str, type, data) == 1)
 	{
 		sphere->orig->x = ft_atof(coord[0]);
-		sphere->orig->y = ft_atof(coord[1]);
+		sphere->orig->y = -ft_atof(coord[1]);
 		sphere->orig->z = ft_atof(coord[2]);
 		sphere->diam = ft_atof(data[2]);
 		sphere->ray = sphere->diam / 2;

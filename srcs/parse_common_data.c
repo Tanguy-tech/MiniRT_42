@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 13:24:09 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/10 10:36:07 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	parse_light_data(char *str, char *type, t_scene *mini_rt, char **data)
 		mini_rt->light->orig->x = ft_atof(coord[0]);
 		mini_rt->light->orig->y = ft_atof(coord[1]);
 		mini_rt->light->orig->z = ft_atof(coord[2]);
-		mini_rt->light->light_ratio = ft_atof(data[2]);
+		mini_rt->light->ratio = ft_atof(data[2]);
 		mini_rt->light->color->r = ft_atof(color[0]);
 		mini_rt->light->color->g = ft_atof(color[1]);
 		mini_rt->light->color->b = ft_atof(color[2]);

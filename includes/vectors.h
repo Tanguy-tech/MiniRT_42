@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:21 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 14:06:56 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/10 10:34:37 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct vectors
 	double	z;			/* Vector cordinate on z axis */
 }				t_vectors;
 
-double		get_norme2(double coord_x, double coord_y, double coord_z);
+double		get_norme2(t_vectors *vec);
 t_vectors	*initialize_vector(void);
 t_vectors	*reinitialize_vector(t_vectors *vector);
 t_vectors	*vec_x(double a, t_vectors *b);
