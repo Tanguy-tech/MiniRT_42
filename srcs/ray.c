@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 07:41:01 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/10 14:38:18 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 17:17:55 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,29 @@ t_ray	*initialize_ray(void)
 		return (NULL);
 	new_ray->origin = initialize_vector();
 	new_ray->direction = initialize_vector();
+	new_ray->norm_dir = initialize_vector();
 	return (new_ray);
 }
 
-void	gen_ray(t_scene *rt)
+t_ray	*gen_ray(t_scene *rt, double index_hor, double index_ver)
 {
-	rt->ray->origin->x = rt->cam->orig->x;
-	rt->ray->origin->y = rt->cam->orig->y;
-	rt->ray->origin->z = rt->cam->orig->z;
+	t_ray	*ray;
+	
+	ray = initialize_ray();
+	rt->cam = rt->cam_list->content;
+	ray->origin->x = rt->cam->orig->x;
+	ray->origin->y = rt->cam->orig->y;
+	ray->origin->z = rt->cam->orig->z;
+	ray->direction->x = -0.5 + index_hor;
+	ray->direction->y = -rt->res->ratio / 2 + index_ver;
+	ray->direction->z = rt->res->y / (2 * tan((rt->cam->fov * 3.14/180)) / 2);
+	ray->norm_dir = unit_vector(ray->direction);
+	return (ray);
 }
 
-void	update_ray(t_scene *mini_rt, double index_hor, double index_ver)
+void	update_ray(t_ray *ray, t_scene *rt, double index_hor, double index_ver)
 {
-	mini_rt->ray->direction->x = -0.5 + index_hor;
-	mini_rt->ray->direction->y = -mini_rt->res->ratio / 2 + index_ver;
-	mini_rt->ray->direction->z = mini_rt->res->y / (2 * tan((mini_rt->cam->fov * 3.14/180)) / 2);
-	mini_rt->ray->direction = unit_vector(mini_rt->ray->direction);
+	ray->direction->x = -0.5 + index_hor;
+	ray->direction->y = -rt->res->ratio / 2 + index_ver;
+	ray->norm_dir = unit_vector(ray->direction);
 }

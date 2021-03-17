@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/10 14:38:46 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 16:51:24 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,6 @@ int	set_img(t_scene	*rt)
 				&rt->img->endian)))
 		return (error_code(4, NULL));
 	rt->res->x /= 4;
-	double i;
-	double j;
-	int k;
-	
-	gen_ray(rt);
-	rt->cam = rt->cam_list->content;
-	rt->res->ratio = (1.0 * rt->res->y) / (1.0 * rt->res->x);
-	j = 0;
-	k = 2;
-	while (j < rt->res->y)
-	{
-		i = 0;
-		while (i < rt->res->x)
-		{
-			update_ray(rt, i/rt->res->x , j/rt->res->x);
-			display_elements(rt, rt->ray, k, j);
-			i++;
-			k+= 4;
-		}
-		j++;
-	}
+	create_thread(rt);
 	return (0);
 }

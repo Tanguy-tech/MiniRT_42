@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/10 13:41:58 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 13:25:52 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef	struct ray
 {
 	t_vectors	*origin;	/* Origin point of the ray (vector point) */
 	t_vectors	*direction;	/* Direction of the ray (vector) */
+	t_vectors	*norm_dir;
 }				t_ray;
 
 t_ray	*initialize_ray(void);
@@ -80,6 +81,7 @@ typedef struct	scene
 	t_list			*cam_list;
 	int				count_elem;
 	double			t;
+	int				thread_id;
 }				t_scene;
 
 t_scene			*initialize_scene(void);

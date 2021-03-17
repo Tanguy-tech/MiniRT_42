@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/10 13:21:28 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/12 07:21:49 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
 	if (check_plan_format(str, type, data) == 1)
 	{
 		plan->orig->x = ft_atof(coord[0]);
-		plan->orig->y = ft_atof(coord[1]);
+		plan->orig->y = -ft_atof(coord[1]);
 		plan->orig->z = ft_atof(coord[2]);
 		plan->dir->x = ft_atof(direction[0]);
 		plan->dir->y = ft_atof(direction[1]);

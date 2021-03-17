@@ -6,11 +6,18 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 13:46:59 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 14:50:02 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+
+int		close_win(int keycode, t_scene *vars)
+{
+	if (keycode == 53)
+    	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+	return (0);
+}
 
 void	create_window(t_scene *mini_rt)
 {
@@ -24,6 +31,7 @@ void	create_window(t_scene *mini_rt)
 				mini_rt->win_ptr,
 				mini_rt->img->ptr,
 				0,0);
+		mlx_hook(mini_rt->win_ptr, 2, 1L<<0, close_win, mini_rt);
 		mlx_loop(mini_rt->mlx_ptr);
 }
 

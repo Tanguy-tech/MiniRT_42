@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   res.h                                              :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 13:18:44 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/17 14:33:08 by tbillon          ###   ########lyon.fr   */
+/*   Created: 2021/03/17 08:12:54 by tbillon           #+#    #+#             */
+/*   Updated: 2021/03/17 08:13:07 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RES_H
-#define RES_H
+#include "../../includes/utils.h"
 
-typedef	struct	s_res
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	x;
-	int	y;
-	int	orig_x;
-	double	ratio;
-}				t_res;
+	size_t			i;
+	unsigned char	*from;
+	unsigned char	*dest;
 
-t_res	*initialize_res(void);
-
-#endif
+	i = 0;
+	from = (unsigned char *)src;
+	dest = (unsigned char *)dst;
+	if (n == 0 || dest == from)
+		return (dest);
+	while (i < n)
+	{
+		dest[i] = from[i];
+		i++;
+	}
+	return (dest);
+}

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:16:19 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/10 14:37:51 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 13:45:23 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ t_scene	*initialize_scene(void)
 	new_scene->img = initialize_image();
 	new_scene->ray = initialize_ray();
 	new_scene->count_elem = 0;
+	new_scene->thread_id = 0;
 	return (new_scene);
 }

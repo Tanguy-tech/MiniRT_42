@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 14:17:07 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 08:13:19 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ void	ft_lstadd_back(t_list **alst, t_list *new);
 t_list		*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **alst, t_list *new);
+
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

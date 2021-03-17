@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/10 10:36:07 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 16:51:54 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	parse_res(char *str, char *path, t_scene *mini_rt, char **data)
 	{
 		mini_rt->res->x = ft_atoi(data[1]);
 		mini_rt->res->y = ft_atoi(data[2]);
+		mini_rt->res->orig_x = mini_rt->res->x;
+		mini_rt->res->ratio = (1.0 * mini_rt->res->y) / (1.0 * mini_rt->res->x);
 		mini_rt->title = ft_strrchr(path, '/');
 		return (1);
 	}
