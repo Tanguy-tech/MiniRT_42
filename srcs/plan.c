@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/12 07:21:49 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 13:04:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/element.h"
 #include "../includes/utils.h"
 
-int	check_plan_format(char *str, char *type, char **data)
+int	check_plan_format(char *type, char **data)
 {
 	if (count_array(data) != 4
 		|| !valid_format(data[1])
@@ -34,7 +34,7 @@ int	check_plan_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
+int	parse_plan_data(char *type, t_scene *mini_rt, char **data)
 {
 	char	**coord;
 	char	**direction;
@@ -46,7 +46,7 @@ int	parse_plan_data(char *str, char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[3], ",");
 	plan = initialize_element();
 	mini_rt->count_elem += 1;
-	if (check_plan_format(str, type, data) == 1)
+	if (check_plan_format(type, data) == 1)
 	{
 		plan->orig->x = ft_atof(coord[0]);
 		plan->orig->y = -ft_atof(coord[1]);

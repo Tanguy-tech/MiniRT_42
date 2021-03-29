@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 13:15:11 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 13:28:21 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/element.h"
 #include "../includes/utils.h"
 
-int	check_triangle_format(char *str, char *type, char **data)
+int	check_triangle_format(char *type, char **data)
 {
 	if (count_array(data) != 5
 		|| !valid_format(data[1])
@@ -36,7 +36,7 @@ int	check_triangle_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data)
+int	parse_triangle_data(char *type, t_scene *mini_rt, char **data)
 {
 	char	**first_coord;
 	char	**sec_coord;
@@ -50,7 +50,7 @@ int	parse_triangle_data(char *str, char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[4], ",");
 	triangle = initialize_element();
 	mini_rt->count_elem += 1;
-	if (check_triangle_format(str, type, data) == 1)
+	if (check_triangle_format(type, data) == 1)
 	{
 		mini_rt->element->first_coord->x = ft_atof(first_coord[0]);
 		mini_rt->element->first_coord->y = ft_atof(first_coord[1]);

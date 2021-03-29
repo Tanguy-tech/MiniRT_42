@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:09 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/04 13:32:13 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 12:50:32 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_res_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	check_amb_format(char *str, char *type, char **data)
+int	check_amb_format(char *type, char **data)
 {
 	if (count_array(data) != 3
 		|| !valid_format(data[1])
@@ -60,7 +60,7 @@ int	check_amb_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	check_c_format(char *str, char *type, char **data)
+int	check_c_format(char *type, char **data)
 {
 	double	angle;
 
@@ -82,7 +82,7 @@ int	check_c_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	check_l_format(char *str, char *type, char **data)
+int	check_l_format(char *type, char **data)
 {
 	if (count_array(data) != 4
 		|| !valid_format(data[1])

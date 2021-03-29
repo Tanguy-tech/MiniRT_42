@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/10 14:19:51 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 13:20:10 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/element.h"
 #include "../includes/utils.h"
 
-int	check_sphere_format(char *str, char *type, char **data)
+int	check_sphere_format(char *type, char **data)
 {
 	if (count_array(data) != 4
 		|| !valid_format(data[1])
@@ -33,7 +33,7 @@ int	check_sphere_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	parse_sphere_data(char *str, char *type, t_scene *mini_rt, char **data)
+int	parse_sphere_data(char *type, t_scene *mini_rt, char **data)
 {
 	char	**coord;
 	char	**color;
@@ -43,7 +43,7 @@ int	parse_sphere_data(char *str, char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[3], ",");
 	sphere = initialize_element();
 	mini_rt->count_elem += 1;
-	if (check_sphere_format(str, type, data) == 1)
+	if (check_sphere_format(type, data) == 1)
 	{
 		sphere->orig->x = ft_atof(coord[0]);
 		sphere->orig->y = -ft_atof(coord[1]);

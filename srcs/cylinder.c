@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 13:14:43 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 12:52:14 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/element.h"
 #include "../includes/utils.h"
 
-int	check_cylinder_format(char *str, char *type, char **data)
+int	check_cylinder_format(char *type, char **data)
 {
 	float	height;
 	float	diam;
@@ -42,7 +42,7 @@ int	check_cylinder_format(char *str, char *type, char **data)
 	return (0);
 }
 
-int	parse_cylinder_data(char *str, char *type, t_scene *mini_rt, char **data)
+int	parse_cylinder_data(char *type, t_scene *mini_rt, char **data)
 {
 	char	**coord;
 	char	**direction;
@@ -54,7 +54,7 @@ int	parse_cylinder_data(char *str, char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[5], ",");
 	cylinder = initialize_element();
 	mini_rt->count_elem += 1;
-	if (check_cylinder_format(str, type, data) == 1)
+	if (check_cylinder_format(type, data) == 1)
 	{
 		cylinder->orig->x = ft_atof(coord[0]);
 		cylinder->orig->y = ft_atof(coord[1]);

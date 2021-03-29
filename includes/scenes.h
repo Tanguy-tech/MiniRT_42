@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/17 13:25:52 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/29 09:03:10 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ t_ambiant_light	*initialize_ambiant_light(void);
 
 typedef struct	camera
 {
-	t_vectors	*orig;
-	t_vectors	*dir;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
+	t_vectors	orig;
+	t_vectors	dir;	/* Vector of 3d orientation in [-1.0/1.0] range for each x,y and z axises */
 	double		fov;			/* Field of view - angle in degrees in [0.0/180.0] range */
 }				t_camera;
 
@@ -58,8 +58,8 @@ t_light			*initalize_light(void);
 
 typedef	struct ray
 {
-	t_vectors	*origin;	/* Origin point of the ray (vector point) */
-	t_vectors	*direction;	/* Direction of the ray (vector) */
+	t_vectors	*orig;	/* Origin point of the ray (vector point) */
+	t_vectors	*dir;	/* Direction of the ray (vector) */
 	t_vectors	*norm_dir;
 }				t_ray;
 
@@ -69,19 +69,18 @@ typedef struct	scene
 {
 	void			*mlx_ptr;		/* pointer to location of current mlx instance */
 	void			*win_ptr;
-	t_res			*res;			/* Resolution of the image/window */
+	t_res			res;			/* Resolution of the image/window */
 	char			*title;			/* Title of the window */
 	t_image			*img;			/* Image structure */
 	t_ambiant_light	*amb_light;		/* Ambiant light structure */
-	t_camera		*cam;			/* Camera position structure */
+	t_camera		cam;			/* Camera position structure */
 	t_light			*light;			/* Light structure */
-	t_ray			*ray;			/* Ray for raytracing */
 	t_element		*element;
 	t_list			*elem_list;
-	t_list			*cam_list;
 	int				count_elem;
 	double			t;
 	int				thread_id;
+	int				mouse;
 }				t_scene;
 
 t_scene			*initialize_scene(void);

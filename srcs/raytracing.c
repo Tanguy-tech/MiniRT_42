@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 09:26:44 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/17 17:17:51 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/29 08:53:40 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ void	create_thread(t_scene *rt)
 {
 	t_thread	thread[THREAD_COUNT];
 	int i;
-	t_ray	*ray;
+	double size;
 
 	i = 0;
+	size = rt->res.x / THREAD_COUNT;
 	while (i < THREAD_COUNT)
 	{
-		thread[i].current = i;
-		thread[i].size = rt->res->x / THREAD_COUNT;
-		thread[i].rt = rt;
-		thread[i].start = i * thread[i].size;
-		thread[i].end = (i + 1) * thread[i].size;
-		ray = gen_ray(rt, thread[i].start, 0);
-		thread[i].ray = ray;
-		thread[i].index = 2 + (i * thread[i].size);
-		pthread_create(&thread[i].pthr, NULL, raytrace, &thread);
+		thread[i].rt = *rt;
+		thread[i].start = i * size;
+		thread[i].end = (i + 1) * size;
+		thread[i].ray = gen_ray(rt, thread[i].start, 0);
+		thread[i].index = 2 + (i * size * 4);
+		thread[i].P = initialize_vector();
+		thread[i].N = initialize_vector();
+		pthread_create(&thread[i].pthr, NULL, (void*)raytrace, &thread[i]);
 		i++;
 	}
 	i = 0;
@@ -40,24 +40,23 @@ void	create_thread(t_scene *rt)
 	}
 }
 
-void	*raytrace(void *mini_rt)
+void	*raytrace(t_thread *th)
 {
-	double i;
-	double j;
-	int k;
-	t_thread *th;
+	int i;
+	int j;
+	int index_tab;
 	
-	th = (t_thread*)mini_rt;
 	j = 0;
-	while (j < th->rt->res->y)
+	while (j < th->rt.res.y)
 	{
 		i = th->start;
+		index_tab = j * (th->rt.res.x * 4) + th->index;
 		while (i < th->end)
 		{
-			update_ray(th->ray, th->rt, i/th->rt->res->x, j/th->rt->res->x);
-			display_elements(th->rt, th->ray, th->index, j);
+			update_ray(th, i, j);
+			display_elements(th, index_tab);
 			i++;
-			th->index += 4;
+			index_tab += 4;
 		}
 		j++;
 	}

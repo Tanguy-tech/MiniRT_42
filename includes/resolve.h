@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 14:11:15 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/09 14:19:20 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/18 10:44:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef	struct	s_resolve
 	double	delta;
 	double	t1;
 	double	t2;
+	double	t_res;
 	t_vectors	*sub;
 }				t_resolve;
 
