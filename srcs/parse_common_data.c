@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 08:53:03 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/29 12:39:15 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	parse_amb_light_data(char *str, char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[2], ",");
 	if (check_format_engine(str, type, data) == 1)
 	{
-		mini_rt->amb_light->ratio = ft_atof(data[1]);
-		mini_rt->amb_light->color->r = ft_atof(color[0]);
-		mini_rt->amb_light->color->g = ft_atof(color[1]);
-		mini_rt->amb_light->color->b = ft_atof(color[2]);
+		mini_rt->amb_light.ratio = ft_atof(data[1]);
+		mini_rt->amb_light.color.r = ft_atof(color[0]);
+		mini_rt->amb_light.color.g = ft_atof(color[1]);
+		mini_rt->amb_light.color.b = ft_atof(color[2]);
 		return (1);
 	}
 	return (0);
@@ -52,7 +52,7 @@ int	parse_camera_data(char *str, char *type, t_scene *mini_rt, char **data)
 	if (check_format_engine(str, type, data) == 1)
 	{
 		mini_rt->cam.orig.x = ft_atof(coord[0]);
-		mini_rt->cam.orig.y = ft_atof(coord[1]);
+		mini_rt->cam.orig.y = -ft_atof(coord[1]);
 		mini_rt->cam.orig.z = ft_atof(coord[2]);
 		mini_rt->cam.dir.x = ft_atof(dir[0]);
 		mini_rt->cam.dir.y = ft_atof(dir[1]);
@@ -72,13 +72,13 @@ int	parse_light_data(char *str, char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[3], ",");
 	if (check_format_engine(str, type, data) == 1)
 	{
-		mini_rt->light->orig->x = ft_atof(coord[0]);
-		mini_rt->light->orig->y = ft_atof(coord[1]);
-		mini_rt->light->orig->z = ft_atof(coord[2]);
-		mini_rt->light->ratio = ft_atof(data[2]);
-		mini_rt->light->color->r = ft_atof(color[0]);
-		mini_rt->light->color->g = ft_atof(color[1]);
-		mini_rt->light->color->b = ft_atof(color[2]);
+		mini_rt->light.orig.x = ft_atof(coord[0]);
+		mini_rt->light.orig.y = ft_atof(coord[1]);
+		mini_rt->light.orig.z = ft_atof(coord[2]);
+		mini_rt->light.ratio = ft_atof(data[2]);
+		mini_rt->light.color.r = ft_atof(color[0]);
+		mini_rt->light.color.g = ft_atof(color[1]);
+		mini_rt->light.color.b = ft_atof(color[2]);
 		return (1);
 	}
 	return (0);

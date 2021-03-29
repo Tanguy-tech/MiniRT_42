@@ -6,17 +6,17 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 09:07:16 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/29 09:16:15 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		close_win(int keycode, t_scene *vars)
+int		close_win(int keycode, t_scene *rt)
 {
 	if (keycode == 53)
 	{
-    	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+    	mlx_destroy_window(rt->mlx_ptr, rt->win_ptr);
 		exit(0);
 	}
 	return (0);

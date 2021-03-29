@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/19 13:04:31 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/29 12:42:07 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ int	parse_plan_data(char *type, t_scene *mini_rt, char **data)
 	mini_rt->count_elem += 1;
 	if (check_plan_format(type, data) == 1)
 	{
-		plan->orig->x = ft_atof(coord[0]);
-		plan->orig->y = -ft_atof(coord[1]);
-		plan->orig->z = ft_atof(coord[2]);
-		plan->dir->x = ft_atof(direction[0]);
-		plan->dir->y = ft_atof(direction[1]);
-		plan->dir->z = ft_atof(direction[2]);
-		plan->color->r = ft_atof(color[0]);
-		plan->color->g = ft_atof(color[1]);
-		plan->color->b = ft_atof(color[2]);
+		plan->orig.x = ft_atof(coord[0]);
+		plan->orig.y = -ft_atof(coord[1]);
+		plan->orig.z = ft_atof(coord[2]);
+		plan->dir.x = ft_atof(direction[0]);
+		plan->dir.y = ft_atof(direction[1]);
+		plan->dir.z = ft_atof(direction[2]);
+		plan->color.r = ft_atof(color[0]);
+		plan->color.g = ft_atof(color[1]);
+		plan->color.b = ft_atof(color[2]);
 		plan->id = 2;
 		ft_lstadd_front(&mini_rt->elem_list, ft_lstnew(plan)); /* add front to write the plan pixel first */
 		return (1);

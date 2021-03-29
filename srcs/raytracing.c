@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 09:26:44 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 08:53:40 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/29 13:19:25 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	create_thread(t_scene *rt)
 		thread[i].end = (i + 1) * size;
 		thread[i].ray = gen_ray(rt, thread[i].start, 0);
 		thread[i].index = 2 + (i * size * 4);
-		thread[i].P = initialize_vector();
-		thread[i].N = initialize_vector();
 		pthread_create(&thread[i].pthr, NULL, (void*)raytrace, &thread[i]);
 		i++;
 	}

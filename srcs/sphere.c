@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:59:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/19 13:20:10 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/29 13:24:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ int	parse_sphere_data(char *type, t_scene *mini_rt, char **data)
 	mini_rt->count_elem += 1;
 	if (check_sphere_format(type, data) == 1)
 	{
-		sphere->orig->x = ft_atof(coord[0]);
-		sphere->orig->y = -ft_atof(coord[1]);
-		sphere->orig->z = ft_atof(coord[2]);
+		sphere->orig.x = ft_atof(coord[0]);
+		sphere->orig.y = -ft_atof(coord[1]);
+		sphere->orig.z = ft_atof(coord[2]);
 		sphere->diam = ft_atof(data[2]);
 		sphere->ray = sphere->diam / 2;
-		sphere->color->r = ft_atof(color[0]);
-		sphere->color->g = ft_atof(color[1]);
-		sphere->color->b = ft_atof(color[2]);
+		sphere->color.r = ft_atof(color[0]);
+		sphere->color.g = ft_atof(color[1]);
+		sphere->color.b = ft_atof(color[2]);
 		sphere->id = 1;
 		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(sphere));
 		return (1);
