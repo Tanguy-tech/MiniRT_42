@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 10:32:24 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 13:19:53 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 10:13:07 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	sphere_intersection(t_thread *th)
 		res.t_res = res.t1;
 	else
 		res.t_res = res.t2;
+	th->rt.t = res.t_res;
 	th->P.x = vec_plus(th->ray.orig, vec_x(res.t_res, th->ray.norm_dir)).x;
 	th->P.y = -vec_plus(th->ray.orig, vec_x(res.t_res, th->ray.norm_dir)).y;
 	th->P.z = vec_plus(th->ray.orig, vec_x(res.t_res, th->ray.norm_dir)).z;
@@ -47,9 +48,9 @@ void	put_sphere(t_thread *th, int index)
 	{
 		t_vectors	pxl_intensity;
 		
-		pxl_intensity.x = th->rt.element.color.b * 100000 * dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N) / get_norme2(vec_minus(th->rt.light.orig, th->P));
-		pxl_intensity.y = th->rt.element.color.g * 100000 * dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N) / get_norme2(vec_minus(th->rt.light.orig, th->P));
-		pxl_intensity.z = th->rt.element.color.r * 100000 * dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N) / get_norme2(vec_minus(th->rt.light.orig, th->P));
+		pxl_intensity.x = ((th->rt.element.color.b + th->rt.light.color.b) / 2) * 100000 * dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N) / get_norme2(vec_minus(th->rt.light.orig, th->P));
+		pxl_intensity.y = ((th->rt.element.color.g + th->rt.light.color.g) / 2) * 100000 * dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N) / get_norme2(vec_minus(th->rt.light.orig, th->P));
+		pxl_intensity.z = ((th->rt.element.color.r + th->rt.light.color.r) / 2) * 100000 * dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N) / get_norme2(vec_minus(th->rt.light.orig, th->P));
 		pxl_intensity = check_intensity(pxl_intensity);
 		th->rt.img->data[index - 2] = (unsigned char)pxl_intensity.x * th->rt.light.ratio;
 		th->rt.img->data[index - 1] = (unsigned char)pxl_intensity.y * th->rt.light.ratio;

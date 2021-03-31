@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 12:51:08 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 11:03:05 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void	display_elements(t_thread *th, int index)
 {
 	t_list	*tmp;
-
 	tmp = th->rt.elem_list;
 	while(tmp)
 	{
@@ -25,10 +24,10 @@ void	display_elements(t_thread *th, int index)
 			put_sphere(th, index);
 		if (th->rt.element.id == 2)
 			put_plan(th, index);
-		// if (th->rt.element.id == 3)
-			
-		// if (th->rt.element.id == 4)
-
+		if (th->rt.element.id == 3)
+			put_square(th, index);
+		if (th->rt.element.id == 4)
+			put_cylinder(th, index);
 		// if (th->rt.element.id == 5)
 		tmp = tmp->next;
 	}

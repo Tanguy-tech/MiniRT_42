@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:41:37 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 13:00:34 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 08:09:56 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct	s_element
 	double		diam;			/* Diameter of current element if applicable */
 	double		ray;			/* Ray of current element if applicable  */
 	int			id;			/* ID of the current element 1-sphere 2-plane 3-square 4-cylinder 5-triangle */
+	double		ratio;
 }				t_element;
 
 t_element	*initialize_element(void);

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 09:26:44 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 13:19:25 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 12:47:47 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,4 @@ void	*raytrace(t_thread *th)
 	pthread_exit(th->pthr);
 	return (0);
 }
+	
