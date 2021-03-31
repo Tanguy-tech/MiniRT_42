@@ -6,40 +6,61 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 10:58:25 by tbillon           #+#    #+#              #
-#    Updated: 2021/02/04 13:09:34 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/03/31 16:43:10 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = MiniRT
+NAME = miniRT
 
-HEADERS = ./includes
+HEADERS = colors.h element.h image.h minirt.h res.h resolve.h scenes.h utils.h vectors.h
 
-SRCS = ./srcs/*.c
+SRCS = check_common_format.c cylinder_intersection.c parse_common_data.c ray.c \
+scenes.c square.c vectors_operators.c check_format_engine.c errors.c \
+plan.c raytracing.c sphere.c square_intersection.c vectors.c window.c cylinder.c \
+mini_rt.c plan_intersection.c read_and_parse.c sphere_intersection.c triangle.c \
+vectors_operator_bis.c
 
-UTILS = ./srcs/utils/*.c
+UTILS = check_coord.c count_array.c ft_abs.c \
+ft_calloc.c ft_iswhitespace.c ft_lst_new.c ft_putnbr.c ft_str_add_char.c \
+ft_strnstr.c ft_substr.c get_next_line.c valid_format.c check_intensity.c  \
+count_double.c ft_atof.c ft_isalpha.c ft_lst_add_back.c ft_memcpy.c ft_putstr.c \
+ft_strlen.c ft_strrchr.c get_angle.c size_num.c check_range.c count_rgb_format.c \
+ft_atoi.c ft_isdigit.c ft_lst_add_front.c ft_putchar.c ft_split.c ft_strncmp.c \
+ft_strtod.c get_double.c to_find.c
 
-ALL_SRCS = $(${SRCS}, ${UTILS})
+OBJS_HEADERS = $(addprefix ./includes/, $(HEADERS))
 
-OBJS = ${ALL_SRCS:.c=.o}
+OBJS_SRCS = $(addprefix ./srcs/, $(SRCS))
 
-MLX = ./minilibx
+OBJS_UTILS = $(addprefix ./srcs/utils/, $(UTILS))
 
 CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 
-RM = rm -f
+RM = rm -rf
+
+$(NAME):		$(OBJS_SRCS) $(OBJS_UTILS)
+					@make -C ./minilibx
+					@mv ./minilibx/libmlx.dylib .
+					@$(CC) $(FLAGS) $(OBJS_SRCS) $(OBJS_UTILS) -I $(OBJS_HEADERS) libmlx.dylib
+					@mv a.out miniRT
 
 all:		$(NAME)
 
-$(NAME):		$(OBJS)
-				@make -s -C $(MLX)
-				@mv $(MLX)/libmlx.dylib .
-				@make -s -C $(ALL_SRCS)
-				@$(CC) $(CFLAGS) $(MLX) -I $(HEADER) $(OBJS) -o $(NAME)
-
 norme:		
-			norminettev2 $(SRCS) $(UTILS)
+			norminette $(SRCS)
+			norminette $(UTILS)
+
+clean:
+			$(RM) $(OBJS)
+
+fclean:		clean
+			$(RM) $(NAME)
+			$(RM) ./includes/*.gch
+			$(RM) libmlx.dylib
+			make clean -C ./minilibx
+			$(RM) a.out.dSYM
 
 re:			fclean all
 
