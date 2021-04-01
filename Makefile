@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 10:58:25 by tbillon           #+#    #+#              #
-#    Updated: 2021/04/01 10:41:29 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/04/01 13:49:09 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ NAME = miniRT
 
 HEADERS = colors.h element.h image.h minirt.h res.h resolve.h scenes.h utils.h vectors.h
 
-SRCS = check_common_format.c cylinder_intersection.c parse_common_data.c ray.c \
+SRCS = check_common_format.c parse_common_data.c ray.c \
 scenes.c square.c vectors_operators.c check_format_engine.c errors.c \
 plan.c raytracing.c sphere.c square_intersection.c vectors.c window.c cylinder.c \
 mini_rt.c plan_intersection.c read_and_parse.c sphere_intersection.c triangle.c \
-vectors_operator_bis.c
+vectors_operator_bis.c triangle_intersection.c
 
 UTILS = check_coord.c count_array.c ft_abs.c \
 ft_calloc.c ft_iswhitespace.c ft_lst_new.c ft_putnbr.c ft_str_add_char.c \
@@ -60,13 +60,13 @@ $(NAME):		$(OBJS_SRCS) $(OBJS_UTILS)
 					@mv ./minilibx/libmlx.dylib .
 					@$(CC) $(FLAGS) $(OBJS_SRCS) $(OBJS_UTILS) -I $(OBJS_HEADERS) libmlx.dylib
 					@mv a.out miniRT
-					@printf "$(BLUE)Executable file miniRT Created with success!$(END)\n"
+					@printf "$(CYAN)Executable file miniRT Created with success!\n$(BLUE)You can execute $(YELLOW)./miniRT$(BLUE) with the $(YELLOW)scene$(BLUE) of your choise$(END)\n"
 
 all:		$(NAME)
 
 %.o: %.c $(OBJS_HEADERS)
 		 @$(CC) $(FLAGS) -c $< -o $(<:.c=.o) -I ./includes
-		 @printf "$(ERASE)$(CYAN)$<$(END)"
+		 @printf "$(ERASE)$(YELLOW)$<....$(END)"
 
 norme:		
 			norminette $(SRCS)

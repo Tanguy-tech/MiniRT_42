@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:33:00 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/31 11:03:36 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 12:54:34 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ void	put_square(t_thread *th, int index);
 /* CYLINDER RELATIVES */
 int	cylinder_intersection(t_thread *th);
 void	put_cylinder(t_thread *th, int index);
+
+/* TRIANGLE RELATIVES */
+void	put_triangle(t_thread *th, int index);
+int	triangle_intersection(t_thread *th);
 
 /* DISPLAY */
 void	display_elements(t_thread *th, int index);

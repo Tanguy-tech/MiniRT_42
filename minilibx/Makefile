@@ -39,11 +39,11 @@ $(NAME): $(MODULE_OBJ) $(OBJ) $(C_OBJ)
 
 %.o: %.swift
 	@swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@
-	@printf "$(ERASE)$(CYAN)$<$(END)"
+	@printf "$(ERASE)$(YELLOW)$<....$(END)"
 
 %.swiftmodule: %.swift
 	@swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
-	@printf "$(ERASE)$(CYAN)$<$(END)"
+	@printf "$(ERASE)$(YELLOW)$<....$(END)"
 
 clean:
 	@rm -f $(NAME) $(OBJ) $(MODULE_OBJ) $(C_OBJ) *.swiftdoc *~

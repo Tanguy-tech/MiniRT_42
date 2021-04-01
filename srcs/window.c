@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:58:49 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/31 16:41:28 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 12:54:55 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	display_elements(t_thread *th, int index)
 			put_square(th, index);
 		// if (th->rt.element.id == 4)
 		// 	put_cylinder(th, index);
-		// if (th->rt.element.id == 5)
+		if (th->rt.element.id == 5)
+			put_triangle(th, index);
 		tmp = tmp->next;
 	}
 }
