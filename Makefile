@@ -6,9 +6,23 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 10:58:25 by tbillon           #+#    #+#              #
-#    Updated: 2021/04/01 09:47:09 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/04/01 10:41:29 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
+
+ERASE       =   \033[2K\r
+GREY        =   \033[30m
+RED         =   \033[31m
+GREEN       =   \033[32m
+YELLOW      =   \033[33m
+BLUE        =   \033[34m
+PINK        =   \033[35m
+CYAN        =   \033[36m
+WHITE       =   \033[37m
+BOLD        =   \033[1m
+UNDER       =   \033[4m
+SUR         =   \033[7m
+END         =   \033[0m
 
 NAME = miniRT
 
@@ -41,26 +55,38 @@ FLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 
 $(NAME):		$(OBJS_SRCS) $(OBJS_UTILS)
+					@printf "$(ERASE)$(GREEN)-> Files .o Created with success$(END)\n"
 					@make -C ./minilibx
 					@mv ./minilibx/libmlx.dylib .
 					@$(CC) $(FLAGS) $(OBJS_SRCS) $(OBJS_UTILS) -I $(OBJS_HEADERS) libmlx.dylib
 					@mv a.out miniRT
+					@printf "$(BLUE)Executable file miniRT Created with success!$(END)\n"
 
 all:		$(NAME)
+
+%.o: %.c $(OBJS_HEADERS)
+		 @$(CC) $(FLAGS) -c $< -o $(<:.c=.o) -I ./includes
+		 @printf "$(ERASE)$(CYAN)$<$(END)"
 
 norme:		
 			norminette $(SRCS)
 			norminette $(UTILS)
 
 clean:
-			$(RM) $(OBJS)
+			@$(RM) $(OBJS)
 
 fclean:		clean
-			$(RM) $(NAME)
-			$(RM) ./includes/*.gch
-			$(RM) libmlx.dylib
-			make clean -C ./minilibx
-			$(RM) a.out.dSYM
+			@$(RM) $(NAME)
+			@$(RM) ./includes/*.gch
+			@$(RM) libmlx.dylib
+			@make clean -C ./minilibx
+			@$(RM) a.out.dSYM
+			@$(RM) $(OBJS_SRCS)
+			@$(RM) $(OBJS_UTILS)
+			@printf "$(ERASE)$(RED)-> All files .o cleaned$(END)\n"
+			@printf "$(ERASE)$(RED)-> All files *.gch cleaned$(END)\n"
+			@printf "$(ERASE)$(RED)-> libmlx.dylib cleaned$(END)\n"
+			@printf "$(ERASE)$(RED)-> All minilibx files cleaned$(END)\n"
 
 re:			fclean all
 

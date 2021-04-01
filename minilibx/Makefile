@@ -1,5 +1,17 @@
 
-
+ERASE       =   \033[2K\r
+GREY        =   \033[30m
+RED         =   \033[31m
+GREEN       =   \033[32m
+YELLOW      =   \033[33m
+BLUE        =   \033[34m
+PINK        =   \033[35m
+CYAN        =   \033[36m
+WHITE       =   \033[37m
+BOLD        =   \033[1m
+UNDER       =   \033[4m
+SUR         =   \033[7m
+END         =   \033[0m
 
 MODULE_SRC= mlx_image.swift mlx_window.swift mlx_init.swift
 MODULE_OBJ=$(MODULE_SRC:.swift=.swiftmodule)
@@ -19,16 +31,21 @@ INC=-I.
 all: $(NAME)
 
 $(NAME): $(MODULE_OBJ) $(OBJ) $(C_OBJ)
-	swiftc $(OPTI) $(INC) -o $(NAME) -emit-library $(OBJ) $(C_OBJ) -lz
+	@swiftc $(OPTI) $(INC) -o $(NAME) -emit-library $(OBJ) $(C_OBJ) -lz
+	@printf "$(ERASE)$(GREEN)-> Files switfc Created with success$(END)\n"
 
-
+%.o: %.c mlx.h
+		 @gcc $(CFLAGS) -c $< -o $(<:.c=.o)
 
 %.o: %.swift
-	swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@
+	@swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@
+	@printf "$(ERASE)$(CYAN)$<$(END)"
 
 %.swiftmodule: %.swift
-	swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
+	@swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
+	@printf "$(ERASE)$(CYAN)$<$(END)"
 
 clean:
-	rm -f $(NAME) $(OBJ) $(MODULE_OBJ) $(C_OBJ) *.swiftdoc *~
+	@rm -f $(NAME) $(OBJ) $(MODULE_OBJ) $(C_OBJ) *.swiftdoc *~
+	@printf "$(ERASE)$(RED)-> All Minilibx files cleaned$(END)\n"
 
