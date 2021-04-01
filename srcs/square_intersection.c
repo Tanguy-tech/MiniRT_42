@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 08:36:30 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/31 13:32:49 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 09:27:08 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	put_square(t_thread *th, int index)
 	{
 		t_vectors	pxl_intensity;
 
-		pxl_intensity.x = ((th->rt.element.color.b + th->rt.light.color.b) / 2) * (1 + dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N));
-		pxl_intensity.y = ((th->rt.element.color.g + th->rt.light.color.g) / 2) * (1 + dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N));
-		pxl_intensity.z = ((th->rt.element.color.r + th->rt.light.color.r) / 2) * (1 + dot(unit_vector(vec_minus(th->rt.light.orig, th->P)), th->N));
+		pxl_intensity.x = ((th->rt.element.color.b + th->rt.light.color.b) / 2) * (1 - dot(unit_vector(vec_plus(th->rt.light.orig, th->P)), th->N));
+		pxl_intensity.y = ((th->rt.element.color.g + th->rt.light.color.g) / 2) * (1 - dot(unit_vector(vec_plus(th->rt.light.orig, th->P)), th->N));
+		pxl_intensity.z = ((th->rt.element.color.r + th->rt.light.color.r) / 2) * (1 - dot(unit_vector(vec_plus(th->rt.light.orig, th->P)), th->N));
 		pxl_intensity = check_intensity(pxl_intensity);
 		th->rt.img->data[index - 2] = (unsigned char)pxl_intensity.x * th->rt.light.ratio;
 		th->rt.img->data[index - 1] = (unsigned char)pxl_intensity.y * th->rt.light.ratio;

@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 10:58:25 by tbillon           #+#    #+#              #
-#    Updated: 2021/03/31 16:43:10 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/04/01 09:47:09 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ ft_strtod.c get_double.c to_find.c
 
 OBJS_HEADERS = $(addprefix ./includes/, $(HEADERS))
 
-OBJS_SRCS = $(addprefix ./srcs/, $(SRCS))
+OBJS_SRCS = $(addprefix ./srcs/, $(SRCS:.c=.o))
 
-OBJS_UTILS = $(addprefix ./srcs/utils/, $(UTILS))
+OBJS_UTILS = $(addprefix ./srcs/utils/, $(UTILS:.c=.o))
 
 CC = gcc
 

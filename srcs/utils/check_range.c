@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:15:10 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/04 13:39:24 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 09:13:44 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		check_range_vector(char *code)
 	x = atof(dir_code[0]);
 	y = atof(dir_code[1]);
 	z = atof(dir_code[2]);
-	if ((x < 0.0 || x > 1.0) || (y < 0.0 || y > 1.0) || (z < 0.0 || z > 1.0))
+	if ((x < -1.0 || x > 1.0) || (y < -1.0 || y > 1.0) || (z < -1.0 || z > 1.0))
 		return (0);
 	return (1);
 }
