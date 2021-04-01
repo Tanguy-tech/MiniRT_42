@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/01 13:44:07 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 14:49:08 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	parse_triangle_data(char *type, t_scene *mini_rt, char **data)
 		triangle->sec_coord.x = ft_atof(sec_coord[0]);
 		triangle->sec_coord.y = ft_atof(sec_coord[1]);
 		triangle->sec_coord.z = ft_atof(sec_coord[2]);
-		triangle->third_coord.x = ft_atof(third_coord[0]);
+		triangle->third_coord.x = -ft_atof(third_coord[0]);
 		triangle->third_coord.y = ft_atof(third_coord[1]);
 		triangle->third_coord.z = ft_atof(third_coord[2]);
 		triangle->color.r = ft_atof(color[0]);

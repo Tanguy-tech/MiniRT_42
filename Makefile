@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 10:58:25 by tbillon           #+#    #+#              #
-#    Updated: 2021/04/01 14:45:12 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/04/01 14:46:38 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ $(NAME):		$(OBJS_SRCS) $(OBJS_UTILS)
 					@mv ./minilibx/libmlx.dylib .
 					@$(CC) $(FLAGS) $(OBJS_SRCS) $(OBJS_UTILS) -I $(OBJS_HEADERS) libmlx.dylib
 					@mv a.out miniRT
-					@printf "$(CYAN)Executable file miniRT Created with success!\n$(BLUE)You can execute $(YELLOW)./miniRT$(BLUE) with the $(YELLOW)scene$(BLUE) of your choise$(END)\n"
+					@printf "$(CYAN)-> Executable file miniRT Created with success!\n$(BLUE)You can execute $(YELLOW)./miniRT$(BLUE) with the $(YELLOW)scene$(BLUE) of your choise$(END)\n"
 
 all:		$(NAME)
 
