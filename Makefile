@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 10:58:25 by tbillon           #+#    #+#              #
-#    Updated: 2021/04/01 13:49:09 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/04/01 14:45:12 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,19 +26,21 @@ END         =   \033[0m
 
 NAME = miniRT
 
-HEADERS = colors.h element.h image.h minirt.h res.h resolve.h scenes.h utils.h vectors.h
+HEADERS = colors.h element.h image.h minirt.h res.h resolve.h scenes.h \
+utils.h vectors.h
 
 SRCS = check_common_format.c parse_common_data.c ray.c \
 scenes.c square.c vectors_operators.c check_format_engine.c errors.c \
-plan.c raytracing.c sphere.c square_intersection.c vectors.c window.c cylinder.c \
-mini_rt.c plan_intersection.c read_and_parse.c sphere_intersection.c triangle.c \
-vectors_operator_bis.c triangle_intersection.c
+plan.c raytracing.c sphere.c square_intersection.c vectors.c window.c \
+cylinder.c mini_rt.c plan_intersection.c read_and_parse.c \
+sphere_intersection.c triangle.c vectors_operator_bis.c \
+triangle_intersection.c
 
 UTILS = check_coord.c count_array.c ft_abs.c \
 ft_calloc.c ft_iswhitespace.c ft_lst_new.c ft_putnbr.c ft_str_add_char.c \
-ft_strnstr.c ft_substr.c get_next_line.c valid_format.c check_intensity.c  \
-count_double.c ft_atof.c ft_isalpha.c ft_lst_add_back.c ft_memcpy.c ft_putstr.c \
-ft_strlen.c ft_strrchr.c get_angle.c size_num.c check_range.c count_rgb_format.c \
+ft_strnstr.c ft_substr.c get_next_line.c valid_format.c check_intensity.c \
+count_double.c ft_atof.c ft_isalpha.c ft_lst_add_back.c ft_memcpy.c ft_putstr.c\
+ft_strlen.c ft_strrchr.c get_angle.c size_num.c check_range.c count_rgb_format.c\
 ft_atoi.c ft_isdigit.c ft_lst_add_front.c ft_putchar.c ft_split.c ft_strncmp.c \
 ft_strtod.c get_double.c to_find.c
 
@@ -69,8 +71,8 @@ all:		$(NAME)
 		 @printf "$(ERASE)$(YELLOW)$<....$(END)"
 
 norme:		
-			norminette $(SRCS)
-			norminette $(UTILS)
+			norminette $(addprefix ./srcs/, $(SRCS))
+			norminette $(addprefix ./srcs/utils/, $(UTILS))
 
 clean:
 			@$(RM) $(OBJS)

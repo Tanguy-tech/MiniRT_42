@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:31:43 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/01 13:44:13 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 14:31:46 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ int	triangle_intersection(t_thread *th)
 	if (res.b < 0 || res.a + res.b > 1)
 		return (0);
 	th->rt.t = dot(v2, tvec) * res.deamon;
+	th->P.x = vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm_dir)).x;
+	th->P.y = -vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm_dir)).y;
+	th->P.z = vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm_dir)).z;
+	th->N.x = unit_vector(vec_minus(th->P, th->rt.element.orig)).x;
+	th->N.y = unit_vector(vec_minus(th->P, th->rt.element.orig)).y;
+	th->N.z = unit_vector(vec_minus(th->P, th->rt.element.orig)).z;
 	return (1);
 }
 
@@ -43,8 +49,14 @@ void	put_triangle(t_thread *th, int index)
 {
 	if (triangle_intersection(th))
 	{
-		th->rt.img->data[index - 2] = (unsigned char)th->rt.element.color.b * th->rt.light.ratio;
-		th->rt.img->data[index - 1] = (unsigned char)th->rt.element.color.g * th->rt.light.ratio;
-		th->rt.img->data[index] = (unsigned char)th->rt.element.color.r * th->rt.light.ratio;
+		t_vectors	pxl_intensity;
+		
+		pxl_intensity.x = ((th->rt.element.color.b + th->rt.light.color.b) / 2) * (1 - dot(unit_vector(vec_plus(th->rt.light.orig, th->P)), th->N));
+		pxl_intensity.y = ((th->rt.element.color.g + th->rt.light.color.g) / 2) * (1 - dot(unit_vector(vec_plus(th->rt.light.orig, th->P)), th->N));
+		pxl_intensity.z = ((th->rt.element.color.r + th->rt.light.color.r) / 2) * (1 - dot(unit_vector(vec_plus(th->rt.light.orig, th->P)), th->N));
+		pxl_intensity = check_intensity(pxl_intensity);
+		th->rt.img->data[index - 2] = (unsigned char)pxl_intensity.x * th->rt.light.ratio;
+		th->rt.img->data[index - 1] = (unsigned char)pxl_intensity.y * th->rt.light.ratio;
+		th->rt.img->data[index] = (unsigned char)pxl_intensity.z * th->rt.light.ratio;
 	}
 }
