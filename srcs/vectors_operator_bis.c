@@ -6,10 +6,9 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 10:03:03 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 13:15:19 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:56:23 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/vectors.h"
 #include "../includes/minirt.h"
@@ -44,7 +43,6 @@ t_vectors	vec_inv_x(t_vectors a, double b)
 	return (res);
 }
 
-
 t_vectors	vec_div(t_vectors a, double b)
 {
 	t_vectors	res;
@@ -55,7 +53,7 @@ t_vectors	vec_div(t_vectors a, double b)
 	return (res);
 }
 
-t_vectors	vec_cross_prod(t_vectors a, t_vectors b) /* Cross product */
+t_vectors	vec_cross_prod(t_vectors a, t_vectors b)
 {
 	t_vectors	res;
 

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/01 14:49:08 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:56:02 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/element.h"
 #include "../includes/utils.h"
 
-int	check_triangle_format(char *type, char **data)
+int	check_triangle_format(char **data)
 {
 	if (count_array(data) != 5
 		|| !valid_format(data[1])
@@ -22,26 +22,24 @@ int	check_triangle_format(char *type, char **data)
 		|| !valid_format(data[3])
 		|| !valid_format(data[4]))
 	{
-		error_code(3, type);
 		free(data);
-		exit(0);
+		return (handle_error(TRI_FORMAT, 0));
 	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
 		if (check_coordinates(data[3]))
 			if (count_comma_format(data[4]) == 2
 				&& count_nb_format(data[4]) <= 9)
-				if (check_range_colors(data[4]))
+				if (check_range_color(data[4]))
 					return (1);
-	error_code(3, type);
-	return (0);
+	return (handle_error(TRI_FORMAT, 0));
 }
 
-int	parse_triangle_data(char *type, t_scene *mini_rt, char **data)
+int	parse_triangle_data(t_scene *mini_rt, char **data)
 {
-	char	**first_coord;
-	char	**sec_coord;
-	char	**third_coord;
-	char	**color;
+	char		**first_coord;
+	char		**sec_coord;
+	char		**third_coord;
+	char		**color;
 	t_element	*triangle;
 
 	first_coord = ft_split(data[1], ",");
@@ -50,7 +48,7 @@ int	parse_triangle_data(char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[4], ",");
 	triangle = initialize_element();
 	mini_rt->count_elem += 1;
-	if (check_triangle_format(type, data) == 1)
+	if (check_triangle_format(data) == 1)
 	{
 		triangle->first_coord.x = ft_atof(first_coord[0]);
 		triangle->first_coord.y = ft_atof(first_coord[1]);

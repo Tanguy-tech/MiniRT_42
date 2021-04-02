@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:46:48 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/31 08:10:36 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:18:02 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	parse_res(char *str, char *path, t_scene *mini_rt, char **data)
 	return (0);
 }
 
-int	parse_amb_light_data(char *str, char *type, t_scene *mini_rt, char **data)
+int	parse_amblight_data(char *str, char *type, t_scene *mini_rt, char **data)
 {
 	char	**color;
 

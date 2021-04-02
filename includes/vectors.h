@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:21 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 13:22:39 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:53:32 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_vectors	vec_xvec(t_vectors a, t_vectors b);
 t_vectors	vec_divvec(t_vectors a, t_vectors b);
 t_vectors	vec_cross_prod(t_vectors a, t_vectors b);
 double		dot(t_vectors a, t_vectors b);
-t_vectors	unit_vector(t_vectors vector);
+t_vectors	unit_vec(t_vectors vector);
 t_vectors	vec_xcol(double a, t_colors b);
 
 #endif

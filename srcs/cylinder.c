@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 12:43:17 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:42:14 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/element.h"
 #include "../includes/utils.h"
 
-int	check_cylinder_format(char *type, char **data)
+int	check_cylinder_format(char **data)
 {
 	float	height;
 	float	diam;
@@ -28,25 +28,24 @@ int	check_cylinder_format(char *type, char **data)
 		|| !valid_format(data[4])
 		|| !valid_format(data[5]))
 	{
-		error_code(3, type);
 		free(data);
-		exit(0);
+		return (handle_error(CYL_FORMAT, 0));
 	}
 	if (check_coordinates(data[1]) && check_coordinates(data[2]))
 		if (diam > 0.0 && height > 0.0)
 			if (count_comma_format(data[5]) == 2)
 				if (count_nb_format(data[5]) <= 9)
-					if (check_range_vector(data[2]) && check_range_colors(data[5]))
+					if (check_range_vector(data[2])
+						&& check_range_color(data[5]))
 						return (1);
-	error_code(3, type);
-	return (0);
+	return (handle_error(CYL_FORMAT, 0));
 }
 
-int	parse_cylinder_data(char *type, t_scene *mini_rt, char **data)
+int	parse_cylinder_data(t_scene *mini_rt, char **data)
 {
-	char	**coord;
-	char	**direction;
-	char	**color;
+	char		**coord;
+	char		**direction;
+	char		**color;
 	t_element	*cylinder;
 
 	coord = ft_split(data[1], ",");
@@ -54,7 +53,7 @@ int	parse_cylinder_data(char *type, t_scene *mini_rt, char **data)
 	color = ft_split(data[5], ",");
 	cylinder = initialize_element();
 	mini_rt->count_elem += 1;
-	if (check_cylinder_format(type, data) == 1)
+	if (check_cylinder_format(data) == 1)
 	{
 		cylinder->orig.x = ft_atof(coord[0]);
 		cylinder->orig.y = ft_atof(coord[1]);

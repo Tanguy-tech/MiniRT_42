@@ -6,13 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:15:10 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/01 09:13:44 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:40:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-int		check_range_colors(char *code)
+int		check_range_color(char *code)
 {
 	char **rgb_code;
 	float	r;

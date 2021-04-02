@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/31 09:17:16 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:48:20 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef	struct ray
 {
 	t_vectors	orig;	/* Origin point of the ray (vector point) */
 	t_vectors	dir;	/* Direction of the ray (vector) */
-	t_vectors	norm_dir;
+	t_vectors	norm;
 }				t_ray;
 
 t_ray	*initialize_ray(void);

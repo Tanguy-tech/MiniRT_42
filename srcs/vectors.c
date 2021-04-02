@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/29 13:22:18 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 09:52:52 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ double	get_norme2(t_vectors vec)
 	return (norme2);
 }
 
-t_vectors	unit_vector(t_vectors vector)
+t_vectors	unit_vec(t_vectors vector)
 {
 	t_vectors	unit_vector;
-	double	norm;
-	
+	double		norm;
+
 	norm = sqrt(get_norme2(vector));
 	unit_vector.x = vector.x / norm;
 	unit_vector.y = vector.y / norm;
