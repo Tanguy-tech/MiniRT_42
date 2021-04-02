@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 15:14:54 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/19 13:02:24 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:04:50 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ char	*set_word(char *str, char *sep)
 
 	i = 0;
 	size_w = word_len(str, sep);
-	if (!(word = malloc(sizeof(char) * (size_w + 1))))
+	word = malloc(sizeof(char) * (size_w + 1));
+	if (!(word))
 		return (0);
 	while (i < size_w && str[i])
 	{
@@ -88,10 +89,11 @@ char	**ft_split(char *s, char *c)
 		return (0);
 	str = (char *)s;
 	nb_words = count_words(str, c);
-	if (!(tab = malloc(sizeof(char *) * (nb_words + 1))))
+	tab = malloc(sizeof(char *) * (nb_words + 1));
+	if (!(tab))
 		return (0);
-	i = 0;
-	while (i < nb_words && *str)
+	i = -1;
+	while (++i < nb_words && *str)
 	{
 		while (is_sep(*str, c) && *str)
 			str++;
@@ -100,7 +102,6 @@ char	**ft_split(char *s, char *c)
 			tab[i] = set_word(str, c);
 			str = str + word_len(str, c);
 		}
-		i++;
 	}
 	tab[i] = 0;
 	return (tab);

@@ -6,13 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 13:13:28 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 11:37:52 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:02:53 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 10:49:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 16:36:51 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:11:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	get_next_line(int fd, char **line)
 	char		*tmp;
 	int			pos;
 
-	if (!(line) || (!(st[fd]) && !(st[fd] = ft_calloc(1, sizeof(char)))))
+	st[fd] = ft_calloc(1, sizeof(char));
+	if (!(line) || (!(st[fd]) && !(st[fd])))
 		return (-1);
 	while (read(fd, buff, 1) > 0)
 	{

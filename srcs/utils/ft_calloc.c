@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 10:46:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/03 12:18:26 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:02:41 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	*ft_calloc(int count, int size)
 	char	*new;
 
 	i = 0;
-	if (!(new = malloc(count * size)))
+	new = malloc(count * size);
+	if (!(new))
 		return (0);
 	while (i < (size * count))
 	{

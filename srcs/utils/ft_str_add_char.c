@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 10:47:46 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/02 10:48:09 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:05:54 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*str_add_char(char *str, char c)
 
 	len = ft_strlen(str);
 	i = 0;
-	if (!(new = ft_calloc(len + 2, sizeof(char))))
+	new = ft_calloc(len + 2, sizeof(char));
+	if (!(new))
 		return (0);
 	while (str[i])
 	{

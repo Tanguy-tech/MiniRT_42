@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:33:27 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 10:21:20 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:06:49 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	get_angle(char *str)
 	int		angle;
 
 	i = ft_strlen(str) - 1;
-	if (!(angle_str = ft_calloc(sizeof(char), 4)))
+	angle_str = ft_calloc(sizeof(char), 4);
+	if (!(angle_str))
 		return (-1);
 	while (ft_isdigit(str[i]))
 		i--;
@@ -27,7 +28,8 @@ int	get_angle(char *str)
 	{
 		if (ft_isdigit(str[i]))
 		{
-			if (!(angle_str = str_add_char(angle_str, str[i])))
+			angle_str = str_add_char(angle_str, str[i]);
+			if (!(angle_str))
 				return (-1);
 		}
 		i++;
