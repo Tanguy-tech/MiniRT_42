@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:05:36 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 09:52:52 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 13:46:35 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ t_vectors	*initialize_vector(void)
 {
 	t_vectors	*new_vector;
 
-	if (!(new_vector = ft_calloc(sizeof(t_vectors), 1)))
+	new_vector = ft_calloc(sizeof(t_vectors), 1);
+	if (!(new_vector))
 		return (NULL);
 	new_vector->x = 0.0;
 	new_vector->y = 0.0;

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:07:16 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 09:36:45 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:22:54 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	parse_plan_data(t_scene *mini_rt, char **data)
 	direction = ft_split(data[2], ",");
 	color = ft_split(data[3], ",");
 	plan = initialize_element();
-	mini_rt->count_elem += 1;
 	if (check_plan_format(data) == 1)
 	{
 		plan->orig.x = ft_atof(coord[0]);
@@ -56,8 +55,7 @@ int	parse_plan_data(t_scene *mini_rt, char **data)
 		plan->color.g = ft_atof(color[1]);
 		plan->color.b = ft_atof(color[2]);
 		plan->id = 2;
-		ft_lstadd_front(&mini_rt->elem_list, ft_lstnew(plan));
-		return (1);
+		return (ft_lstadd_front(&mini_rt->elem_list, ft_lstnew(plan)));
 	}
 	return (0);
 }

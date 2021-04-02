@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:12:14 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 09:56:02 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:22:04 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,18 @@ int	parse_triangle_data(t_scene *mini_rt, char **data)
 	third_coord = ft_split(data[3], ",");
 	color = ft_split(data[4], ",");
 	triangle = initialize_element();
-	mini_rt->count_elem += 1;
 	if (check_triangle_format(data) == 1)
 	{
-		triangle->first_coord.x = ft_atof(first_coord[0]);
-		triangle->first_coord.y = ft_atof(first_coord[1]);
-		triangle->first_coord.z = ft_atof(first_coord[2]);
-		triangle->sec_coord.x = ft_atof(sec_coord[0]);
-		triangle->sec_coord.y = ft_atof(sec_coord[1]);
-		triangle->sec_coord.z = ft_atof(sec_coord[2]);
-		triangle->third_coord.x = -ft_atof(third_coord[0]);
-		triangle->third_coord.y = ft_atof(third_coord[1]);
-		triangle->third_coord.z = ft_atof(third_coord[2]);
-		triangle->color.r = ft_atof(color[0]);
-		triangle->color.g = ft_atof(color[1]);
-		triangle->color.b = ft_atof(color[2]);
+		triangle->first_coord = (t_vectors){ft_atof(first_coord[0]),
+			ft_atof(first_coord[1]), ft_atof(first_coord[2])};
+		triangle->sec_coord = (t_vectors){ft_atof(sec_coord[0]),
+			ft_atof(sec_coord[1]), ft_atof(sec_coord[2])};
+		triangle->third_coord = (t_vectors){-ft_atof(third_coord[0]),
+			ft_atof(third_coord[1]), ft_atof(third_coord[2])};
+		triangle->color = (t_colors){ft_atof(color[0]), ft_atof(color[1]),
+			ft_atof(color[2])};
 		triangle->id = 5;
-		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(triangle));
-		return (1);
+		return (ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(triangle)));
 	}
 	return (0);
 }

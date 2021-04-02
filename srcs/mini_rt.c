@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:53:23 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 11:05:23 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 13:48:06 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	main(int ac, char **av)
 
 	if (params_check(ac, av) == 0)
 	{
-		if (!(rt = initialize_scene()))
+		rt = initialize_scene();
+		if (!(rt))
 			return (-1);
 		read_and_parse(av[1], rt);
 		create_window(rt);

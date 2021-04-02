@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:09:32 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 09:42:14 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:26:35 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,18 @@ int	parse_cylinder_data(t_scene *mini_rt, char **data)
 	direction = ft_split(data[2], ",");
 	color = ft_split(data[5], ",");
 	cylinder = initialize_element();
-	mini_rt->count_elem += 1;
 	if (check_cylinder_format(data) == 1)
 	{
-		cylinder->orig.x = ft_atof(coord[0]);
-		cylinder->orig.y = ft_atof(coord[1]);
-		cylinder->orig.z = ft_atof(coord[2]);
-		cylinder->dir.x = ft_atof(direction[0]);
-		cylinder->dir.y = ft_atof(direction[1]);
-		cylinder->dir.z = ft_atof(direction[2]);
+		cylinder->orig = (t_vectors){ft_atof(coord[0]), ft_atof(coord[1]),
+			ft_atof(coord[2])};
+		cylinder->dir = (t_vectors){ft_atof(direction[0]),
+			ft_atof(direction[1]), ft_atof(direction[2])};
 		cylinder->diam = ft_atof(data[3]);
 		cylinder->height = ft_atof(data[4]);
-		cylinder->color.r = ft_atof(color[0]);
-		cylinder->color.g = ft_atof(color[1]);
-		cylinder->color.b = ft_atof(color[2]);
+		cylinder->color = (t_colors){ft_atof(color[0]), ft_atof(color[1]),
+			ft_atof(color[2])};
 		cylinder->id = 4;
-		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(cylinder));
-		return (1);
+		return (ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(cylinder)));
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 08:55:53 by tbillon           #+#    #+#             */
-/*   Updated: 2021/03/08 08:58:13 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:22:32 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,23 @@ t_list	*ft_lstlast(t_list *lst)
 	return (list);
 }
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+int	ft_lstadd_back(t_list **alst, t_list *new)
 {
 	t_list	*list;
 
 	if (alst)
 	{
 		if (*alst == NULL)
+		{
 			*alst = new;
+			return (1);
+		}
 		else
 		{
 			list = ft_lstlast(*(alst));
 			list->next = new;
+			return (1);
 		}
 	}
+	return (0);
 }

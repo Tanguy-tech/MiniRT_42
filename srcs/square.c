@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:02:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 09:36:59 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:23:33 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,17 @@ int	parse_square_data(t_scene *mini_rt, char **data)
 	direction = ft_split(data[2], ",");
 	color = ft_split(data[4], ",");
 	square = initialize_element();
-	mini_rt->count_elem += 1;
 	if (check_square_format(data) == 1)
 	{
-		square->orig.x = ft_atof(coord[0]);
-		square->orig.y = -ft_atof(coord[1]);
-		square->orig.z = ft_atof(coord[2]);
-		square->dir.x = ft_atof(direction[0]);
-		square->dir.y = ft_atof(direction[1]);
-		square->dir.z = ft_atof(direction[2]);
+		square->orig = (t_vectors){ft_atof(coord[0]), -ft_atof(coord[1]),
+			ft_atof(coord[2])};
+		square->dir = (t_vectors){ft_atof(direction[0]), ft_atof(direction[1]),
+			ft_atof(direction[2])};
 		square->height = ft_atof(data[3]);
-		square->color.r = ft_atof(color[0]);
-		square->color.g = ft_atof(color[1]);
-		square->color.b = ft_atof(color[2]);
+		square->color = (t_colors){ft_atof(color[0]), ft_atof(color[1]),
+			ft_atof(color[2])};
 		square->id = 3;
-		ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(square));
-		return (1);
+		return (ft_lstadd_back(&mini_rt->elem_list, ft_lstnew(square)));
 	}
 	return (0);
 }

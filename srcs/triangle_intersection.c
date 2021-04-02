@@ -6,11 +6,21 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:31:43 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 09:57:17 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 13:50:18 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+
+void	hit_coordinates(t_thread *th)
+{
+	th->P.x = vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm)).x;
+	th->P.y = -vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm)).y;
+	th->P.z = vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm)).z;
+	th->N.x = unit_vec(vec_minus(th->P, th->rt.element.orig)).x;
+	th->N.y = unit_vec(vec_minus(th->P, th->rt.element.orig)).y;
+	th->N.z = unit_vec(vec_minus(th->P, th->rt.element.orig)).z;
+}
 
 int	triangle_intersection(t_thread *th)
 {
@@ -36,12 +46,7 @@ int	triangle_intersection(t_thread *th)
 	if (res.b < 0 || res.a + res.b > 1)
 		return (0);
 	th->rt.t = dot(v2, tvec) * res.deamon;
-	th->P.x = vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm)).x;
-	th->P.y = -vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm)).y;
-	th->P.z = vec_plus(th->ray.orig, vec_x(th->rt.t, th->ray.norm)).z;
-	th->N.x = unit_vec(vec_minus(th->P, th->rt.element.orig)).x;
-	th->N.y = unit_vec(vec_minus(th->P, th->rt.element.orig)).y;
-	th->N.z = unit_vec(vec_minus(th->P, th->rt.element.orig)).z;
+	hit_coordinates(th);
 	return (1);
 }
 
