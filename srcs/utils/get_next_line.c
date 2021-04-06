@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 10:49:57 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 14:11:31 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/06 07:30:59 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	get_next_line(int fd, char **line)
 	static char	*st[4096];
 	char		buff[1];
 	char		*tmp;
-	int			pos;
 
 	st[fd] = ft_calloc(1, sizeof(char));
 	if (!(line) || (!(st[fd]) && !(st[fd])))
@@ -28,15 +27,15 @@ int	get_next_line(int fd, char **line)
 		if (buff[0] == '\n')
 			break ;
 	}
-	if ((pos = to_find(st[fd], '\n')) >= 0)
+	if (find(st[fd], '\n') >= 0)
 	{
-		*line = ft_substr(st[fd], 0, pos);
+		*line = ft_substr(st[fd], 0, find(st[fd], '\n'));
 		tmp = st[fd];
-		st[fd] = ft_substr(st[fd], pos + 1, to_find(st[fd], '\n'));
+		st[fd] = ft_substr(st[fd], find(st[fd], '\n') + 1, find(st[fd], '\n'));
 		free(tmp);
 		return (1);
 	}
-	*line = ft_substr(st[fd], 0, to_find(st[fd], '\0'));
+	*line = ft_substr(st[fd], 0, find(st[fd], '\0'));
 	free(st[fd]);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:07:18 by tbillon           #+#    #+#             */
-/*   Updated: 2021/04/02 11:24:09 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/06 07:30:42 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_strlen(char *str);
 void	*ft_calloc(int count, int size);
 char	*str_add_char(char *str, char c);
 char	*ft_substr(char *str, int begin, int len_max);
-int		to_find(char *str, char c);
+int		find(char *str, char c);
 int		get_next_line(int fd, char **line);
 int		ft_atoi(char *str);
 float	ft_atof(char *str);

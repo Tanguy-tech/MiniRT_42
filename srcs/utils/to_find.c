@@ -6,13 +6,13 @@
 /*   By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 12:57:56 by tbillon           #+#    #+#             */
-/*   Updated: 2021/02/09 12:57:58 by tbillon          ###   ########lyon.fr   */
+/*   Updated: 2021/04/06 07:30:31 by tbillon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int	to_find(char *str, char c)
+int	find(char *str, char c)
 {
 	int	i;
 
