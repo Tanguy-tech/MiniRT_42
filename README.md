@@ -4,7 +4,8 @@
 
 📒 Subject: [Find the Mini RT subject HERE](https://cdn.intra.42.fr/pdf/pdf/10458/en.subject.pdf)
 
-![image](	https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![Made with C](https://forthebadge.com/images/badges/made-with-c.svg) ![Powered by coffee](https://forthebadge.com/images/badges/powered-by-coffee.svg) ![Built with love](https://forthebadge.com/images/badges/built-with-love.svg)
+
 
 This project is an introduction to the beautiful world of Raytracing.
 Once completed i was able to render simple Computer-Generated-Images and you
