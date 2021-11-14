@@ -4,6 +4,8 @@
 
 📒 Subject: [Find the Mini RT subject HERE](https://cdn.intra.42.fr/pdf/pdf/10458/en.subject.pdf)
 
+![image](	https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+
 This project is an introduction to the beautiful world of Raytracing.
 Once completed i was able to render simple Computer-Generated-Images and you
 will never be afraid of implementing mathematical formulas again.x. 
